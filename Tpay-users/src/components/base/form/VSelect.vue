@@ -16,6 +16,7 @@ const modelValue = defineModel<any>({
 })
 const props = defineProps<VSelectProps>()
 const attrs = useAttrs()
+let countries = attrs.items
 
 const { field, id } = useVFieldContext({
   create: false,

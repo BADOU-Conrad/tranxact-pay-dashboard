@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'http://192.168.1.3:8000/user', // Remplacez par l'URL réelle de votre API Laravel
+  baseURL: 'http://192.168.1.3:8000', // Remplacez par l'URL réelle de votre API Laravel
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -12,24 +12,42 @@ const apiClient = axios.create({
 interface Credentials {
   email: string
   password: string
-  // Ajoutez d'autres champs si nécessaire
 }
+
 interface UserData {
-  // Ajoutez les propriétés nécessaires ici
-  username: string
+  firstName: string
+  lastName: string
   email: string
+  country: string
+  accountType: string
   password: string
-  // ... autres propriétés ...
+  profilePicture: File | undefined
 }
 
 export default {
-  // Exemple d'endpoints pour l'authentification
   login(credentials: Credentials) {
-    return apiClient.post('/login', credentials)
+    return apiClient.post('/user/login', credentials)
   },
 
   register(userData: UserData) {
-    return apiClient.post('/register', userData)
+    const formData = new FormData()
+    Object.entries(userData).forEach(([key, value]) => {
+      if (key === 'profilePicture') {
+        formData.append(key, value)
+      } else {
+        formData.append(key, JSON.stringify(value))
+      }
+    })
+
+    return apiClient.post('/user/register', formData)
+  },
+
+  getCountries() {
+    return apiClient.get('/country/all')
+  },
+
+  getAccountTypes() {
+    return apiClient.get('/account_type/all')
   },
 
   // Ajoutez d'autres méthodes pour les différents endpoints ici...

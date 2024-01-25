@@ -1,19 +1,18 @@
 <script setup lang="ts">
-// import type { TinySliderInstance } from 'tiny-slider/src/tiny-slider'
-
-import { onceImageErrored } from '/@src/utils/via-placeholder'
-
-import sleep from '/@src/utils/sleep'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useNotyf } from '/@src/composable/useNotyf'
+import ApiService from '/@src/service/api'
+import sleep from '/@src/utils/sleep'
 import { useDarkmode } from '/@src/stores/darkmode'
-
+import { onceImageErrored } from '/@src/utils/via-placeholder'
 // let slider: TinySliderInstance
 // const sliderElement = ref<HTMLElement>()
+const darkmode = useDarkmode()
+// const selectedAvatar = ref(2)
 const router = useRouter()
 const notyf = useNotyf()
-const darkmode = useDarkmode()
 const step = ref(0)
-// const selectedAvatar = ref(2)
 const isLoading = ref(false)
 const fileInput = ref<File>()
 const uploadAvatarSrc = ref<string>()
@@ -24,31 +23,107 @@ const avatars = [
   '/images/avatars/svg/vuero-3.svg',
   '/images/avatars/svg/vuero-4.svg',
 ]
+const countries = ref([]);
+const accountTypes = ref([]);
+interface AccountType {
+  id: string;
+  name: string;
+  // ... autres propriétés
+}
+interface Country {
+  id: string;
+  name: string;
+  // ... autres propriétés
+}
+const fetchCountries = async () => {
+  try {
+    const response = await ApiService.getCountries();
+
+    countries.value = response.data.data.map((country: Country) => ({
+      label: country.name,
+      value: country.id,
+    }));
+    console.log('response from countries', countries)
+  } catch (error) {
+    console.error('Erreur lors de la récupération des pays :', error);
+  }
+};
+
+const fetchAccountTypes = async () => {
+  try {
+    const response = await ApiService.getAccountTypes();
+
+    accountTypes.value = response.data.data.map((account_type: AccountType) => ({
+      label: account_type.name,
+      value: account_type.id,
+    }));
+    console.log('response from accountTypes', accountTypes)
+  } catch (error) {
+    console.error('Erreur lors de la récupération des types de compte :', error);
+  }
+};
+
+// Méthode appelée lorsque le composant est monté
+onMounted(() => {
+  fetchCountries();
+  fetchAccountTypes();
+});
+const formData = ref({
+  firstName: '',
+  lastName: '',
+  username: '',
+  email: '',
+  country: '',
+  accountType: '',
+  password: '',
+  profilePicture: '',
+  // ... (ajoutez d'autres champs du formulaire ici)
+});
 
 const handleSignup = async () => {
   if (!isLoading.value) {
-    step.value++
-    isLoading.value = true
-    sleep(2000)
+    try {
 
-    notyf.dismissAll()
-    notyf.success('Welcome, Erik Kovalsky')
-    router.push('/sidebar/dashboards')
-    isLoading.value = false
+      const userData = {
+        firstName: formData.value.firstName,
+        lastName: formData.value.lastName,
+        username: formData.value.username,
+        email: formData.value.email,
+        password: formData.value.password,
+        country: formData.value.country,
+        accountType: formData.value.accountType,
+        profilePicture: fileInput.value,
+    };
+      const response = await ApiService.register(userData);
+
+      console.log(response.data);
+
+      isLoading.value = true;
+      await sleep(2000);
+
+      // Réinitialisez le chargement et redirigez l'utilisateur
+      isLoading.value = false;
+      notyf.dismissAll();
+      notyf.success('Welcome, Erik Kovalsky');
+      router.push('/sidebar/dashboards');
+    } catch (error) {
+      // Gérez les erreurs d'enregistrement ici
+      console.error('Erreur d\'enregistrement :', error);
+      notyf.dismissAll();
+      notyf.error('Erreur lors de l\'enregistrement. Veuillez réessayer.');
+      isLoading.value = false;
+    }
   }
-}
+};
 
 const currentAvatar = ref('/images/avatars/svg/vuero-1.svg')
-
 function onFileinputChange(event: Event) {
   fileInput.value = (event.target as HTMLInputElement)?.files?.[0]
+  if (fileInput.value) {
+    uploadAvatarSrc.value = URL.createObjectURL(fileInput.value!)
+  }
 
-  uploadAvatarSrc.value = URL.createObjectURL(fileInput.value!)
 }
-
-useHead({
-  title: 'Auth Signup 1 - Vuero',
-})
 </script>
 
 <template>
@@ -164,7 +239,9 @@ useHead({
                       <div class="column is-6">
                         <VField>
                           <VControl>
+                            <!-- -->
                             <VInput
+                              v-model="formData.firstName"
                               type="text"
                               autocomplete="given-name"
                             />
@@ -180,7 +257,9 @@ useHead({
                       <div class="column is-6">
                         <VField>
                           <VControl>
+                            <!---->
                             <VInput
+                              v-model="formData.lastName"
                               type="text"
                               autocomplete="family-name"
                             />
@@ -196,7 +275,9 @@ useHead({
                       <div class="column is-12">
                         <VField>
                           <VControl>
+                            <!---->
                             <VInput
+                              v-model="formData.email"
                               type="text"
                               autocomplete="email"
                             />
@@ -210,41 +291,24 @@ useHead({
                         </VField>
                       </div>
                       <div class="column is-12">
-                        <div class="signup-type">
-                          <div class="box-wrap">
-                            <input
-                              type="radio"
-                              name="signup_type"
-                              checked
+                        <VField>
+                          <VControl>
+                            <VSelect
+                              v-model="formData.country"
+                              :items="countries"
+                              item-text="label"
+                              item-value="value"
+                              label="Pays de résidence"
+                            />
+
+                            <VLabel
+                              raw
+                              class="auth-label"
                             >
-                            <div class="signup-box">
-                              <i
-                                aria-hidden="true"
-                                class="lnil lnil-coffee-cup"
-                              />
-                              <div class="meta">
-                                <span>Free</span>
-                                <span>Nice to get started</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="box-wrap">
-                            <input
-                              type="radio"
-                              name="signup_type"
-                            >
-                            <div class="signup-box">
-                              <i
-                                aria-hidden="true"
-                                class="lnil lnil-crown-alt-1"
-                              />
-                              <div class="meta">
-                                <span>Paid</span>
-                                <span>Get a lot more features</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                              Pays de résidence
+                            </VLabel>
+                          </VControl>
+                        </VField>
                       </div>
                     </div>
 
@@ -368,8 +432,7 @@ useHead({
                   Pick a username
                 </h1>
                 <h2 class="subtitle signup-subtitle has-text-centered">
-                  Your username is how others will find you on Vuero so pick a good one.
-                  You can change it later.
+                  Your username is how others will find you on tranxact Pay
                 </h2>
                 <form
                   method="post"
@@ -382,6 +445,7 @@ useHead({
                       <VField>
                         <VControl>
                           <VInput
+                            v-model="formData.username"
                             type="text"
                             autocomplete="username"
                           />
@@ -398,6 +462,7 @@ useHead({
                       <VField>
                         <VControl>
                           <VInput
+                            v-model="formData.password"
                             type="password"
                             autocomplete="new-password"
                           />
@@ -414,6 +479,7 @@ useHead({
                       <VField>
                         <VControl>
                           <VInput
+                            v-model="formData.password"
                             type="password"
                             autocomplete="new-password"
                           />
@@ -422,6 +488,25 @@ useHead({
                             class="auth-label"
                           >
                             Confirm Password
+                          </VLabel>
+                        </VControl>
+                      </VField>
+                    </div>
+                    <div class="column is-12">
+                      <VField>
+                        <VControl>
+                          <VSelect
+                            v-model="formData.accountType"
+                            :items="accountTypes"
+                            item-text="label"
+                            item-value="value"
+                            label="type de compte"
+                          />
+                          <VLabel
+                            raw
+                            class="auth-label"
+                          >
+                            Type de compte
                           </VLabel>
                         </VControl>
                       </VField>
