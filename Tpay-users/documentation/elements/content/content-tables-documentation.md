@@ -2,7 +2,7 @@
 
 You can also use the `content` class to wrap an html `table` element
 to apply minimum styles to your table UI.
-Please refer to the Vuero components section to find more advanced table
+Please refer to the Tranxact components section to find more advanced table
 examples and layouts.
 
 <!--code-->

@@ -1,6 +1,6 @@
 ### Avatar badge
 
-Vuero avatars can have badge images attached to them.
+Tranxactavatars can have badge images attached to them.
 Simply add a 1:1 ratio image URL to the avatar component using the `badge` prop.
 
 <!--code-->

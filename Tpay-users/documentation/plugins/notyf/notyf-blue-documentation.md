@@ -1,4 +1,4 @@
-### Blue toast
+### blue toast
 
 Bside the two native types, `Notyf` allows you to create custom toast types.
 You can change all the available option defaults, like `position` or `duration`.

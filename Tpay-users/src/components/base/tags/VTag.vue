@@ -8,7 +8,6 @@ export type VTagColor =
   | 'danger'
   | 'orange'
   | 'blue'
-  | 'green'
   | 'purple'
   | 'white'
   | 'light'
@@ -167,21 +166,6 @@ const props = withDefaults(defineProps<VTagProps>(), {
     }
   }
 
-  &.is-green {
-    background: var(--green);
-    color: var(--white);
-
-    &.is-elevated {
-      box-shadow: var(--green-box-shadow);
-    }
-
-    &.is-outlined {
-      background: none !important;
-      color: var(--green);
-      border: 1px solid var(--green);
-    }
-  }
-
   &.is-blue {
     background: var(--blue);
     color: var(--white);
@@ -238,7 +222,6 @@ const props = withDefaults(defineProps<VTagProps>(), {
         .is-warning,
         .is-danger,
         .is-orange,
-        .is-green,
         .is-blue,
         .is-purple
       ) {

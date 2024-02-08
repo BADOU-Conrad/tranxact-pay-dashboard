@@ -1,6 +1,6 @@
 ### VCardAdvanced
 
-Vuero ships with a `<VCardAdvanced />` component that features a card header,
+Tranxact ships with a `<VCardAdvanced />` component that features a card header,
 body, and footer, to display any type of content.
 Card header and footer have both a left and right `slots` where you
 can insert your UI elements/components. You can also control the card radius

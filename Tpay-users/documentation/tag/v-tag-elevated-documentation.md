@@ -17,7 +17,6 @@ Use the `elevated` prop to add elevation to the component.
     <VTag color="danger" label="Tag Label" rounded elevated />
     <VTag color="orange" label="Tag Label" rounded elevated />
     <VTag color="blue" label="Tag Label" rounded elevated />
-    <VTag color="green" label="Tag Label" rounded elevated />
     <VTag color="purple" label="Tag Label" rounded elevated />
   </VTags>
 </template>
@@ -36,7 +35,6 @@ Use the `elevated` prop to add elevation to the component.
   <VTag color="danger" label="Tag Label" rounded elevated />
   <VTag color="orange" label="Tag Label" rounded elevated />
   <VTag color="blue" label="Tag Label" rounded elevated />
-  <VTag color="green" label="Tag Label" rounded elevated />
   <VTag color="purple" label="Tag Label" rounded elevated />
 </VTags>
 

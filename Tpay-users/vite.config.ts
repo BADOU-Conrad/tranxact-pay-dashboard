@@ -301,8 +301,8 @@ export default defineConfig({
       base: '/',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Vuero - A complete Vue 3 design system',
-        short_name: 'Vuero',
+        name: 'Tranxact - Agregateur de Payement ',
+        short_name: 'Tranxact',
         start_url: '/?utm_source=pwa',
         display: 'standalone',
         theme_color: '#ffffff',

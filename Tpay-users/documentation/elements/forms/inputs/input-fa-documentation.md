@@ -1,6 +1,6 @@
 ### Font Awesome
 
-Vuero `VInput` are fully compatible with Font Awesome 5 icons.
+Tranxact `VInput` are fully compatible with Font Awesome 5 icons.
 Use the `iconed` prop on the `<VControl />` component to show an icon.
 You also have to provide an icon type using the `icon` or `iconify` props.
 

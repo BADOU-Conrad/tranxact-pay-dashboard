@@ -1,6 +1,6 @@
 ### VAction
 
-Vuero provides a versatile small button component named
+Tranxactprovides a versatile small button component named
 `<VAction />` components can have different colors.
 VActions can be `rounded`, `hoverable` or `grey` using the related props.
 

@@ -166,12 +166,12 @@ $shade-variants: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20, 
   }
 
   /**
-   * green colors
+   * blue colors
    */
-  // green - light shades
+  // blue - light shades
   @each $shade in 15, 22, 23 {
-    --green-light-#{$shade}: hsl(
-      var(--green-h) var(--green-s) calc(var(--green-l) + #{$shade}%)
+    --blue-light-#{$shade}: hsl(
+      var(--blue-h) var(--blue-s) calc(var(--blue-l) + #{$shade}%)
     );
   }
 

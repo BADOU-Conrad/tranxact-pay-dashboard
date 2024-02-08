@@ -9,7 +9,6 @@ export type VIconBoxColor =
   | 'purple'
   | 'yellow'
   | 'orange'
-  | 'green'
   | 'red'
   | 'blue'
 export interface VIconProps {
@@ -350,21 +349,6 @@ const props = withDefaults(defineProps<VIconProps>(), {
     }
   }
 
-  &.is-blue {
-    background: var(--blue-light-34);
-
-    &.is-bordered {
-      border-color: var(--blue);
-    }
-
-    i {
-      color: var(--blue);
-    }
-
-    svg {
-      color: var(--blue);
-    }
-  }
 
   &.is-yellow {
     background: var(--yellow-light-22);
@@ -398,19 +382,19 @@ const props = withDefaults(defineProps<VIconProps>(), {
     }
   }
 
-  &.is-green {
-    background: var(--green-light-23);
+  &.is-blue {
+    background: var(--blue-light-23);
 
     &.is-bordered {
-      border-color: var(--green);
+      border-color: var(--blue);
     }
 
     i {
-      color: var(--green);
+      color: var(--blue);
     }
 
     svg {
-      color: var(--green);
+      color: var(--blue);
     }
   }
 
@@ -596,25 +580,6 @@ const props = withDefaults(defineProps<VIconProps>(), {
       }
     }
 
-    &.is-blue {
-      background: var(--blue);
-
-      &.is-bordered {
-        border-color: var(--blue);
-      }
-
-      .lnil,
-      .lnir,
-      .fas,
-      .fab {
-        color: var(--white);
-      }
-
-      svg {
-        color: var(--smoke-white);
-      }
-    }
-
     &.is-yellow {
       background: var(--yellow);
 
@@ -653,11 +618,11 @@ const props = withDefaults(defineProps<VIconProps>(), {
       }
     }
 
-    &.is-green {
-      background: var(--green);
+    &.is-blue {
+      background: var(--blue);
 
       &.is-bordered {
-        border-color: var(--green);
+        border-color: var(--blue);
       }
 
       .lnil,

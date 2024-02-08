@@ -105,7 +105,7 @@ export const users = [
     name: 'Anna Baker',
     location: 'San Francisco, CA',
     role: 'UI/UX Designer',
-    roleColor: 'green',
+    roleColor: 'blue',
     medias: {
       avatar: '/demo/avatars/9.jpg',
       flag: '/images/icons/flags/united-states-of-america.svg',
@@ -125,7 +125,7 @@ export const users = [
     name: 'Esteban Castellanos',
     location: 'Miami, FL',
     role: 'UI/UX Designer',
-    roleColor: 'green',
+    roleColor: 'blue',
     medias: {
       avatar: '/demo/avatars/18.jpg',
       flag: '/images/icons/flags/united-states-of-america.svg',

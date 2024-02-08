@@ -1,6 +1,6 @@
 ### Line Icons
 
-Vuero `VInput` are fully compatible with Line Icons.
+Tranxact `VInput` are fully compatible with Line Icons.
 Use the `icon` or `iconify` props on the `<VControl />`
 component to show an icon.
 

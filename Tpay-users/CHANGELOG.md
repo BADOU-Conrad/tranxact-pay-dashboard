@@ -88,15 +88,15 @@ All notable changes to this project will be documented in this file. See [standa
 
 * add elevated prop to vbutton docs, remove elevated prop from icon button, close [#207](https://github.com/cssninjaStudio/vuero/issues/207) ([5dc5da1](https://github.com/cssninjaStudio/vuero/commit/5dc5da1820164b4a82b795bfb91051094e663d36))
 * **animated-checkbox:** display inner circle as inline-block ([069f074](https://github.com/cssninjaStudio/vuero/commit/069f074b8278d4f8645359ee8ec8e8cd96fb8f55)), closes [#204](https://github.com/cssninjaStudio/vuero/issues/204)
-* banking dashboard followers display ([f5abf09](https://github.com/cssninjaStudio/vuero/commit/f5abf09f6833fba6c5e933e661ecd6132ab5fe93)), closes [#190](https://github.com/cssninjaStudio/vuero/issues/190)
+* banking dashboard followers display ([f5abf09](https://github.com/cssninjaStudio/vuero/commit/f5abf09f6833fba6c5e933e661ecd6132ab5fe93)), closes [#159](https://github.com/cssninjaStudio/vuero/issues/190)
 * chart colors ([e136f54](https://github.com/cssninjaStudio/vuero/commit/e136f5443771ecb8c7acfdeb19cc1c31308ee6f2))
 * charts and illustration colors ([fc0faa6](https://github.com/cssninjaStudio/vuero/commit/fc0faa6dd95cd8c25e74fd72f0904321d7dcc2c4))
 * chat, datatable, layout bugs ([8a3b45d](https://github.com/cssninjaStudio/vuero/commit/8a3b45d7350f5a3963cad2be5769c1e117705323))
-* flight dashboard checkboxes close [#191](https://github.com/cssninjaStudio/vuero/issues/191) ([7bd5cbf](https://github.com/cssninjaStudio/vuero/commit/7bd5cbf49a1efcc70476fcae3248400011365077))
+* flight dashboard checkboxes close [#169](https://github.com/cssninjaStudio/vuero/issues/191) ([7bd5cbf](https://github.com/cssninjaStudio/vuero/commit/7bd5cbf49a1efcc70476fcae3248400011365077))
 * icon button size, close [#206](https://github.com/cssninjaStudio/vuero/issues/206) ([50e548f](https://github.com/cssninjaStudio/vuero/commit/50e548f7f50f5d3c65b66342976deeeb92894f54))
 * **icons:** line icons element playground ([b681f96](https://github.com/cssninjaStudio/vuero/commit/b681f96a0e70c5d12209d613950b6ba0a7b8038c)), closes [#208](https://github.com/cssninjaStudio/vuero/issues/208)
 * light button colors in dark mode ([fd93e17](https://github.com/cssninjaStudio/vuero/commit/fd93e1757198748909bc052570e84309ddad1e31))
-* notyf green color ([83845f3](https://github.com/cssninjaStudio/vuero/commit/83845f3c547b991cc7f5074e237f9b7a185c2964))
+* notyf blue color ([83845f3](https://github.com/cssninjaStudio/vuero/commit/83845f3c547b991cc7f5074e237f9b7a185c2964))
 
 ### [2.6.1](https://github.com/cssninjaStudio/vuero/compare/v2.6.0...v2.6.1) (2023-01-24)
 
@@ -106,8 +106,8 @@ All notable changes to this project will be documented in this file. See [standa
 * **doc:** non displayed slots ([4277e08](https://github.com/cssninjaStudio/vuero/commit/4277e08d98076cf3f57b1e1885fcb842cb2f8b15))
 * import icons vendors ([a80d11e](https://github.com/cssninjaStudio/vuero/commit/a80d11e4a7b8737cf7a2371516cb820aa9b57f26))
 * **v-datepicker:** add missing client-only ([cdf4c82](https://github.com/cssninjaStudio/vuero/commit/cdf4c82e3d36cd872134b6bad65ad31a8e101f3b))
-* **v-datepicker:** use native input in slot in order to bind events ([688643e](https://github.com/cssninjaStudio/vuero/commit/688643e587a628d154305f4a361c194bdc249857)), closes [#186](https://github.com/cssninjaStudio/vuero/issues/186)
-* **v-field:** correctly display label when using addons ([b6ede0f](https://github.com/cssninjaStudio/vuero/commit/b6ede0fe1c7176d3782e49b08ec2cbb187878c50)), closes [#152](https://github.com/cssninjaStudio/vuero/issues/152)
+* **v-datepicker:** use native input in slot in order to bind events ([688643e](https://github.com/cssninjaStudio/vuero/commit/688643e587a628d154305f4a361c194bdc249857)), closes [#169](https://github.com/cssninjaStudio/vuero/issues/186)
+* **v-field:** correctly display label when using addons ([b6ede0f](https://github.com/cssninjaStudio/vuero/commit/b6ede0fe1c7176d3782e49b08ec2cbb187878c50)), closes [#157](https://github.com/cssninjaStudio/vuero/issues/152)
 
 ## [2.6.0](https://github.com/cssninjaStudio/vuero/compare/v2.5.0...v2.6.0) (2023-01-05)
 

@@ -15,7 +15,7 @@ const projects: {
   },
   {
     initials: 'H',
-    color: 'h-green',
+    color: 'h-blue',
     name: 'Health and Fitness Dashboard',
     subtitle: "Fit'n'Dance",
   },

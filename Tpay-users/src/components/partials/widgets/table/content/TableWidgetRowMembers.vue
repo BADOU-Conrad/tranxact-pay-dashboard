@@ -65,7 +65,7 @@ const props = defineProps<{
       <div class="tag-wrap">
         <VTag
           :class="[
-            row.status === 'Approved' && 'is-green',
+            row.status === 'Approved' && 'is-blue',
             row.status === 'Pending' && 'is-info',
             row.status === 'Suspended' && 'is-orange',
           ]"

@@ -5,7 +5,7 @@ state:
 
 ### VInput
 
-Vuero provides elegant form controls with minimum styling.
+Tranxact provides elegant form controls with minimum styling.
 `VInput` accept all attributes that `<input>` accepts.
 Always wrap your inputs inside a `<VField />` and a `<VControl />`
 to build forms quickly and efficiently.

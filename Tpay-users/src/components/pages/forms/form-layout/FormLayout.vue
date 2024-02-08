@@ -210,7 +210,7 @@ const onSubmit = () => {
               <ClientOnly>
                 <VDatePicker
                   v-model="date"
-                  color="green"
+                  color="blue"
                   trim-weeks
                 >
                   <template #default="{ inputValue, inputEvents }">

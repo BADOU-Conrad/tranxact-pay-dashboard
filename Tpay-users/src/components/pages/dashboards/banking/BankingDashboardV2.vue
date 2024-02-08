@@ -346,7 +346,7 @@ const goto = (index: number) => {
               >
                 <template #icon>
                   <VIconBox
-                    color="green"
+                    color="blue"
                     rounded
                   >
                     <i
@@ -700,7 +700,7 @@ const goto = (index: number) => {
                     transform: rotate(calc(var(--transform-direction) * -45deg));
 
                     svg {
-                      color: var(--green);
+                      color: var(--blue);
                     }
                   }
 
@@ -758,7 +758,7 @@ const goto = (index: number) => {
                   font-weight: 500;
 
                   &.is-income {
-                    color: var(--green);
+                    color: var(--blue);
                   }
 
                   &.is-expense {

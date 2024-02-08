@@ -32,8 +32,6 @@ just replace the existing icons with some from Font Awesome.
   <VIconBox size="medium" color="orange" rounded>
     <i class="fas fa-bowling-ball"></i>
   </VIconBox>
-  <VIconBox size="medium" color="green" rounded>
-    <i class="fas fa-fan"></i>
   </VIconBox>
   <VIconBox size="medium" color="red" rounded>
     <i class="fas fa-envelope-open"></i>
@@ -73,8 +71,6 @@ just replace the existing icons with some from Font Awesome.
     <VIconBox size="medium" color="orange" rounded>
         <i class="fas fa-bowling-ball"></i>
     </VIconBox>
-    <VIconBox size="medium" color="green" rounded>
-        <i class="fas fa-fan"></i>
     </VIconBox>
     <VIconBox size="medium" color="red" rounded>
         <i class="fas fa-envelope-open"></i>

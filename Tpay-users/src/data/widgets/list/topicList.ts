@@ -43,7 +43,7 @@ export const topicList = [
   {
     id: 1,
     icon: 'feather:wind',
-    color: 'green',
+    color: 'blue',
     name: 'Natural Ecosystems',
     category: 'Environment',
     users: [

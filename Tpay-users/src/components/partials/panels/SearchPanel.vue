@@ -146,7 +146,7 @@ function getAvatarData(user: UserPopover): VAvatarProps {
               <template #icon>
                 <VIconBox
                   size="small"
-                  color="green"
+                  color="blue"
                   rounded
                 >
                   <i

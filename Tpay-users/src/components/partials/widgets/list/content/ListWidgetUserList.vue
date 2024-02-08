@@ -86,7 +86,7 @@ const props = withDefaults(
 
     &.is-up {
       &::before {
-        color: var(--green);
+        color: var(--blue);
       }
     }
 

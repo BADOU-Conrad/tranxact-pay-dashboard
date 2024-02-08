@@ -798,7 +798,7 @@ const props = defineProps<{
         background: var(--purple-light-38);
       }
 
-      &.is-green {
+      &.is-blue {
         background: var(--success-light-48);
       }
 

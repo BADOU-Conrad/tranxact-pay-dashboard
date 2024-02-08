@@ -43,7 +43,7 @@ const options = ref(['All Flights', 'All Options'])
               <VDatePicker
                 v-model="date"
                 is-range
-                color="green"
+                color="blue"
                 trim-weeks
               >
                 <template #default="{ inputValue, inputEvents }">

@@ -72,7 +72,7 @@ export const datatableV2 = {
       [
         1,
         '/demo/photos/products/2.png',
-        'Green Couch',
+        'blue Couch',
         'FC-58-1565',
         170,
         42,

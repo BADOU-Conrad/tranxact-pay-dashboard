@@ -169,7 +169,7 @@ const optionsSingle = ['Last 10 days', 'Last month', 'Last 3 months', 'Last 6 mo
             >
               <template #icon>
                 <VIconBox
-                  color="green"
+                  color="blue"
                   rounded
                 >
                   <i
@@ -300,7 +300,7 @@ const optionsSingle = ['Last 10 days', 'Last month', 'Last 3 months', 'Last 6 mo
               data-pop-content="Awesome! You're already a level 3 customer. Keep up for more."
               data-pop-position="auto"
               data-pop-icon="lnil lnil-crown-alt-1"
-              data-pop-iconbg="green"
+              data-pop-iconbg="blue"
             >
               <div class="title-wrap">
                 <h3 class="dark-inverted">

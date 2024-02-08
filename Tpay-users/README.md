@@ -1,4 +1,4 @@
-# Vuero Vue3 - Multipurpose Admin and Webapp Template
+# Tranxact Vue3 - Multipurpose Admin and Webapp Template
 
 [![cssninja-discord](https://img.shields.io/discord/785473098069311510?label=join%20us%20on%20discord&color=6944EC)](https://go.cssninja.io/discord)
 
@@ -84,7 +84,7 @@ You can find how we use it in the `/src/pages/messaging-v1.vue` file and the `/s
 You can only start vite with `dev:json-server`  
 Read more about it [on github.com/typicode/json-server](https://github.com/typicode/json-server)
 
-> - Access the Vuero frontend in your browser at [http://localhost:3000/](http://localhost:3000/)
+> - Access the Tranxact frontend in your browser at [http://localhost:3000/](http://localhost:3000/)
 > - Access the Json-server backend in your browser at [http://localhost:8080/](http://localhost:8080/)
 
 ## 💡 What to do next ?
@@ -94,7 +94,7 @@ We try to keep it mostly up to date, so you can always find the latest informati
 
 > We also have a great [discord community](https://go.cssninja.io/discord) where you can ask questions and show your work.
 
-### [Vuero on docs.cssninja.io](https://docs.cssninja.io/vuero?utm_source=readme)
+### [Tranxact on docs.cssninja.io](https://docs.cssninja.io/vuero?utm_source=readme)
 
 - [Setup your project](https://docs.cssninja.io/vuero/guide/setup-your-project.html?utm_source=readme)
 - [Customizing Vuero](https://docs.cssninja.io/vuero/guide/customizing-vuero.html?utm_source=readme)
@@ -102,7 +102,7 @@ We try to keep it mostly up to date, so you can always find the latest informati
 - [Customer support](https://docs.cssninja.io/vuero/help/customer-support.html?utm_source=readme)
 - [Changelog](https://docs.cssninja.io/vuero/guide/changelog?utm_source=readme)
 
-We try to keep Vuero dependencies and best practices up to dates. We also take care of user requests, either by implementing requested features, fixing bugs or improving the documentation.
+We try to keep Tranxact dependencies and best practices up to dates. We also take care of user requests, either by implementing requested features, fixing bugs or improving the documentation.
 
 You can also have [access to the private github access](https://cssninja.io/faq/github-access), so you can view the source code history and submit issues. To do so, create an account and verify your envato purchase on [https://cssninja.io/](https://cssninja.io/faq/github-access).
 

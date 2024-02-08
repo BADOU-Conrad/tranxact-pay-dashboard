@@ -4,7 +4,7 @@ disable_example: true
 
 ### Structured Card
 
-Vuero cards can have a small flex header where you can put
+Tranxact cards can have a small flex header where you can put
 come content. Check the markup for more details about usage.
 
 <!--code-->

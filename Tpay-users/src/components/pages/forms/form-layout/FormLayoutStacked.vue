@@ -78,7 +78,7 @@ const onSubmit = () => {
                 <VDatePicker
                   v-model="date"
                   is-range
-                  color="green"
+                  color="blue"
                   trim-weeks
                 >
                   <template #default="{ inputValue, inputEvents }">
@@ -122,7 +122,7 @@ const onSubmit = () => {
               <div class="column is-3">
                 <VDatePicker
                   v-model="date.start"
-                  color="green"
+                  color="blue"
                   mode="time"
                   is24hr
                 >
@@ -145,7 +145,7 @@ const onSubmit = () => {
               <div class="column is-3">
                 <VDatePicker
                   v-model="date.end"
-                  color="green"
+                  color="blue"
                   mode="time"
                   is24hr
                 >

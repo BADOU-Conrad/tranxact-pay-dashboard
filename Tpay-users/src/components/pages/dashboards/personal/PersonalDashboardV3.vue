@@ -111,7 +111,7 @@ const userStack = userData.userStack as VAvatarProps[]
                     >
                       <template #icon>
                         <VIconBox
-                          color="green"
+                          color="blue"
                           rounded
                         >
                           <i

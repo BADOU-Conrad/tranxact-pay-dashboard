@@ -136,15 +136,15 @@ useHead({
           </VButton>
         </div>
 
-        <!--Green Toast-->
+        <!--blue Toast-->
         <NotyfGreenDocumentation />
 
         <div class="buttons mb-6">
           <VButton
             bold
-            @click="notyf.green('Green Toast')"
+            @click="notyf.blue('blue Toast')"
           >
-            Green Toast
+            blue Toast
           </VButton>
         </div>
 

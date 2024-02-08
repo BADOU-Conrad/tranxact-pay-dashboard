@@ -4,7 +4,7 @@ disable_example: true
 
 ### Colored Card
 
-Vuero cards can have colored backgrounds when you need them to.
+Tranxact cards can have colored backgrounds when you need them to.
 To display Available color modifiers are `is-primary`, `is-secondary`,
 `is-info`, `is-success`, `is-warning` and `is-danger`.
 

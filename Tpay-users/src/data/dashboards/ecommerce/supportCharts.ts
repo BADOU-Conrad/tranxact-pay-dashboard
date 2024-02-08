@@ -135,7 +135,7 @@ export function useSupportCharts() {
         show: false,
       },
     },
-    colors: [themeColors.green],
+    colors: [themeColors.blue],
     plotOptions: {
       radialBar: {
         startAngle: -90,

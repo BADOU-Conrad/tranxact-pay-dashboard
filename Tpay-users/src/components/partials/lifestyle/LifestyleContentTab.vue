@@ -46,7 +46,7 @@ import {
           <div class="card-head">
             <h4>Post Day</h4>
             <VIconBox
-              color="green"
+              color="blue"
               rounded
             >
               <i
@@ -338,7 +338,7 @@ import {
               <div class="post-stat">
                 <i
                   aria-hidden="true"
-                  class="fas fa-hand-paper text-h-green"
+                  class="fas fa-hand-paper text-h-blue"
                 />
                 <span class="count dark-inverted">51.6%</span>
               </div>

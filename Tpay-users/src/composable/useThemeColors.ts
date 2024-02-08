@@ -24,9 +24,7 @@ export const useThemeColors = () => {
   const blue = import.meta.env.SSR
     ? ref('transparent')
     : useCssVar('--blue', document.documentElement)
-  const green = import.meta.env.SSR
-    ? ref('transparent')
-    : useCssVar('--green', document.documentElement)
+
   const yellow = import.meta.env.SSR
     ? ref('transparent')
     : useCssVar('--yellow', document.documentElement)
@@ -36,7 +34,7 @@ export const useThemeColors = () => {
 
   const themeColors = reactive({
     primary: computed(() => HSLToHex(primary.value)),
-    primaryMedium: '#b4e4ce',
+    primaryMedium: '#9cc5fa',
     primaryLight: '#f7fcfa',
     secondary: '#ff227d',
     accent: '#797bf2',
@@ -48,7 +46,6 @@ export const useThemeColors = () => {
     danger: computed(() => HSLToHex(danger.value)),
     purple: computed(() => HSLToHex(purple.value)),
     blue: computed(() => HSLToHex(blue.value)),
-    green: computed(() => HSLToHex(green.value)),
     yellow: computed(() => HSLToHex(yellow.value)),
     orange: computed(() => HSLToHex(orange.value)),
     lightText: '#a2a5b9',

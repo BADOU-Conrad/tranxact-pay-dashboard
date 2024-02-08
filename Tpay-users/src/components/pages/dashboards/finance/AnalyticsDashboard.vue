@@ -41,7 +41,7 @@ const { optionsCircle } = useGrowthRadialChart()
                 <span class="dark-inverted">8,637</span>
               </div>
               <div class="tile-foot">
-                <span class="text-h-green">+6.4%
+                <span class="text-h-blue">+6.4%
                   <i
                     aria-hidden="true"
                     class="iconify"
@@ -93,7 +93,7 @@ const { optionsCircle } = useGrowthRadialChart()
                   Referals
                 </h3>
                 <VIconBox
-                  color="green"
+                  color="blue"
                   size="small"
                   rounded
                 >
@@ -107,7 +107,7 @@ const { optionsCircle } = useGrowthRadialChart()
                 <span class="dark-inverted">1,911</span>
               </div>
               <div class="tile-foot">
-                <span class="text-h-green">+4.2%
+                <span class="text-h-blue">+4.2%
                   <i
                     aria-hidden="true"
                     class="iconify"
@@ -193,7 +193,7 @@ const { optionsCircle } = useGrowthRadialChart()
                   :value="78"
                 />
                 <div class="progress-foot">
-                  <span class="text-h-green">+6.4%
+                  <span class="text-h-blue">+6.4%
                     <i
                       aria-hidden="true"
                       class="iconify"
@@ -425,8 +425,8 @@ const { optionsCircle } = useGrowthRadialChart()
 @import '/@src/scss/abstracts/all';
 
 .analytics-dashboard {
-  .text-h-green {
-    color: var(--green);
+  .text-h-blue {
+    color: var(--blue);
   }
 
   .text-h-red {

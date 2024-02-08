@@ -7,8 +7,8 @@ state:
 
 ### VAnimatedCheckbox
 
-Vuero provides nicely styled switch segment when you need to
-display such control in your forms. Vuero `VAnimatedCheckbox` component have
+Tranxactprovides nicely styled switch segment when you need to
+display such control in your forms. Tranxact`VAnimatedCheckbox` component have
 several color modififers. Available modifiers are `primary`, `success`,
 `info`, `warning` and `danger`.
 Please refer to the markup for more details about usage.

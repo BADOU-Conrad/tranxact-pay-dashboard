@@ -3,7 +3,7 @@
 The Vuero `<VIconBox />` component can have different colors.
 You can change the color by passing a value to the `color` prop.
 Available values are: `primary`, `info`, `success`, `warning`,
-`danger`, `purple`, `yellow`, `orange`, `green`, `red`, or `blue`.
+`danger`, `purple`, `yellow`, `orange`, `red`, or `blue`.
 
 <!--code-->
 
@@ -33,8 +33,6 @@ Available values are: `primary`, `info`, `success`, `warning`,
   <VIconBox size="medium" color="orange">
     <i class="lnil lnil-vector-pen"></i>
   </VIconBox>
-  <VIconBox size="medium" color="green">
-    <i class="lnil lnil-vector-pen"></i>
   </VIconBox>
   <VIconBox size="medium" color="red">
     <i class="lnil lnil-vector-pen"></i>
@@ -74,8 +72,6 @@ Available values are: `primary`, `info`, `success`, `warning`,
     <VIconBox size="medium" color="orange">
         <i class="lnil lnil-vector-pen"></i>
     </VIconBox>
-    <VIconBox size="medium" color="green">
-        <i class="lnil lnil-vector-pen"></i>
     </VIconBox>
     <VIconBox size="medium" color="red">
         <i class="lnil lnil-vector-pen"></i>

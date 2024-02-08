@@ -38,7 +38,7 @@ const data = [
   },
   {
     image: 'https://source.unsplash.com/5E5N49RWtbA/1600x900',
-    title: 'Blue Note',
+    title: 'blue Note',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
   },
 ]

@@ -20,7 +20,6 @@ Use the `rounded` prop to change the component shape.
     <VTag color="danger" label="Tag Label" rounded />
     <VTag color="orange" label="Tag Label" rounded />
     <VTag color="blue" label="Tag Label" rounded />
-    <VTag color="green" label="Tag Label" rounded />
     <VTag color="purple" label="Tag Label" rounded />
   </VTags>
 </template>
@@ -42,7 +41,6 @@ Use the `rounded` prop to change the component shape.
   <VTag color="danger" label="Tag Label" rounded />
   <VTag color="orange" label="Tag Label" rounded />
   <VTag color="blue" label="Tag Label" rounded />
-  <VTag color="green" label="Tag Label" rounded />
   <VTag color="purple" label="Tag Label" rounded />
 </VTags>
 

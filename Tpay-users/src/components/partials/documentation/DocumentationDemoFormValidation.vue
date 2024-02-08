@@ -195,7 +195,7 @@ const handleSignup = handleSubmit(async (values) => {
         <ClientOnly>
           <VDatePicker
             :model-value="field?.value"
-            color="green"
+            color="blue"
             trim-weeks
             @update:model-value="field?.handleChange"
           >

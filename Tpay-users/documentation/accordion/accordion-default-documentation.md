@@ -1,6 +1,6 @@
 ### VAccordion
 
-Vuero provides 2 accordion components with enough styling to be able to use
+Tranxactprovides 2 accordion components with enough styling to be able to use
 them out of the box: `<VAccordion />` and `<VCollapse />`.
 In the simple accordion, each item can be openened separately, whereas in the
 exclusive accordion, only one item can be expanded at a time.

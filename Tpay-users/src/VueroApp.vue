@@ -21,7 +21,7 @@ const rtlCodes = [
 ]
 
 useHead(() => ({
-  title: 'Vuero - Vue 3 Admin and Webapp UI Kit',
+  title: 'Tranxact - Agregateur de payement',
   link: [
     {
       rel: 'icon',
@@ -71,12 +71,12 @@ useHead(() => ({
     {
       name: 'description',
       content:
-        'Vuero is more than a dashboard template, it is design system built with Vue, Bulma and Typescript. It ships with more than 200+ demo pages and a components.',
+        'Tranxact is more than Agregateur de payement.',
     },
     // Open Graph
     {
       property: 'og:site_name',
-      content: 'Vuero by Css Ninja',
+      content: 'Tranxact by Css Ninja',
     },
     {
       property: 'og:locale',

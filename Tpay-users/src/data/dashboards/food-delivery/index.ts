@@ -161,7 +161,7 @@ export const restaurants = [
   },
   {
     id: 3,
-    name: 'The Green Heaven',
+    name: 'The blue Heaven',
     picture: '/demo/photos/food/4.jpg',
     deliveryTime: 20,
     category: 'Veggie',

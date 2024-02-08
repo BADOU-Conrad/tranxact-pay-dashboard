@@ -578,7 +578,7 @@ watch([() => route.fullPath, dropdownElement], () => {
           <!--Layout/Cards-->
           <div class="column is-6">
             <div class="dropdown-item-group">
-              <h4 class="column-heading is-green">
+              <h4 class="column-heading is-blue">
                 <i
                   aria-hidden="true"
                   class="iconify"
@@ -698,7 +698,7 @@ watch([() => route.fullPath, dropdownElement], () => {
           <!--Plugins/Plugins-->
           <div class="column is-12">
             <div class="dropdown-item-group">
-              <h4 class="column-heading is-green">
+              <h4 class="column-heading is-blue">
                 <i
                   aria-hidden="true"
                   class="iconify"

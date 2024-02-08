@@ -3,7 +3,7 @@
 Vuero provides a `<VTag />` component than can be customized to fit any needs.
 VTags can have multiple colors. Use the `color` prop to change
 the component color. Available modifiers are `primary`, `info`,
-`success`, `warning`, `danger`, `orange`, `blue`, `green`, `purple`,
+`success`, `warning`, `danger`, `orange`, `blue`, `purple`,
 `white`, `light` and `solid`.
 
 <!--code-->
@@ -22,7 +22,6 @@ the component color. Available modifiers are `primary`, `info`,
     <VTag color="danger" label="Tag Label" />
     <VTag color="orange" label="Tag Label" />
     <VTag color="blue" label="Tag Label" />
-    <VTag color="green" label="Tag Label" />
     <VTag color="purple" label="Tag Label" />
   </VTags>
 </template>
@@ -44,7 +43,6 @@ the component color. Available modifiers are `primary`, `info`,
   <VTag color="danger" label="Tag Label" />
   <VTag color="orange" label="Tag Label" />
   <VTag color="blue" label="Tag Label" />
-  <VTag color="green" label="Tag Label" />
   <VTag color="purple" label="Tag Label" />
 </VTags>
 

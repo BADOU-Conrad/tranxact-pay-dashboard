@@ -72,10 +72,13 @@ const handleLogin = async () => {
             to="/"
             class="top-logo"
           >
-            <AnimatedLogo
+            <img
+              class="hero-image"
+              src="/@src/assets/illustrations/login/favicon.png"
+              alt=" "
               width="38px"
               height="38px"
-            />
+            >
           </RouterLink>
 
           <label

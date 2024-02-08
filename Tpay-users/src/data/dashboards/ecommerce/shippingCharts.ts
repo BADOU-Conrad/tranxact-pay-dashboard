@@ -60,7 +60,7 @@ export function useShippingCharts() {
         show: false,
       },
     },
-    colors: [themeColors.green],
+    colors: [themeColors.blue],
     plotOptions: {
       radialBar: {
         hollow: {

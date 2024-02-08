@@ -352,7 +352,7 @@ const { popularityGaugeOptions } = usePopularityGaugeChart()
 
           &.is-positive {
             &::after {
-              color: var(--green);
+              color: var(--blue);
             }
           }
 

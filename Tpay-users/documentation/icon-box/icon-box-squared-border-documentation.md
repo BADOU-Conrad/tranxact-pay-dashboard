@@ -32,9 +32,6 @@ See the code example for more details.
   <VIconBox size="medium" color="orange" bordered>
     <i class="lnil lnil-vector-pen"></i>
   </VIconBox>
-  <VIconBox size="medium" color="green" bordered>
-    <i class="lnil lnil-vector-pen"></i>
-  </VIconBox>
   <VIconBox size="medium" color="red" bordered>
     <i class="lnil lnil-vector-pen"></i>
   </VIconBox>
@@ -71,9 +68,6 @@ See the code example for more details.
         <i class="lnil lnil-vector-pen"></i>
     </VIconBox>
     <VIconBox size="medium" color="orange" bordered>
-        <i class="lnil lnil-vector-pen"></i>
-    </VIconBox>
-    <VIconBox size="medium" color="green" bordered>
         <i class="lnil lnil-vector-pen"></i>
     </VIconBox>
     <VIconBox size="medium" color="red" bordered>

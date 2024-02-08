@@ -43,7 +43,7 @@ const date = ref(null)
 <!--example-->
 
 <ClientOnly>
-  <VDatePicker v-model="frontmatter.state.date" color="green" mode="time" is24hr>
+  <VDatePicker v-model="frontmatter.state.date" color="blue" mode="time" is24hr>
     <template #default="{ inputValue, inputEvents }">
       <VField>
         <VControl icon="feather:clock">

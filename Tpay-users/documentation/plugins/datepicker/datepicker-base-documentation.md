@@ -21,7 +21,7 @@ const date = ref(null)
 
 <template>
   <ClientOnly>
-    <VDatePicker v-model="date" color="green" trim-weeks>
+    <VDatePicker v-model="date" color="blue" trim-weeks>
       <template #default="{ inputValue, inputEvents }">
         <VField>
           <VControl icon="feather:calendar">
@@ -44,7 +44,7 @@ const date = ref(null)
 <!--example-->
 
 <ClientOnly>
-  <VDatePicker v-model="frontmatter.state.date" color="green" trim-weeks>
+  <VDatePicker v-model="frontmatter.state.date" color="blue" trim-weeks>
     <template #default="{ inputValue, inputEvents }">
       <VField>
         <VControl icon="feather:calendar">

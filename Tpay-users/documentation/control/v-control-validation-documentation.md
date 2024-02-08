@@ -1,6 +1,6 @@
 ### Validation
 
-Vuero offers `VControl` validation styles to go with any type of
+Tranxact ct ct ct ct offers `VControl` validation styles to go with any type of
 form validation library you could use in your project.
 Use the props shown in the code examples to handle validation.
 

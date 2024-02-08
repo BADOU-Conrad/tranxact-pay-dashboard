@@ -224,8 +224,8 @@
 
           &:hover,
           &:focus {
-            background-color: var(--green);
-            box-shadow: var(--green-box-shadow);
+            background-color: var(--blue);
+            box-shadow: var(--blue-box-shadow);
             color: var(--white);
           }
         }

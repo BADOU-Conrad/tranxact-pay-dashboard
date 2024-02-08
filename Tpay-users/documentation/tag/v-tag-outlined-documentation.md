@@ -18,7 +18,6 @@ Use the `outlined` prop to change the component shape.
     <VTag color="danger" label="Tag Label" curved outlined />
     <VTag color="orange" label="Tag Label" curved outlined />
     <VTag color="blue" label="Tag Label" curved outlined />
-    <VTag color="green" label="Tag Label" curved outlined />
     <VTag color="purple" label="Tag Label" curved outlined />
   </VTags>
 </template>
@@ -37,7 +36,6 @@ Use the `outlined` prop to change the component shape.
   <VTag color="danger" label="Tag Label" curved outlined />
   <VTag color="orange" label="Tag Label" curved outlined />
   <VTag color="blue" label="Tag Label" curved outlined />
-  <VTag color="green" label="Tag Label" curved outlined />
   <VTag color="purple" label="Tag Label" curved outlined />
 </VTags>
 

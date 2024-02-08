@@ -82,7 +82,7 @@ useHead({
             <DocumentationColor color="pink" />
           </div>
           <div class="column is-4">
-            <DocumentationColor color="green" />
+            <DocumentationColor color="blue" />
           </div>
         </div>
         <ThemingDocumentation />

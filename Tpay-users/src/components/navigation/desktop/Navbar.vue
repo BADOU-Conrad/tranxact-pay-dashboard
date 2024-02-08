@@ -714,9 +714,9 @@ const isScrolling = computed(() => {
                         }
                       }
 
-                      &.is-green {
+                      &.is-blue {
                         svg {
-                          color: var(--green);
+                          color: var(--blue);
                         }
                       }
 

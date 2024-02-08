@@ -100,7 +100,7 @@ const initialValues = computed<FormInput>(() => ({
 }))
 
 // here we create a vee-validate form context that
-// will be used in all vuero form components
+// will be used in all Tranxact form components
 const { handleSubmit, setFieldError, handleReset, values, errors } = useForm({
   validationSchema,
   initialValues,
@@ -203,7 +203,7 @@ const handleSignup = handleSubmit(async (values) => {
         <ClientOnly>
           <VDatePicker
             :model-value="field?.value"
-            color="green"
+            color="blue"
             trim-weeks
             @update:model-value="field?.handleChange"
           >

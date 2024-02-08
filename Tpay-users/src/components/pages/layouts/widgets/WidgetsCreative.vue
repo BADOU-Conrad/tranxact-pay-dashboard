@@ -34,7 +34,7 @@ import Widget8 from '/@src/assets/illustrations/widgets/8.svg'
         picture="/images/avatars/svg/vuero-1.svg"
         username="Erik K."
         email="erikkovalsky@vuero.io"
-        company="Vuero Ltd."
+        company="Tranxact Ltd."
         position="Product Manager"
         location="Los Angeles, CA"
         phone="+1 444-5156"

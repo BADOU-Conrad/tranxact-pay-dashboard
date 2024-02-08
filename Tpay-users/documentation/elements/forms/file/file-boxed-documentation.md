@@ -1,6 +1,6 @@
 ### Boxed File
 
-Vuero file inputs can have a boxed style.
+Tranxact file inputs can have a boxed style.
 You just need to add the `is-boxed` class to your file input element
 to apply this style. Please refer to markup for more details about usage.
 

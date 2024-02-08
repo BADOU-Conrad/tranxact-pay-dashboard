@@ -134,10 +134,13 @@ function onFileinputChange(event: Event) {
           to="/"
           class="logo"
         >
-          <AnimatedLogo
-            width="36px"
-            height="36px"
-          />
+          <img
+              class="hero-image"
+              src="/@src/assets/illustrations/login/favicon.png"
+              alt=" "
+              width="38px"
+              height="38px"
+           >
         </RouterLink>
       </div>
     </div>

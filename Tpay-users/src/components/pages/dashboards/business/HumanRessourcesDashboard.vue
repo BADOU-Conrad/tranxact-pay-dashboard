@@ -162,7 +162,7 @@ const columns = {
               >
                 <template #body-cell="{ row, column, value }">
                   <template v-if="column.key === 'type' && row.type === 'messages'">
-                    <VIconBox color="green">
+                    <VIconBox color="blue">
                       <i
                         aria-hidden="true"
                         class="lnil lnil-envelope-alt"

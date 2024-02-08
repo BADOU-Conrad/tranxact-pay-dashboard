@@ -1,6 +1,6 @@
 ### VCollapse
 
-Vuero provides 2 collapse component variations:
+Tranxact provides 2 collapse component variations:
 `<VCollapse />` and `<VCollapse with-chevron />`.  
 There are 2 available variations that you can use to change the
 collapse header icon. Pass an **Array** to the `items` props to render

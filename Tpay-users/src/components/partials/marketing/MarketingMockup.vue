@@ -14,12 +14,12 @@
           <!--Hexagon shapes-->
           <img
             class="hexagon hexagon-1 light-image-l"
-            src="/images/icons/hexagons/green.svg"
+            src="/images/icons/hexagons/blue.svg"
             alt=""
           >
           <img
             class="hexagon hexagon-1 dark-image-l"
-            src="/images/icons/hexagons/green-heavy.svg"
+            src="/images/icons/hexagons/blue-heavy.svg"
             alt=""
           >
           <img

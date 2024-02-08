@@ -110,7 +110,7 @@
               <div class="card-content">
                 <VIconBox
                   size="medium"
-                  color="green"
+                  color="blue"
                 >
                   <i
                     aria-hidden="true"
@@ -248,7 +248,7 @@
               <div class="card-content">
                 <VIconBox
                   size="medium"
-                  color="green"
+                  color="blue"
                 >
                   <i
                     aria-hidden="true"

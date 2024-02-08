@@ -75,7 +75,7 @@ async function initNotyfService() {
           },
         },
         {
-          type: 'green',
+          type: 'blue',
           background: themeColors.primary,
           icon: {
             className: 'fas fa-check',
@@ -164,19 +164,6 @@ async function initNotyfService() {
     blue: (payload: string | Partial<INotyfNotificationOptions>) => {
       const options: Partial<INotyfNotificationOptions> = {
         type: 'blue',
-      }
-
-      if (typeof payload === 'string') {
-        options.message = payload
-      } else {
-        Object.assign(options, payload)
-      }
-
-      return notyf?.open(options)
-    },
-    green: (payload: string | Partial<INotyfNotificationOptions>) => {
-      const options: Partial<INotyfNotificationOptions> = {
-        type: 'green',
       }
 
       if (typeof payload === 'string') {

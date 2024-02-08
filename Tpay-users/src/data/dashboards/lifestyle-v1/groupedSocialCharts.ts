@@ -61,7 +61,7 @@ export function useGroupedSocialChart() {
         show: false,
       },
     },
-    colors: [themeColors.green],
+    colors: [themeColors.blue],
     plotOptions: {
       radialBar: {
         hollow: {

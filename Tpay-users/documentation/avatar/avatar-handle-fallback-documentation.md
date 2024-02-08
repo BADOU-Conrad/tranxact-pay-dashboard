@@ -1,6 +1,6 @@
 ### Fallback avatar
 
-Vuero Avatars automatically fall back to a placeholder
+TranxactAvatars automatically fall back to a placeholder
 when no valid URL is provided for the `picture` prop.
 
 <!--code-->

@@ -1,6 +1,6 @@
 ### Input File
 
-Vuero provides default styles for file inputs, in case you need a control
+Tranxact provides default styles for file inputs, in case you need a control
 to upload a single file in your forms.
 File inputs can look like upload buttons.
 Please refer to markup for more details about usage.

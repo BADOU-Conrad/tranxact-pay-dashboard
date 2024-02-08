@@ -5,7 +5,7 @@ type TabId = 'elements' | 'components' | 'forms' | 'plugins'
 const activeTab = ref<TabId>('elements')
 
 useHead({
-  title: 'Vuero - A complete Vue 3 design system',
+  title: 'Tranxact - Agregateur de payement',
 })
 </script>
 

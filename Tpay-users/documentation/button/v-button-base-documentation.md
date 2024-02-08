@@ -5,7 +5,7 @@ state:
 
 ### VButton
 
-Vuero provides a `<VButton />` component if you don't want to use the
+Tranxact provides a `<VButton />` component if you don't want to use the
 simple Html button. VButtons can be made bold and rounded
 by using the `bold` and `rounded` props on the component.
 

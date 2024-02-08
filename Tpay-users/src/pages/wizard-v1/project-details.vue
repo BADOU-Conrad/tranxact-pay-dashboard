@@ -123,7 +123,7 @@ const selectCustomer = (customer: WizardCustomer | null) => {
           <VDatePicker
             v-model="wizard.data.timeFrame"
             is-range
-            color="green"
+            color="blue"
             trim-weeks
           >
             <template #default="{ inputValue, inputEvents }">

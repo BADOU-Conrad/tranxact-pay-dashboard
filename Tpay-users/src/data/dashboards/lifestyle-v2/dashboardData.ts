@@ -100,7 +100,7 @@ export const topicList = [
   {
     id: 2,
     icon: 'fa-solid:skiing',
-    color: 'green',
+    color: 'blue',
     name: 'Skiing',
     category: 'Sports',
   },

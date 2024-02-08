@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useHead({
-  title: 'Vuero - A complete Vue 3 design system',
+  title: 'Tranxact is more than Agregateur de payement',
 })
 </script>
 
@@ -38,12 +38,12 @@ useHead({
         >
         <img
           class="hexagon hexagon-3 light-image-l"
-          src="/images/icons/hexagons/green.svg"
+          src="/images/icons/hexagons/blue.svg"
           alt=""
         >
         <img
           class="hexagon hexagon-3 dark-image-l"
-          src="/images/icons/hexagons/green-heavy.svg"
+          src="/images/icons/hexagons/blue-heavy.svg"
           alt=""
         >
         <img

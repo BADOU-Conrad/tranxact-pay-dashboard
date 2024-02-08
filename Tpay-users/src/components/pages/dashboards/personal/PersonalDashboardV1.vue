@@ -105,7 +105,7 @@ const { profitChartOptions } = useProfitChart()
                   >
                     <template #icon>
                       <VIconBox
-                        color="green"
+                        color="blue"
                         rounded
                       >
                         <i

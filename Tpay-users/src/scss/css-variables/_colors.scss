@@ -19,8 +19,8 @@
   // sidebar HSL (#344258) // hsl(217, 26%, 27%)
   @include colorHsl('sidebar', 217, 26%, 27%);
 
-  // primary HSL (#29ab8d) // hsl(166, 61%, 42%)
-  @include colorHsl('primary', 166, 61%, 42%);
+  // primary HSL (#29ab8d) // hsl(210, 60%, 42%)
+  @include colorHsl('primary', 210, 60%, 42%);
 
   // primary-grey HSL (#ccc) // hsl(0, 0%, 80%)
   @include colorHsl('primary-grey', 0, 0%, 80%);
@@ -43,8 +43,8 @@
   // yellow HSL (#ffd66e) // hsl(43, 100%, 72%)
   @include colorHsl('yellow', 43, 100%, 72%);
 
-  // green HSL (#93e088) // hsl(113, 59%, 71%)
-  @include colorHsl('green', 113, 59%, 71%);
+  // blue HSL (#94c5ff) // hsl(220, 57%, 58%)
+  @include colorHsl('blue', 113, 59%, 71%);
 
   // pink HSL (#ff9eb8) // hsl(344, 100%, 81%)
   @include colorHsl('pink', 344, 100%, 81%);
@@ -64,7 +64,7 @@
   // info HSL (#039be5) // hsl(200, 97%, 45%)
   @include colorHsl('info', 200, 97%, 45%);
 
-  // success HSL (#06d6a0) // hsl(164, 95%, 43%)
+  // success HSL (#0055ff) // hsl(224, 55%, 63%)
   @include colorHsl('success', 164, 95%, 43%);
 
   // warning HSL (#faae42) // hsl(35, 95%, 62%)

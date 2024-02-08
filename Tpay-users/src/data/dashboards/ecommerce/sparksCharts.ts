@@ -120,7 +120,7 @@ export function useSparksCharts() {
         show: false,
       },
     },
-    colors: [themeColors.green],
+    colors: [themeColors.blue],
     xaxis: {
       crosshairs: {
         width: 1,

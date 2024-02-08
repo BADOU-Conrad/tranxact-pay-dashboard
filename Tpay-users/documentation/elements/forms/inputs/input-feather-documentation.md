@@ -1,6 +1,6 @@
 ### Feather Icons
 
-Vuero `VInput` are fully compatible with any icons from [icones.js](https://icones.js.org/).
+Tranxact `VInput` are fully compatible with any icons from [icones.js](https://icones.js.org/).
 Use the `icon` or `iconify` propson the `<VControl />`
 component to show an icon.
 

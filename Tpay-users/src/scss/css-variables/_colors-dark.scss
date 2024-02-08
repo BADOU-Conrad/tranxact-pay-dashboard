@@ -4,10 +4,10 @@
   --background-grey: var(--dark-sidebar-light-5);
   --border: var(--dark-sidebar-light-12);
 
-  // override primary dark HSL (#29ab8d) // hsl(166, 61%, 42%)
-  --primary-h: 166; /* Hue        */
-  --primary-s: 61%; /* Saturation */
-  --primary-l: 42%; /* Lightness  */
+  // override primary dark HSL (#005bf6) // hsl(218, 100%, 48%)
+  --primary-h: 218; /* Hue        */
+  --primary-s: 100%; /* Saturation */
+  --primary-l: 48%; /* Lightness  */
 
   // override dark-text dark HSL (#fcfcfc) // hsl(0, 0%, 99%)
   @include colorHsl('dark-text', 0, 0%, 99%);

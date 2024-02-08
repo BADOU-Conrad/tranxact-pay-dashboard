@@ -35,7 +35,7 @@ import { courses, files, students } from '/@src/data/dashboards/course'
             <span
               class="tag is-elevated"
               :class="[
-                course.category === 'Anatomy' && 'is-green',
+                course.category === 'Anatomy' && 'is-blue',
                 course.category === 'Immunology' && 'is-purple',
                 course.category === 'Cardiology' && 'is-danger',
               ]"
@@ -213,7 +213,7 @@ import { courses, files, students } from '/@src/data/dashboards/course'
                 class="tag is-rounded"
                 :color="
                   row.status === 'Online'
-                    ? 'green'
+                    ? 'blue'
                     : row.status === 'Busy'
                       ? 'orange'
                       : undefined

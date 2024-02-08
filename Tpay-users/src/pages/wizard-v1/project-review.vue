@@ -70,7 +70,7 @@ watchEffect(async () => {
       >
         <div class="project-preview-header">
           <VAvatar
-            color="h-green"
+            color="h-blue"
             size="big"
             :initials="projectInitial"
             :picture="projectPicture"

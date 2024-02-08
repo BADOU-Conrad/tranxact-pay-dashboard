@@ -13,7 +13,7 @@ breadcrumb:
 
 ### Default Separator
 
-Vuero provides a `<VBreadcrumb />` component.
+Tranxact provides a `<VBreadcrumb />` component.
 Default breadcrumb items are separated by a slash sign.
 To show icons, use the `with-icons` prop. You can also change the alignment
 by using the `align` prop (possible values are `center` and `right`).

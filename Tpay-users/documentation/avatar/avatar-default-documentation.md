@@ -1,6 +1,6 @@
 ### VAvatar
 
-Vuero `<VAvatar />` components are rounded images used for media
+Tranxact`<VAvatar />` components are rounded images used for media
 and personal pages. Avatar sizes can be controled with 'size' prop.
 Available size prop values `small`, `medium`, `large`, `big` and `xl`.
 See code for more details about usage.

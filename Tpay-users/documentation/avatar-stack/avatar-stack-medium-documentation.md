@@ -1,6 +1,6 @@
 ### Medium stack
 
-Vuero avatars can be stacked in an slighlty overlaping line.
+Tranxactavatars can be stacked in an slighlty overlaping line.
 Use the `<VAvatarStack />` component. The component takes 2 props:
 `avatars` and `size`. Available sizes are normal, `small` and `medium`.
 

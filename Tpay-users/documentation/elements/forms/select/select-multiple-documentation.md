@@ -29,7 +29,7 @@ const input = ref<string[]>([])
         <VOptgroup label="DC">
           <VOption value="Batman">Batman</VOption>
           <VOption value="Superman">Superman</VOption>
-          <VOption value="Green Lantern">Green Lantern</VOption>
+          <VOption value="blue Lantern">blue Lantern</VOption>
         </VOptgroup>
         <VOptgroup label="Looney Tunes" disabled>
           <VOption value="Bugs Bunny">Bugs Bunny</VOption>
@@ -57,7 +57,7 @@ const input = ref<string[]>([])
       <VOptgroup label="DC">
         <VOption value="Batman">Batman</VOption>
         <VOption value="Superman">Superman</VOption>
-        <VOption value="Green Lantern">Green Lantern</VOption>
+        <VOption value="blue Lantern">blue Lantern</VOption>
       </VOptgroup>
       <VOptgroup label="Looney Tunes" disabled>
         <VOption value="Bugs Bunny">Bugs Bunny</VOption>

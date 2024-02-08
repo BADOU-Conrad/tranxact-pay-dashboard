@@ -32,9 +32,7 @@ just replace the existing icons with some from Feather Icons.
   <VIconBox size="medium" color="orange" rounded>
     <i class="iconify" data-icon="feather:phone"></i>
   </VIconBox>
-  <VIconBox size="medium" color="green" rounded>
-    <i class="iconify" data-icon="feather:paperclip"></i>
-  </VIconBox>
+
   <VIconBox size="medium" color="red" rounded>
     <i class="iconify" data-icon="feather:smile"></i>
   </VIconBox>
@@ -73,9 +71,7 @@ just replace the existing icons with some from Feather Icons.
     <VIconBox size="medium" color="orange" rounded>
         <i class="iconify" data-icon="feather:phone"></i>
     </VIconBox>
-    <VIconBox size="medium" color="green" rounded>
-        <i class="iconify" data-icon="feather:paperclip"></i>
-    </VIconBox>
+
     <VIconBox size="medium" color="red" rounded>
         <i class="iconify" data-icon="feather:smile"></i>
     </VIconBox>

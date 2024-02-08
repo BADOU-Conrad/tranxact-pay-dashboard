@@ -9,7 +9,6 @@ export type VAvatarColor =
   | 'h-purple'
   | 'h-orange'
   | 'h-blue'
-  | 'h-green'
   | 'h-red'
   | 'h-yellow'
 export type VAvatarDotColor = 'primary' | 'success' | 'info' | 'warning' | 'danger'
@@ -229,13 +228,6 @@ const onceImageErroredHandler = (event: Event) => {
         }
       }
 
-      &.is-h-blue {
-        background: var(--blue-light-32);
-
-        span {
-          color: var(--blue);
-        }
-      }
 
       &.is-h-red {
         background: var(--red-light-38);
@@ -245,11 +237,11 @@ const onceImageErroredHandler = (event: Event) => {
         }
       }
 
-      &.is-h-green {
-        background: var(--green-light-22);
+      &.is-h-blue {
+        background: var(--blue-light-22);
 
         span {
-          color: var(--green);
+          color: var(--blue);
         }
       }
 
@@ -712,14 +704,6 @@ const onceImageErroredHandler = (event: Event) => {
           }
         }
 
-        &.is-h-blue {
-          background: var(--blue);
-
-          span {
-            color: var(--white);
-          }
-        }
-
         &.is-h-red {
           background: var(--red);
 
@@ -728,8 +712,8 @@ const onceImageErroredHandler = (event: Event) => {
           }
         }
 
-        &.is-h-green {
-          background: var(--green);
+        &.is-h-blue {
+          background: var(--blue);
 
           span {
             color: var(--white);

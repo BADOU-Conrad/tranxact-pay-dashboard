@@ -13,7 +13,7 @@ export const flexRowsBasic = [
   },
   {
     emoji: '🎿',
-    color: 'green',
+    color: 'blue',
     name: 'Skiing',
     category: 'Sports',
   },

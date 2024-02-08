@@ -32,9 +32,7 @@ prop to the component. See the code example for more details.
   <VIconBox size="medium" color="orange" rounded>
     <i class="lnil lnil-vector-pen"></i>
   </VIconBox>
-  <VIconBox size="medium" color="green" rounded>
-    <i class="lnil lnil-vector-pen"></i>
-  </VIconBox>
+
   <VIconBox size="medium" color="red" rounded>
     <i class="lnil lnil-vector-pen"></i>
   </VIconBox>
@@ -71,9 +69,6 @@ prop to the component. See the code example for more details.
         <i class="lnil lnil-vector-pen"></i>
     </VIconBox>
     <VIconBox size="medium" color="orange" rounded>
-        <i class="lnil lnil-vector-pen"></i>
-    </VIconBox>
-    <VIconBox size="medium" color="green" rounded>
         <i class="lnil lnil-vector-pen"></i>
     </VIconBox>
     <VIconBox size="medium" color="red" rounded>

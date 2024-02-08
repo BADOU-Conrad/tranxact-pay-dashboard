@@ -54,7 +54,7 @@ useHead({
             >
               <template #action>
                 <VTag
-                  color="green"
+                  color="blue"
                   label="trending"
                   rounded
                 />
@@ -103,7 +103,7 @@ useHead({
             >
               <template #action>
                 <VTag
-                  color="green"
+                  color="blue"
                   label="trending"
                   rounded
                 />

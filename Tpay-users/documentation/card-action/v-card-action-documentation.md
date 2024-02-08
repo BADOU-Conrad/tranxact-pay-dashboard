@@ -19,7 +19,7 @@ Check the code example for more details.
     subtitle="Sales Manager"
   >
     <template #action>
-      <VTag color="green" label="trending" rounded />
+      <VTag color="blue" label="trending" rounded />
     </template>
   </VCardAction>
 </template>

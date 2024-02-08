@@ -1,6 +1,6 @@
 ### VBlock icon
 
-Vuero provides a versatile flex block media component named
+Tranxact provides a versatile flex block media component named
 `<VBlock />`. VBlock has 2 named slots. One for the `icon` element,
 which can be whatever you want, and one for the `action`.
 

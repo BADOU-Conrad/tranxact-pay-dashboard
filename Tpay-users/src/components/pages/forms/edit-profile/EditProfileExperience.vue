@@ -137,7 +137,7 @@ const onSave = async () => {
                     <VDatePicker
                       v-model="range"
                       is-range
-                      color="green"
+                      color="blue"
                       trim-weeks
                     >
                       <template #default="{ inputValue, inputEvents }">

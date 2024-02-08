@@ -1,4 +1,4 @@
-### Green toast
+### blue toast
 
 Bside the two native types, `Notyf` allows you to create custom toast types.
 You can change all the available option defaults, like `position` or `duration`.
@@ -19,8 +19,8 @@ const notyf = new Notyf({
   },
   types: [
     {
-      type: 'green',
-      background: themeColors.green,
+      type: 'blue',
+      background: themeColors.blue,
       icon: {
         className: 'fas fa-check',
         tagName: 'i',
@@ -31,14 +31,14 @@ const notyf = new Notyf({
 })
 const greenToast = () => {
   notyf.open({
-    type: 'green',
+    type: 'blue',
     message: 'This is some useful information that you might need.',
   })
 }
 </script>
 
 <template>
-  <VButton bold @click="greenToast">Green Toast</VButton>
+  <VButton bold @click="greenToast">blue Toast</VButton>
 </template>
 ```
 

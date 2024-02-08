@@ -33,6 +33,6 @@ export const avatarListCreative = [
     id: 2,
     picture: '/images/avatars/svg/vuero-1.svg',
     name: 'Erik K.',
-    color: 'green',
+    color: 'blue',
   },
 ]

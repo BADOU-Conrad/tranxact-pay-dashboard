@@ -65,7 +65,7 @@ const props = defineProps<{
 
     &.is-up {
       span span {
-        color: var(--green);
+        color: var(--blue);
 
         svg {
           transform: rotate(calc(var(--transform-direction) * -45deg));
@@ -128,7 +128,7 @@ const props = defineProps<{
 
       &.is-up {
         span span {
-          color: var(--green);
+          color: var(--blue);
 
           svg {
             transform: rotate(calc(var(--transform-direction) * -45deg));

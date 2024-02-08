@@ -703,7 +703,7 @@ watch([() => route.fullPath, dropdownElement], () => {
           <!--Advanced/Switches-->
           <div class="column is-6">
             <div class="dropdown-item-group">
-              <h4 class="column-heading is-green">
+              <h4 class="column-heading is-blue">
                 <i
                   aria-hidden="true"
                   class="iconify"
@@ -779,7 +779,7 @@ watch([() => route.fullPath, dropdownElement], () => {
           <!--Addons/Addons-->
           <div class="column is-12">
             <div class="dropdown-item-group">
-              <h4 class="column-heading is-green">
+              <h4 class="column-heading is-blue">
                 <i
                   aria-hidden="true"
                   class="iconify"

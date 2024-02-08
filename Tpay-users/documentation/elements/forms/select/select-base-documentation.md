@@ -5,7 +5,7 @@ state:
 
 ### VSelect
 
-Vuero provides elegant form controls with minimum styling.
+Tranxact ct provides elegant form controls with minimum styling.
 `VSelect` accept all attributes that `<select>` accepts.
 Always wrap your inputs inside a `<VField />` and a `<VControl />`
 to build forms quickly and efficiently.

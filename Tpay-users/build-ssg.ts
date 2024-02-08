@@ -47,7 +47,7 @@ async function build() {
   const outStatic = out
   const outServer = path.join(out, '.server')
 
-  config.logger.info(colors.green('[SSG] Build for client...'))
+  config.logger.info(colors.blue('[SSG] Build for client...'))
   await viteBuild(
     mergeConfig(viteConfig, {
       build: {
@@ -64,7 +64,7 @@ async function build() {
   )
 
   // server
-  config.logger.info(colors.green('[SSG] Build for server...'))
+  config.logger.info(colors.blue('[SSG] Build for server...'))
   await viteBuild(
     mergeConfig(viteConfig, {
       build: {
@@ -261,7 +261,7 @@ async function build() {
   const pwaPlugin = config.plugins.find((plugin) => plugin.name === 'vite-plugin-pwa')
     ?.api
   if (pwaPlugin && !pwaPlugin.disabled && pwaPlugin.generateSW) {
-    config.logger.info(colors.green('[SSG] Regenerate PWA...'))
+    config.logger.info(colors.blue('[SSG] Regenerate PWA...'))
     await pwaPlugin.generateSW()
 
     // update sw.js to replace /index.html with nothing so that it can be served from /
@@ -277,7 +277,7 @@ async function build() {
         out.replace(cwd, '.')
       )} directory with a static file server.`,
       `Example:`,
-      `  ${colors.green('pnpm ssg:serve')}`,
+      `  ${colors.blue('pnpm ssg:serve')}`,
     ].join('\n')
   )
   process.exit(0)
@@ -333,7 +333,7 @@ async function renderPage({
   fs.writeFileSync(resolve(filePath), html)
   config.logger.info(
     colors.dim(
-      `pre-rendered  (${logCount}) ${colors.green(url)} - ${colors.cyan(
+      `pre-rendered  (${logCount}) ${colors.blue(url)} - ${colors.cyan(
         filePath.replace(cwd, '.')
       )}`
     )

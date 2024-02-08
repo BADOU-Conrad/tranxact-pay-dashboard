@@ -42,7 +42,7 @@ const date = ref(new Date())
 <!--example-->
 
 <ClientOnly>
-  <VDatePicker v-model="frontmatter.state.date" color="green" mode="dateTime">
+  <VDatePicker v-model="frontmatter.state.date" color="blue" mode="dateTime">
     <template #default="{ inputValue, inputEvents }">
       <VField>
         <VControl icon="feather:calendar">

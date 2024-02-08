@@ -5,7 +5,7 @@ state:
 
 ### Solid circle
 
-Vuero checkboxes can be circles instead of squares. Simply add the `circle`
+Tranxact checkboxes can be circles instead of squares. Simply add the `circle`
 attribute to your checkbox element.
 See the code example for more details about usage.
 

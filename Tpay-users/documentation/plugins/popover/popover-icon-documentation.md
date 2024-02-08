@@ -84,7 +84,7 @@ can easily add a `<VIconBox />` inside your popover.
     <template #content>
       <div class="v-popover-content is-text">
           <div class="popover-head">
-                <VIconBox size="small" color="green">
+                <VIconBox size="small" color="blue">
                     <i class="lnil lnil-crown-alt-1"></i>
                 </VIconBox>
                 <h4 class="dark-inverted">Hover Popover</h4>

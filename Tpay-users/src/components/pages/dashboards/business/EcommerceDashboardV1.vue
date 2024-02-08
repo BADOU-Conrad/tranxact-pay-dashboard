@@ -128,7 +128,7 @@ const {
           <div class="tile-head">
             <h3>New Orders</h3>
             <VIconBox
-              color="green"
+              color="blue"
               rounded
             >
               <i
@@ -395,7 +395,7 @@ const {
             <template v-else-if="column.key === 'status'">
               <VTag
                 v-if="row.status === 'paid'"
-                color="green"
+                color="blue"
                 rounded
                 label="Paid"
               />

@@ -10,7 +10,7 @@ state:
 
 ### VCheckbox
 
-Vuero provides default styled checkboxes in 2 main styles, `outlined` (default)
+Tranxact provides default styled checkboxes in 2 main styles, `outlined` (default)
 and `solid`. Those checkboxes also support all main colors.
 The available colors are `primary`, `success`, `info`,
 `warning`, `danger`.

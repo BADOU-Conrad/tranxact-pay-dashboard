@@ -120,7 +120,7 @@
                     to
                     <VTag
                       label="Completed"
-                      color="green"
+                      color="blue"
                       rounded
                     />
                   </p>
@@ -244,7 +244,7 @@
                     to
                     <VTag
                       label="Completed"
-                      color="green"
+                      color="blue"
                       rounded
                     />
                   </p>

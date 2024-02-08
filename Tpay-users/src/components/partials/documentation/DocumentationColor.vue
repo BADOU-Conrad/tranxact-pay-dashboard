@@ -17,7 +17,7 @@ export type AvailableColors =
   | 'red'
   | 'orange'
   | 'yellow'
-  | 'green'
+  | 'blue'
   | 'pink'
   | 'light-blue'
   // states

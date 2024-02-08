@@ -3,7 +3,7 @@
 Fake avatars can have different colors to break monotony.
 You can change the avatar color passing one of the following values
 to the `color` prop: `primary`, `success`, `info`, `warning`, `danger`,
-`h-purple`, `h-orange`, `h-blue`, `h-green`, `h-red`, `h-yellow`.
+`h-purple`, `h-orange`, `h-blue`, `h-red`, `h-yellow`.
 Supports dark mode.
 
 <!--code-->
@@ -20,7 +20,6 @@ Supports dark mode.
     <VAvatar initials="CT" size="medium" color="h-purple" />
     <VAvatar initials="CT" size="medium" color="h-orange" />
     <VAvatar initials="CT" size="medium" color="h-blue" />
-    <VAvatar initials="CT" size="medium" color="h-green" />
     <VAvatar initials="CT" size="medium" color="h-red" />
     <VAvatar initials="CT" size="medium" color="h-yellow" />
   </VFlex>
@@ -41,7 +40,6 @@ Supports dark mode.
   <VAvatar initials="CT" size="medium" color="h-purple" />
   <VAvatar initials="CT" size="medium" color="h-orange" />
   <VAvatar initials="CT" size="medium" color="h-blue" />
-  <VAvatar initials="CT" size="medium" color="h-green" />
   <VAvatar initials="CT" size="medium" color="h-red" />
   <VAvatar initials="CT" size="medium" color="h-yellow" />
 </VFlex>
