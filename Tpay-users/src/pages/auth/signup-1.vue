@@ -135,12 +135,12 @@ function onFileinputChange(event: Event) {
           class="logo"
         >
           <img
-              class="hero-image"
-              src="/@src/assets/illustrations/login/favicon.png"
-              alt=" "
-              width="38px"
-              height="38px"
-           >
+            class="hero-image"
+            src="/@src/assets/illustrations/login/favicon.png"
+            alt=" "
+            width="38px"
+            height="38px"
+          >
         </RouterLink>
       </div>
     </div>
@@ -223,13 +223,13 @@ function onFileinputChange(event: Event) {
                   id="main-signup-title"
                   class="title is-3 signup-title"
                 >
-                  Become a Vuero
+                  Devenir Tranxact
                 </h1>
                 <h2
                   id="main-signup-subtitle"
                   class="subtitle signup-subtitle"
                 >
-                  And simply join an unmatched design experience.
+                  Choisissez de vivre une expérience exeptionnel.
                 </h2>
                 <div class="signup-card">
                   <form
@@ -252,7 +252,7 @@ function onFileinputChange(event: Event) {
                               raw
                               class="auth-label"
                             >
-                              First Name
+                              Prénom
                             </VLabel>
                           </VControl>
                         </VField>
@@ -270,7 +270,7 @@ function onFileinputChange(event: Event) {
                               raw
                               class="auth-label"
                             >
-                              Last Name
+                              Nom
                             </VLabel>
                           </VControl>
                         </VField>
@@ -317,8 +317,8 @@ function onFileinputChange(event: Event) {
 
                     <div class="control is-agree">
                       <span>
-                        By continuing you agree to our <a href="#">Terms</a> and
-                        <a href="#">Privacy</a>
+                        Pour continuer accepter nos <a href="#">Terms</a> et
+                        <a href="#">Conditions</a>
                       </span>
                     </div>
 
@@ -331,12 +331,12 @@ function onFileinputChange(event: Event) {
                         rounded
                         @click="step++"
                       >
-                        Continue
+                        Continuer
                       </VButton>
                       <span>
-                        Or
-                        <RouterLink to="/auth/login"> Sign In </RouterLink>
-                        to your account.
+                        Ou
+                        <RouterLink to="/auth/login"> Connectez </RouterLink>
+                        vous à votre compte.
                       </span>
                     </div>
                   </form>
@@ -357,10 +357,10 @@ function onFileinputChange(event: Event) {
               >
                 <div class="signup-profile-wrapper">
                   <h1 class="title is-5 signup-title has-text-centered">
-                    Add a profile picture
+                    Ajouter uen photo de profile
                   </h1>
                   <h2 class="subtitle signup-subtitle has-text-centered">
-                    This is your visual identity.
+                    Cel est votre identité visuel.
                   </h2>
                   <div class="picture-selector">
                     <div class="image-container">
@@ -387,7 +387,7 @@ function onFileinputChange(event: Event) {
 
                 <div class="divider-container">
                   <div class="divider">
-                    <span>Or select an avatar</span>
+                    <span>Ou choisissez un avatar</span>
                   </div>
                 </div>
 
@@ -419,7 +419,7 @@ function onFileinputChange(event: Event) {
                     lower
                     @click="step++"
                   >
-                    Continue
+                    Continuer
                   </VButton>
                 </div>
               </form>
@@ -435,7 +435,7 @@ function onFileinputChange(event: Event) {
                   Pick a username
                 </h1>
                 <h2 class="subtitle signup-subtitle has-text-centered">
-                  Your username is how others will find you on tranxact Pay
+                  Votre username is how others will find you on tranxact Pay
                 </h2>
                 <form
                   method="post"
@@ -473,7 +473,7 @@ function onFileinputChange(event: Event) {
                             raw
                             class="auth-label"
                           >
-                            Password
+                            Mot de Passe
                           </VLabel>
                         </VControl>
                       </VField>
@@ -490,7 +490,7 @@ function onFileinputChange(event: Event) {
                             raw
                             class="auth-label"
                           >
-                            Confirm Password
+                            Confirmé votre Mot de Passe
                           </VLabel>
                         </VControl>
                       </VField>
@@ -517,7 +517,9 @@ function onFileinputChange(event: Event) {
                     <div class="column is-12">
                       <VField>
                         <VControl class="has-switch">
-                          <VLabel>Send me marketing and transaction emails</VLabel>
+                          <VLabel color="success">
+                            Send me marketing and transaction emails
+                          </VLabel>
                           <VSwitchBlock
                             color="success"
                             checked
