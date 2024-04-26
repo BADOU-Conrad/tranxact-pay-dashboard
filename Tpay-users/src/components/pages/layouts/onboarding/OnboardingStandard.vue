@@ -1,8 +1,12 @@
 <template>
   <div class="standard-onboarding">
     <div class="title-wrap">
-      <p>Looks like you're new here</p>
-      <h2>Welcome to Vuero. What would you like to do?</h2>
+      <h2>Bienvenue sur TPAY</h2>
+      <p>
+        Ceci est votre compte test. Vous pouvez choisir une des options ci-dessous pour activer votre 
+        compte et commencer à collecter<br> et retirer de l'argent à partir de votre tableau de bord
+        ou obtenir vos clés d'API pour intégrer votre application immédiatemment
+      </p>
     </div>
 
     <div class="onboarding-wrap">
@@ -10,85 +14,88 @@
         <!--Card-->
         <div class="onboarding-card">
           <img
-            class="light-image"
-            src="/@src/assets/illustrations/onboarding/set1-1.svg"
+            class="dark-image"
+            src="/@src/assets/illustrations/onboarding/User_02.png"
             alt=""
           >
           <img
-            class="dark-image"
+            class="light-image"
             src="/@src/assets/illustrations/onboarding/set1-1-dark.svg"
             alt=""
           >
-          <h3>Configure Shop</h3>
+          <h3>Passer en mode Live</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recte dicis; Ita enim
-            vivunt quidam, ut eorum vita refellatur oratio. Sed tament.
+            Faite vérifier votre compte en fournissant les informations supplémentaires et commencer à pleinement utiliser notre solution 
           </p>
           <div class="button-wrap">
-            <VButton
-              color="primary"
-              outlined
-              rounded
-              raised
-            >
-              Configure Shop
-            </VButton>
+            <RouterLink to="/sidebar/layouts/form-layouts-5">
+              <VButton
+                color="primary"
+                outlined
+                rounded
+                raised
+              >
+                Commencer
+              </VButton>
+            </Routerlink>
           </div>
         </div>
         <!--Card-->
         <div class="onboarding-card">
           <img
-            class="light-image"
-            src="/@src/assets/illustrations/onboarding/set1-2.svg"
+            class="dark-image"
+            src="/@src/assets/illustrations/onboarding/Map.png"
             alt=""
           >
           <img
-            class="dark-image"
+            class="light-image"
             src="/@src/assets/illustrations/onboarding/set1-2-dark.svg"
             alt=""
           >
-          <h3>Manage Products</h3>
+          <h3>Tour guidé du Dashboard</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recte dicis; Ita enim
-            vivunt quidam, ut eorum vita refellatur oratio. Sed tament.
+            Faites un tour guider de notre dashboard afin de découvrir nos fonctionalités et la flexibilité de notre solution
           </p>
           <div class="button-wrap">
-            <VButton
-              color="primary"
-              outlined
-              rounded
-              raised
-            >
-              Manage Products
-            </VButton>
+            <RouterLink to="/sidebar/layouts/form-layouts-5">
+              <VButton
+                color="primary"
+                outlined
+                rounded
+                raised
+              >
+                Commencer
+              </VButton>
+            </RouterLink>
           </div>
         </div>
         <!--Card-->
         <div class="onboarding-card">
           <img
-            class="light-image"
-            src="/@src/assets/illustrations/onboarding/set1-3.svg"
+            class="dark-image"
+            src="/@src/assets/illustrations/onboarding/Window_Terminal.png"
             alt=""
           >
           <img
-            class="dark-image"
+            class="light-image"
             src="/@src/assets/illustrations/onboarding/set1-3-dark.svg"
             alt=""
           >
-          <h3>Setup Payments</h3>
+          <h3>Intégrer l'API de Tpay</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recte dicis; Ita enim
-            vivunt quidam, ut eorum vita refellatur oratio. Sed tament.
+            Faites l'intégration de notre API dans votre application web et/ou mobile et commencer à utiliser notre solution pour une meilleur expérience financiaire
           </p>
           <div class="button-wrap">
-            <VButton
-              color="primary"
-              outlined
-              rounded
-              raised
-            >
-              Setup Payments
-            </VButton>
+            <RouterLink to="/sidebar/layouts/form-layouts-5">
+              <VButton
+                color="primary"
+                outlined
+                rounded
+                raised
+              >
+                Commencer
+              </VButton>
+            </Routerlink>
           </div>
         </div>
       </div>
@@ -114,14 +121,13 @@
     h2 {
       font-family: var(--font-alt);
       font-weight: 600;
-      font-size: 1.4rem;
+      font-size: 3.4rem;
       color: var(--dark-text);
     }
 
     p {
-      text-transform: uppercase;
       font-family: var(--font);
-      font-size: 0.85rem;
+      font-size: 1.05rem;
     }
   }
 

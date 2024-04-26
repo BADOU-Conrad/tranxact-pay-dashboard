@@ -1,20 +1,59 @@
 <script setup lang="ts">
 import { useNotyf } from '/@src/composable/useNotyf'
+import { useRouter } from 'vue-router'
 import sleep from '/@src/utils/sleep'
 import { onceImageErrored } from '/@src/utils/via-placeholder'
+import ApiService from '/@src/service/api'
+import { ref, onMounted } from 'vue'
 
+const router = useRouter()
 const isUploading = ref(false)
 const isLoading = ref(false)
-const experience = ref('')
-const firstJob = ref('')
-const flexibility = ref('')
-const remote = ref('')
-const skills = ref(['software', 'saas', 'engineering'])
-const skillsOptions = [
-  { value: 'software', label: 'Software' },
-  { value: 'saas', label: 'SaaS' },
-  { value: 'engineering', label: 'Engineering' },
-]
+//const skills = ref(['software', 'saas', 'engineering'])
+//const skillsOptions = [
+ // { value: 'software', label: 'Software' },
+  //{ value: 'saas', label: 'SaaS' },
+  //{ value: 'engineering', label: 'Engineering' },
+//]
+
+const countries = ref([]);
+const accountTypes = ref([]);
+interface AccountType {
+  id: string;
+  name: string;
+  // ... autres propriétés
+}
+interface Country {
+  id: string;
+  name: string;
+}
+const fetchCountries = async () => {
+  try {
+    const response = await ApiService.getCountries();
+
+    countries.value = response.data.data.map((country: Country) => ({
+      label: country.name,
+      value: country.id,
+    }));
+    console.log('response from countries', countries)
+  } catch (error) {
+    console.error('Erreur lors de la récupération des pays :', error);
+  }
+};
+
+const fetchAccountTypes = async () => {
+  try {
+    const response = await ApiService.getAccountTypes();
+
+    accountTypes.value = response.data.data.map((account_type: AccountType) => ({
+      label: account_type.name,
+      value: account_type.id,
+    }));
+    console.log('response from accountTypes', accountTypes)
+  } catch (error) {
+    console.error('Erreur lors de la récupération des types de compte :', error);
+  }
+};
 
 const notyf = useNotyf()
 const { y } = useWindowScroll()
@@ -22,6 +61,68 @@ const { y } = useWindowScroll()
 const isScrolling = computed(() => {
   return y.value > 30
 })
+
+interface UserDataUpdate {
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  country: string,
+  accountType: string,
+  desc: string;
+}
+
+const userData = ref<UserDataUpdate>({
+  first_name: '',
+  last_name: '',
+  email: '',
+  phone: '',
+  country: '',
+  accountType: '',
+  desc: ''
+})
+
+const fetchUserDetails = async () => {
+  try {
+    const response = await ApiService.getUserdetails() 
+    console.log('userData', response)
+    const data = response.data.data
+    userData.value.first_name = data.first_name
+    userData.value.last_name = data.last_name
+    userData.value.email = data.email
+    userData.value.phone = data.phone
+    userData.value.country = data.country.name
+    userData.value.accountType = data.account_type.name
+    userData.value.desc = data.desc
+
+  } catch (error) {
+    console.error('Error fetching user details:', error)
+  }
+}
+
+onMounted(() => {
+  fetchUserDetails() 
+  fetchCountries();
+  fetchAccountTypes();
+})
+
+const updateUser = async () => {
+  try {
+    isLoading.value = true 
+    const response = await ApiService.updateUserDetails(userData.value)   
+    if (response.data.status) {
+        notyf.success(`Donnée de l'utilisateur changer avec succès`);
+        router.push('/sidebar/layouts/profile-edit');
+      } else {
+        notyf.error('Erreur lors de la modification des données du user . Veuillez réessayer.');
+      }
+  } catch (error) {
+    console.error('Error updating user details:', error)
+    notyf.error('Failed to update user details. Please try again later.') 
+  } finally {
+    isLoading.value = false 
+  }
+}
 
 const onAddFile = (error: any, file: any) => {
   if (error) {
@@ -40,11 +141,10 @@ const onRemoveFile = (error: any, file: any) => {
   console.log('file removed', file)
 }
 const onSave = async () => {
-  isLoading.value = true
   await sleep()
-  notyf.success('Your changes have been successfully saved!')
-  isLoading.value = false
+  await updateUser() 
 }
+
 </script>
 
 <template>
@@ -55,8 +155,8 @@ const onSave = async () => {
     >
       <div class="form-head-inner">
         <div class="left">
-          <h3>General Info</h3>
-          <p>Edit your account's general information</p>
+          <h3>Information Générale</h3>
+          <p>Consulter et modifier vos données personnels</p>
         </div>
         <div class="right">
           <div class="buttons">
@@ -66,7 +166,7 @@ const onSave = async () => {
               light
               dark-outlined
             >
-              Go Back
+              Retour
             </VButton>
             <VButton
               color="primary"
@@ -76,7 +176,7 @@ const onSave = async () => {
               @keydown.space.prevent="onSave"
               @click="onSave"
             >
-              Save Changes
+              Modifier
             </VButton>
           </div>
         </div>
@@ -86,8 +186,8 @@ const onSave = async () => {
       <!--Fieldset-->
       <div class="fieldset">
         <div class="fieldset-heading">
-          <h4>Profile Picture</h4>
-          <p>This is how others will recognize you</p>
+          <h4>Photo de Profile</h4>
+          <p>Votre photo de profile</p>
         </div>
 
         <VAvatar
@@ -156,6 +256,7 @@ const onSave = async () => {
             <VField>
               <VControl icon="feather:user">
                 <VInput
+                  v-model="userData.first_name"
                   type="text"
                   placeholder="First Name"
                   autocomplete="given-name"
@@ -168,6 +269,7 @@ const onSave = async () => {
             <VField>
               <VControl icon="feather:user">
                 <VInput
+                  v-model="userData.last_name"
                   type="text"
                   placeholder="Last Name"
                   autocomplete="family-name"
@@ -176,13 +278,28 @@ const onSave = async () => {
             </VField>
           </div>
           <!--Field-->
-          <div class="column is-12">
+          <!--Field-->
+          <div class="column is-6">
             <VField>
-              <VControl icon="feather:briefcase">
+              <VControl icon="feather:mail">
                 <VInput
+                  v-model="userData.email"
                   type="text"
-                  placeholder="Job Title"
-                  autocomplete="organization-title"
+                  placeholder="Email"
+                  autocomplete="given-name"
+                />
+              </VControl>
+            </VField>
+          </div>
+          <!--Field-->
+          <div class="column is-6">
+            <VField>
+              <VControl icon="feather:phone">
+                <VInput
+                  v-model="userData.phone"
+                  type="text"
+                  placeholder="phone number"
+                  autocomplete="family-name"
                 />
               </VControl>
             </VField>
@@ -190,11 +307,27 @@ const onSave = async () => {
           <!--Field-->
           <div class="column is-12">
             <VField>
-              <VControl icon="feather:map-pin">
-                <VInput
-                  type="text"
-                  placeholder="Location"
-                  autocomplete="country-name"
+              <VControl>
+                <Multiselect
+                  v-model="userData.accountType"
+                  :options="accountTypes"
+                  track-by="value"
+                  label="label"
+                  placeholder="Type de compte"  
+                />
+              </VControl>
+            </VField>
+          </div>
+          <!--Field-->
+          <div class="column is-12">
+            <VField>
+              <VControl>
+                <Multiselect
+                  v-model="userData.country"
+                  :options="countries"
+                  track-by="value"
+                  label="label"
+                  placeholder="Pays de résidence" 
                 />
               </VControl>
             </VField>
@@ -204,6 +337,7 @@ const onSave = async () => {
             <VField>
               <VControl>
                 <VTextarea
+                  v-model="userData.desc"
                   rows="4"
                   placeholder="About / Bio"
                   autocomplete="off"
@@ -219,11 +353,10 @@ const onSave = async () => {
       <!--Fieldset-->
       <div class="fieldset">
         <div class="fieldset-heading">
-          <h4>Professional Info</h4>
+          <h4>Information sur votre entreprise</h4>
           <p>This can help you to win some opportunities</p>
         </div>
         <div class="columns is-multiline">
-          <!--Field-->
           <div class="column is-6">
             <VField v-slot="{ id }">
               <VControl>
@@ -236,7 +369,7 @@ const onSave = async () => {
               </VControl>
             </VField>
           </div>
-          <!--Field-->
+        
           <div class="column is-6">
             <VField v-slot="{ id }">
               <VControl>
@@ -249,7 +382,7 @@ const onSave = async () => {
               </VControl>
             </VField>
           </div>
-          <!--Field-->
+          
           <div class="column is-6">
             <VField v-slot="{ id }">
               <VControl>
@@ -262,7 +395,7 @@ const onSave = async () => {
               </VControl>
             </VField>
           </div>
-          <!--Field-->
+         
           <div class="column is-6">
             <VField v-slot="{ id }">
               <VControl>
@@ -275,7 +408,7 @@ const onSave = async () => {
               </VControl>
             </VField>
           </div>
-          <!--Field-->
+       
           <div class="column is-12">
             <VField v-slot="{ id }">
               <VControl>
@@ -292,16 +425,17 @@ const onSave = async () => {
             </VField>
           </div>
         </div>
-      </div>
+      </div>  
+  
 
-      <!--Fieldset-->
+      <!--Fieldse
       <div class="fieldset">
         <div class="fieldset-heading">
           <h4>Social Profiles</h4>
           <p>This can help others finding you on social media</p>
         </div>
         <div class="columns is-multiline">
-          <!--Field-->
+          <!-Field->
           <div class="column is-6">
             <VField>
               <VControl icon="fab fa-facebook-f">
@@ -313,7 +447,7 @@ const onSave = async () => {
               </VControl>
             </VField>
           </div>
-          <!--Field-->
+          <!-Field->
           <div class="column is-6">
             <VField>
               <VControl icon="fab fa-twitter">
@@ -325,7 +459,7 @@ const onSave = async () => {
               </VControl>
             </VField>
           </div>
-          <!--Field-->
+          <!-Field->
           <div class="column is-6">
             <VField>
               <VControl icon="fab fa-dribbble">
@@ -337,7 +471,7 @@ const onSave = async () => {
               </VControl>
             </VField>
           </div>
-          <!--Field-->
+          !--Field->
           <div class="column is-6">
             <VField>
               <VControl icon="fab fa-instagram">
@@ -349,7 +483,7 @@ const onSave = async () => {
               </VControl>
             </VField>
           </div>
-          <!--Field-->
+          <!-Field->
           <div class="column is-6">
             <VField>
               <VControl icon="fab fa-github">
@@ -361,7 +495,7 @@ const onSave = async () => {
               </VControl>
             </VField>
           </div>
-          <!--Field-->
+          <!-Field->
           <div class="column is-6">
             <VField>
               <VControl icon="fab fa-gitlab">
@@ -375,6 +509,7 @@ const onSave = async () => {
           </div>
         </div>
       </div>
+      -->
     </div>
   </div>
 </template>

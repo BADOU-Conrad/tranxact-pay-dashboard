@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { VAvatarProps } from '/@src/components/base/avatar/VAvatar.vue'
 import * as listData from '/@src/data/layouts/flex-list-v2'
+import { ref } from 'vue'
+const smallFormOpen = ref(false)
+const smallFormOpen1 = ref(false)
 
 export interface ProjectData {
   id: number
@@ -29,17 +32,13 @@ const tab = ref(props.activeTab)
 
 const columns = {
   picture: {
-    label: 'Project',
+    label: 'Url',
     grow: true,
-    media: true,
+    media: false,
   },
-  customer: 'Customer',
-  industry: 'Industry',
-  status: 'Status',
-  team: {
-    label: 'Team',
-    cellClass: 'h-hidden-tablet-p',
-  },
+  customer: 'Date de création',
+  industry: 'Dernière modification',
+  status: 'Statut',
   actions: {
     label: 'Actions',
     align: 'end',
@@ -68,37 +67,17 @@ const filteredData = computed(() => {
 <template>
   <div>
     <div class="list-flex-toolbar is-reversed">
-      <VControl icon="feather:search">
-        <input
-          v-model="filters"
-          class="input custom-text-filter"
-          placeholder="Search..."
+      <VButtons>
+        <VButton
+          color="primary"
+          icon="feather:plus"
+          elevated
+          bold 
+          @click="smallFormOpen1 = true"
         >
-      </VControl>
-
-      <div class="tabs-inner">
-        <div class="tabs">
-          <ul>
-            <li :class="[tab === 'active' && 'is-active']">
-              <a
-                tabindex="0"
-                role="button"
-                @keydown.space.prevent="tab = 'active'"
-                @click="tab = 'active'"
-              ><span>Active</span></a>
-            </li>
-            <li :class="[tab === 'closed' && 'is-active']">
-              <a
-                tabindex="0"
-                role="button"
-                @keydown.space.prevent="tab = 'closed'"
-                @click="tab = 'closed'"
-              ><span>Closed</span></a>
-            </li>
-            <li class="tab-naver" />
-          </ul>
-        </div>
-      </div>
+          Créer un nouveau Webhook
+        </vbutton>
+      </vbuttons>
     </div>
 
     <div class="flex-list-wrapper flex-list-v2">
@@ -149,17 +128,12 @@ const filteredData = computed(() => {
                 class="flex-table-item"
               >
                 <VFlexTableCell :column="{ media: true, grow: true }">
-                  <VAvatar :picture="item.picture" />
+                  <i
+                    class="lnir lnir-link"
+                    aria-hidden="true"
+                  />
                   <div>
                     <span class="item-name dark-inverted">{{ item.name }}</span>
-                    <span class="item-meta">
-                      <span>
-                        <i
-                          aria-hidden="true"
-                          class="iconify"
-                          data-icon="feather:clock"
-                        />{{ item.duration }}</span>
-                    </span>
                   </div>
                 </VFlexTableCell>
                 <VFlexTableCell>
@@ -169,26 +143,154 @@ const filteredData = computed(() => {
                   <span class="light-text">{{ item.industry }}</span>
                 </VFlexTableCell>
                 <VFlexTableCell>
-                  <VTag rounded>
+                  <VTag
+                    v-if="item.status === 'Activer'"
+                    color="success"
+                    rounded
+                  >
+                    {{ item.status }}
+                  </VTag>
+                  <VTag
+                    v-if="item.status === 'Désactiver'"
+                    color="danger"
+                    rounded
+                  >
                     {{ item.status }}
                   </VTag>
                 </VFlexTableCell>
-                <VFlexTableCell class="h-hidden-tablet-p">
-                  <VAvatarStack
-                    :avatars="item.team"
-                    size="small"
-                    :limit="3"
-                    class="is-pushed-mobile"
-                  />
-                </VFlexTableCell>
+               
                 <VFlexTableCell :column="{ align: 'end' }">
-                  <ProjectListDropdown />
+                  <VButton
+                    bold 
+                    @click="smallFormOpen = true"
+                  >
+                    <span class="icon">
+                      <i     
+                        class="iconify"
+                        data-icon="feather:edit" 
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </VButton>
                 </VFlexTableCell>
               </div>
             </TransitionGroup>
           </template>
         </VFlexTable>
 
+        <VModal
+          is="form"
+          :open="smallFormOpen1"
+          title="Créer un nouveau webhook"
+          size="small"
+          actions="right"
+          @submit.prevent="smallFormOpen1 = false"
+          @close="smallFormOpen1 = false"
+        >
+          <template #content>
+            <div class="modal-form">
+              <div class="field">
+                <label>URL *</label>
+                <div class="control">
+                  <input
+                    type="text"
+                    class="input"
+                    placeholder="htpps://"
+                  >
+                </div>
+              </div>
+              <div class="field">
+                <label>Description</label>
+                <div class="control">
+                  <textarea
+                    class="textarea"
+                    rows="4"
+                    placeholder="Votre description..."
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <VField v-slot="{ id }">
+                  <VLabel>Type d'évenements</VLabel>
+                  <VControl>
+                    <Multiselect
+                      v-model="productToDemo"
+                      :attrs="{ id }"
+                      placeholder="Choisir une option"
+                      :options="['Events Sport', 'Boutique en ligne', 'prestation']"
+                    />
+                  </VControl>
+                </VField>
+              </div>
+            </div>
+          </template>
+          <template #action>
+            <VButton
+              type="submit"
+              color="primary"
+              raised
+            >
+              Creer
+            </VButton>
+          </template>
+        </VModal>
+
+        <VModal
+          is="form"
+          :open="smallFormOpen"
+          title="Détail du Webhook"
+          size="small"
+          actions="right"
+          @submit.prevent="smallFormOpen = false"
+          @close="smallFormOpen = false"
+        >
+          <template #content>
+            <div class="modal-form">
+              <div class="field">
+                <label>URL *</label>
+                <div class="control">
+                  <input
+                    type="text"
+                    class="input"
+                    placeholder="htpps://"
+                  >
+                </div>
+              </div>
+              <div class="field">
+                <label>Description</label>
+                <div class="control">
+                  <textarea
+                    class="textarea"
+                    rows="4"
+                    placeholder="Votre description..."
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <VField v-slot="{ id }">
+                  <VLabel>Type d'évenements</VLabel>
+                  <VControl>
+                    <Multiselect
+                      v-model="productToDemo"
+                      :attrs="{ id }"
+                      placeholder="Choisir une option"
+                      :options="['Events Sport', 'Boutique en ligne', 'prestation']"
+                    />
+                  </VControl>
+                </VField>
+              </div>
+            </div>
+          </template>
+          <template #action>
+            <VButton
+              type="submit"
+              color="primary"
+              raised
+            >
+              Modifier
+            </VButton>
+          </template>
+        </VModal>
         <!--Table Pagination-->
         <VFlexPagination
           v-if="filteredData.length > 5"
@@ -197,32 +299,6 @@ const filteredData = computed(() => {
           :current-page="42"
           :max-links-displayed="7"
         />
-      </div>
-
-      <!--inactive Tab-->
-      <div
-        v-else-if="tab === 'closed'"
-        class="tab-content is-active"
-      >
-        <!--Empty placeholder-->
-        <VPlaceholderPage
-          title="No closed projects."
-          subtitle="Looks like you don't have any closed project yet. When you'll
-              start closing off projects, they will be showing up in here."
-        >
-          <template #image>
-            <img
-              class="light-image is-larger"
-              src="/@src/assets/illustrations/placeholders/projects.svg"
-              alt=""
-            >
-            <img
-              class="dark-image is-larger"
-              src="/@src/assets/illustrations/placeholders/projects-dark.svg"
-              alt=""
-            >
-          </template>
-        </VPlaceholderPage>
       </div>
     </div>
   </div>

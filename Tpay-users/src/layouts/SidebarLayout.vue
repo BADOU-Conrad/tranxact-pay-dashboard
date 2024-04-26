@@ -96,7 +96,8 @@ watch(
             <i
               aria-hidden="true"
               class="iconify"
-              data-icon="feather:activity"
+              data-icon="feather:grid"
+              title="Tableau de bord"
             />
           </a>
         </li>
@@ -112,7 +113,8 @@ watch(
             <i
               aria-hidden="true"
               class="iconify"
-              data-icon="feather:grid"
+              data-icon="feather:activity"
+              title="Transactions"
             />
           </a>
         </li>
@@ -129,6 +131,7 @@ watch(
               aria-hidden="true"
               class="iconify"
               data-icon="feather:box"
+              title="Services"
             />
           </a>
         </li>
@@ -145,17 +148,9 @@ watch(
               aria-hidden="true"
               class="iconify"
               data-icon="feather:cpu"
+              title="Clients"
             />
           </a>
-        </li>
-        <li>
-          <RouterLink to="/messaging-v1">
-            <i
-              aria-hidden="true"
-              class="iconify"
-              data-icon="feather:message-circle"
-            />
-          </RouterLink>
         </li>
       </template>
 
@@ -230,7 +225,8 @@ watch(
             <i
               aria-hidden="true"
               class="iconify sidebar-svg"
-              data-icon="feather:activity"
+              data-icon="feather:grid"
+              title="Tableau de bord"
             />
           </a>
         </li>
@@ -249,7 +245,8 @@ watch(
             <i
               aria-hidden="true"
               class="iconify sidebar-svg"
-              data-icon="feather:grid"
+              data-icon="feather:activity"
+              title="Transactions"
             />
           </a>
         </li>
@@ -269,6 +266,7 @@ watch(
               aria-hidden="true"
               class="iconify sidebar-svg"
               data-icon="feather:box"
+              title="Services"
             />
           </a>
         </li>
@@ -288,32 +286,13 @@ watch(
               aria-hidden="true"
               class="iconify sidebar-svg"
               data-icon="feather:cpu"
+              title="Clients"
             />
           </a>
-        </li>
-
-        <!-- Messaging -->
-        <li>
-          <RouterLink
-            id="open-messages"
-            to="/messaging-v1"
-            data-content="Messaging"
-          >
-            <i
-              aria-hidden="true"
-              class="iconify sidebar-svg"
-              data-icon="feather:message-circle"
-            />
-          </RouterLink>
         </li>
       </template>
 
       <template #bottom-links>
-        <!-- Switch Sidebar  Layouts -->
-        <li class="is-hidden-touch">
-          <LayoutSwitcher />
-        </li>
-
         <!-- Search -->
         <li class="right-panel-trigger is-hidden-touch">
           <a
@@ -328,6 +307,7 @@ watch(
               aria-hidden="true"
               class="iconify sidebar-svg"
               data-icon="feather-search"
+              title="Rechercher"
             />
           </a>
           <a
@@ -357,6 +337,7 @@ watch(
               aria-hidden="true"
               class="iconify sidebar-svg"
               data-icon="feather:settings"
+              title="Paramètres"
             />
           </RouterLink>
         </li>
@@ -456,6 +437,7 @@ watch(
                   aria-hidden="true"
                   class="iconify"
                   data-icon="feather:grid"
+                  title="test"
                 />
               </a>
             </Toolbar>

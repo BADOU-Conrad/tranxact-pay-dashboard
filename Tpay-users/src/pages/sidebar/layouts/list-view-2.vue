@@ -2,10 +2,10 @@
 import { useViewWrapper } from '/@src/stores/viewWrapper'
 
 const viewWrapper = useViewWrapper()
-viewWrapper.setPageTitle('List View 2')
+viewWrapper.setPageTitle('Historique de Retrait')
 
 useHead({
-  title: 'List View 2 - Sidebar - Vuero',
+  title: 'Historique de Retrait - Tranxact',
 })
 </script>
 

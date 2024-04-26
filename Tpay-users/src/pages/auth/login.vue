@@ -1,15 +1,14 @@
-
 <script setup lang="ts">
 import { useDarkmode } from '/@src/stores/darkmode';
 import { useUserSession } from '/@src/stores/userSession';
 import { useNotyf } from '/@src/composable/useNotyf';
 import { useRouter, useRoute } from 'vue-router';
-import ApiService from '/@src/service/api';  // Assurez-vous que le chemin est correct
+import ApiService from '/@src/service/api';
 
 type StepId = 'login' | 'forgot-password';
 const step = ref<StepId>('login');
 const darkmode = useDarkmode();
-const isLoading = ref(false)
+const isLoading = ref(false);
 const router = useRouter();
 const route = useRoute();
 const notyf = useNotyf();
@@ -19,6 +18,7 @@ const credentials = {
         email: '',
         password: '',
       };
+      
 const handleLogin = async () => {
   const isLoading = ref(false);
 
@@ -28,16 +28,47 @@ const handleLogin = async () => {
     try {
 
       const response = await ApiService.login(credentials);
+      console.log(response)
+      const token = response.data.data.auth_token;
+      const apiKey = response.data.data.api_key.pub_key;
+      const apiKeys = response.data.data.api_key.priv_key;
+      const firstName = response.data.data.first_name;
+      const lastName = response.data.data.last_name;
+      const email = response.data.data.email;
+      const country = response.data.data.country_id;
+      const account_type = response.data.data.account_type_id;
+      const phone = response.data.data.phone;
+      const fullName = `${firstName} ${lastName}`;
+      const activate = response.data.data.activated_final;
 
-      console.log(response.data);
+      console.log('api', apiKeys)
+      userSession.setToken(token);
+      localStorage.setItem('token', token);
+      localStorage.setItem('apiKey', apiKey);
+      localStorage.setItem('first_name', firstName);
+      localStorage.setItem('last_name', lastName);
+      localStorage.setItem('apiKeys', apiKeys);
+      localStorage.setItem('email', email);
+      localStorage.setItem('country', country);
+      localStorage.setItem('activate', activate);
+      localStorage.setItem('phone', phone);
+      localStorage.setItem('account_type', account_type);
+      notyf.dismissAll();
+
+      notyf.success(`Welcome back, ${fullName}`)
       if (redirect) {
         router.push(redirect);
       } else {
-        router.push('/sidebar/dashboards');
+        if (activate) {
+        router.push('/sidebar/dashboards/banking-2');
+        } else {
+          router.push('/sidebar/layouts/form-layouts-4');
+        } 
       }
     } catch (error) {
       console.error('Erreur de connexion :', error);
-    } finally {
+    } 
+    finally {
       isLoading.value = false;
     }
   }
@@ -74,7 +105,7 @@ const handleLogin = async () => {
           >
             <img
               class="hero-image"
-              src="/@src/assets/illustrations/login/favicon.png"
+              src="/@src/assets/illustrations/login/Pirmary.png"
               alt=" "
               width="38px"
               height="38px"
@@ -214,7 +245,7 @@ const handleLogin = async () => {
                   raised
                   bold
                 >
-                  Confirm
+                  Confirmer
                 </VButton>
                 <span>
                   Ou

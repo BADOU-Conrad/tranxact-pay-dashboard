@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { offers } from '/@src/data/layouts/view-list-v3'
+import ApiService from '/@src/service/api'
 
-export interface OfferData {
+interface OfferData {
   id: string
   logo: string
   title: string
@@ -10,16 +10,38 @@ export interface OfferData {
   requirements: string
 }
 
-const page = ref(42)
+const page = ref(1)
 const filters = ref('')
+const offersList = ref<OfferData[]>([])
 
-const offersList = offers as OfferData[]
+async function fetchData() {
+  try {
+    const response = await ApiService.getCollect()
+    console.log('stories', response)
+    const selectedData = response.data.data.map((item: any) => ({
+      id: selectedData.id,
+      logo: selectedData.id,
+      title: selectedData.sender_first_name,
+      location: selectedData.sender_last_name ,
+      duration: selectedData.sender_number,
+      requirements: item.requirements,
+    }))
+    offersList.value = selectedData
+  } catch (error) {
+    console.error('Error fetching data:', error)
+  }
+}
+
+onMounted(() => {
+  fetchData()
+})
+
 const filteredData = computed(() => {
   if (!filters.value) {
-    return offersList
+    return offersList.value
   } else {
     const filterRe = new RegExp(filters.value, 'i')
-    return offersList.filter((item) => {
+    return offersList.value.filter((item) => {
       return (
         item.title.match(filterRe) ||
         item.duration.match(filterRe) ||
@@ -30,6 +52,9 @@ const filteredData = computed(() => {
   }
 })
 </script>
+
+<!-- Votre template reste inchangé -->
+
 
 <template>
   <div>
@@ -47,10 +72,9 @@ const filteredData = computed(() => {
       <VButtons>
         <VButton
           color="primary"
-          icon="fas fa-plus"
-          elevated
+          icon="fas fa-arrow-alt-circle-down"
         >
-          New Offer
+          Télécharger
         </VButton>
       </VButtons>
     </div>

@@ -137,7 +137,7 @@ const validateStep = async () => {
           class="form-section is-active"
         >
           <h3 class="form-section-title">
-            <span>General Information</span>
+            <span>Information complémentaire</span>
             <button
               type="button"
               class="help-button"

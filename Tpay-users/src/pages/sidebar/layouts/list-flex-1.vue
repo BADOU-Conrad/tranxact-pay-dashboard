@@ -2,10 +2,10 @@
 import { useViewWrapper } from '/@src/stores/viewWrapper'
 
 const viewWrapper = useViewWrapper()
-viewWrapper.setPageTitle('List Flex 1')
+viewWrapper.setPageTitle('Equipe')
 
 useHead({
-  title: 'List Flex 1 - Sidebar - Vuero',
+  title: 'Equipe - Tranxact',
 })
 </script>
 

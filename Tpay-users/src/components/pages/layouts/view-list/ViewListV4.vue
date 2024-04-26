@@ -1,251 +1,304 @@
 <script setup lang="ts">
-import type { VAvatarProps } from '/@src/components/base/avatar/VAvatar.vue'
-import * as listData from '/@src/data/layouts/view-list-v4'
-import { onceImageErrored } from '/@src/utils/via-placeholder'
+import ApiService from '/@src/service/api'
+import { ref, onMounted, computed } from 'vue'
 
-export interface RecipeData {
-  icon: string
-  name: string
-  category: string
-  duration: string
-  attachments: number
-  author: {
-    avatar: string
-    name: string
-  }
-  followers: VAvatarProps[]
+const centeredActionsOpen = ref(false)
+const selectedLinkId = ref<number | null>(null)
+const links = ref<LinkData[]>([]) 
+
+interface LinkData {
+  name_link: string; 
+  amount: number
+  click_number: number
+  desc: string
+  click: number
+  format_link: string
+  id: number 
 }
 
-const recipes = listData.recipes as RecipeData[]
+const deleteConfirmationOpen = ref(false);
+let linkToDeleteId: string | null = null;
 
-const props = withDefaults(
-  defineProps<{
-    activeTab?: 'all' | 'saved'
-  }>(),
-  {
-    activeTab: 'all',
+
+const fetchLinks = async () => {
+  try {
+    const response = await ApiService.getLink()
+    console.log(response)
+    links.value = response.data.data as LinkData[]
+  } catch (error) {
+    console.error('Erreur lors de la récupération des liens :', error)
   }
-)
+}
 
-const filters = ref('')
-const tab = ref(props.activeTab)
-
-const filteredData = computed(() => {
-  if (!filters.value) {
-    return recipes
-  } else {
-    return recipes.filter((item) => {
-      return (
-        item.icon.match(new RegExp(filters.value, 'i')) ||
-        item.name.match(new RegExp(filters.value, 'i')) ||
-        item.category.match(new RegExp(filters.value, 'i')) ||
-        item.duration.match(new RegExp(filters.value, 'i')) ||
-        item.author.name.match(new RegExp(filters.value, 'i'))
-      )
-    })
+const fetchLinkDetails = async (linkId: number) => {      
+  try {
+    const response = await ApiService.getLinkDetails(`${linkId}`)
+    updateLinkDetails(response.data)
+  } catch (error) {
+    console.error('Erreur lors de la récupération des détails du lien :', error)
   }
+}
+
+const updateLinkDetails = (linkDetails: any) => {
+  const selectedLinkIndex = links.value.findIndex(link => link.id === selectedLinkId.value)
+  if (selectedLinkIndex !== -1) {
+    links.value[selectedLinkIndex] = { ...links.value[selectedLinkIndex], ...linkDetails }
+  }
+}
+
+const filteredLinkDetails = computed(() => {
+  if (selectedLinkId.value !== null) {
+    return filteredLinks.value.find(link => link.id === selectedLinkId.value)
+  }
+  return null
 })
+
+onMounted(fetchLinks)
+
+const openLinkDetailsModal = (linkId: number) => {
+  centeredActionsOpen.value = true
+  selectedLinkId.value = linkId
+  fetchLinkDetails(linkId)
+}
+
+const filteredLinks = computed(() => {
+  return links.value.filter(link => link.id !== null)
+})
+
+const deleteLinkConfirmed = async () => {
+  try {
+    if (linkToDeleteId !== null) {
+      await ApiService.deleteLink(linkToDeleteId);
+      await fetchLinks();
+      deleteConfirmationOpen.value = false;
+    }
+  } catch (error) {
+    console.error('Erreur lors de la suppression du lien :', error);
+    deleteConfirmationOpen.value = false;
+  }
+}
+
+
+const deleteLink = async (linkId: string) => {
+  deleteConfirmationOpen.value = true;
+  linkToDeleteId = linkId;
+}
 </script>
 
 <template>
-  <div>
-    <div class="list-view-toolbar is-reversed">
-      <VControl icon="feather:search">
-        <input
-          v-model="filters"
-          class="input custom-text-filter"
-          placeholder="Search..."
+  <div class="list-flex-toolbar flex-list-v1">
+    <VButtons>
+      <VButton
+        to="/sidebar/layouts/form-layouts-1"
+        color="primary"
+        icon="fas fa-plus"
+        elevated
+      >
+        Créer un nouveau lien de paiement
+      </VButton>
+    </VButtons>
+  </div>
+
+  <!--List-->
+  <div class="list-view list-view-v4"> 
+    <div class="list-view-inner">
+      <TransitionGroup
+        name="list-complete"
+        tag="div"
+      >
+        <!--Item-->
+        <div
+          v-for="(link, index) in links"
+          :key="index"
+          class="list-view-item"
         >
-      </VControl>
-
-      <div class="tabs-inner">
-        <div class="tabs">
-          <ul>
-            <li :class="[tab === 'all' && 'is-active']">
-              <a
-                tabindex="0"
-                role="button"
-                @keydown.space.prevent="tab = 'all'"
-                @click="tab = 'all'"
-              ><span>All</span></a>
-            </li>
-            <li :class="[tab === 'saved' && 'is-active']">
-              <a
-                tabindex="0"
-                role="button"
-                @keydown.space.prevent="tab = 'saved'"
-                @click="tab = 'saved'"
-              ><span>Saved</span></a>
-            </li>
-            <li class="tab-naver" />
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!--List-->
-    <div class="list-view list-view-v4">
-      <!--List Empty Search Placeholder -->
-      <VPlaceholderPage
-        :class="[filteredData.length !== 0 && 'is-hidden']"
-        title="We couldn't find any matching results."
-        subtitle="Too bad. Looks like we couldn't find any matching results for the
-          search terms you've entered. Please try different search terms or
-          criteria."
-        larger
-      >
-        <template #image>
-          <img
-            class="light-image"
-            src="/@src/assets/illustrations/placeholders/search-3.svg"
-            alt=""
-          >
-          <img
-            class="dark-image"
-            src="/@src/assets/illustrations/placeholders/search-3-dark.svg"
-            alt=""
-          >
-        </template>
-      </VPlaceholderPage>
-
-      <!--Active Tab-->
-      <div
-        id="active-items-tab"
-        class="tab-content"
-        :class="[tab === 'all' && 'is-active']"
-      >
-        <div class="list-view-inner">
-          <TransitionGroup
-            name="list-complete"
-            tag="div"
-          >
-            <!--Item-->
-            <div
-              v-for="(item, key) in filteredData"
-              :key="key"
-              class="list-view-item"
-            >
-              <div class="list-view-item-inner">
-                <div class="pre-meta">
-                  <h3>{{ item.name }}</h3>
-                </div>
-                <img
-                  class="avatar"
-                  :src="item.icon"
-                  alt=""
-                  @error.once="onceImageErrored(150)"
+          <div class="list-view-item-inner">
+            <div class="pre-meta">
+              <h3>{{ link.name_link }}</h3>
+            </div>
+              
+            <div class="meta-left">
+              <h3>
+                <span>{{ link.desc }}</span>
+              </h3>
+              <span>
+                <i
+                  aria-hidden="true"
+                  class="iconify"
+                  data-icon="feather:archive"
+                />
+                <span>{{ link.click_number }}</span>
+                <i
+                  aria-hidden="true"
+                  class="fas fa-circle icon-separator"
+                />
+                <i
+                  aria-hidden="true"
+                  class="iconify"
+                  data-icon="feather:clock"
+                />
+                <span>{{ link.amount }}</span>
+                <i
+                  aria-hidden="true"
+                  class="fas fa-circle icon-separator"
+                />
+                  
+              </span>
+            </div>
+            <div class="meta-right">
+              <div class="buttons">
+                <VButton
+                  bold
+                  @click="openLinkDetailsModal"
                 >
-                <div class="meta-left">
-                  <h3>
-                    <img
-                      class="avatar"
-                      :src="item.author.avatar"
-                      alt=""
-                      @error.once="onceImageErrored(150)"
-                    >
-                    <span>{{ item.author.name }}</span>
-                  </h3>
-                  <span>
+                  <span class="icon">
                     <i
                       aria-hidden="true"
                       class="iconify"
-                      data-icon="feather:archive"
+                      data-icon="feather:eye"
                     />
-                    <span>{{ item.category }}</span>
-                    <i
-                      aria-hidden="true"
-                      class="fas fa-circle icon-separator"
-                    />
-                    <i
-                      aria-hidden="true"
-                      class="iconify"
-                      data-icon="feather:clock"
-                    />
-                    <span>{{ item.duration }}</span>
-                    <i
-                      aria-hidden="true"
-                      class="fas fa-circle icon-separator"
-                    />
-                    <i
-                      aria-hidden="true"
-                      class="iconify"
-                      data-icon="feather:paperclip"
-                    />
-                    <span>{{ item.attachments }} files</span>
                   </span>
-                </div>
-                <div class="meta-right">
-                  <div class="network">
-                    <VAvatarStack
-                      :avatars="item.followers"
-                      size="small"
-                      :limit="3"
+                  <span>View</span>
+                </VButton>
+                <button
+                  class="button is-light is-circle hint--bubble hint--primary hint--top"
+                  data-hint="Delete"
+                  @click="deleteLink(`${link.id}`)"
+                >
+                  <span class="icon is-small">
+                    <i
+                      aria-hidden="true"
+                      class="iconify"
+                      data-icon="feather:delete"
                     />
-                    <span>Like this</span>
-                  </div>
-                  <div class="buttons">
-                    <a class="button v-button is-primary is-outlined is-raised">
-                      View Recipe
-                    </a>
-                    <button
-                      class="button is-light is-circle hint--bubble hint--primary hint--top"
-                      data-hint="Save"
-                    >
-                      <span class="icon is-small">
-                        <i
-                          aria-hidden="true"
-                          class="iconify"
-                          data-icon="feather:heart"
-                        />
-                      </span>
-                    </button>
-                  </div>
-                </div>
+                  </span>
+                </button>
               </div>
             </div>
-          </TransitionGroup>
+          </div>
         </div>
-
-        <VFlexPagination
-          v-if="filteredData.length > 5"
-          :item-per-page="10"
-          :total-items="873"
-          :current-page="42"
-          :max-links-displayed="7"
-        />
-      </div>
-
-      <!--Inactive Tab-->
-      <div
-        id="inactive-items-tab"
-        class="tab-content"
-        :class="[tab === 'saved' && 'is-active']"
-      >
-        <div class="list-view-inner">
-          <!--Empty placeholder-->
-          <VPlaceholderPage
-            title="No saved recipes."
-            subtitle="Looks like you don't have any saved recipes for the moment.
-                Start by exploring the latest ones and add your favorites to the
-                saved recipes section."
-            larger
-          >
-            <template #image>
-              <img
-                class="light-image"
-                src="/@src/assets/illustrations/placeholders/cooking.svg"
-                alt=""
-              >
-              <img
-                class="dark-image"
-                src="/@src/assets/illustrations/placeholders/cooking-dark.svg"
-                alt=""
-              >
-            </template>
-          </VPlaceholderPage>
-        </div>
-      </div>
+      </TransitionGroup>
     </div>
+    <VModal 
+      :open="centeredActionsOpen" 
+      actions="center" 
+      title="Détails du Lien"
+      @close="centeredActionsOpen = false"
+    >
+      <template #content>
+        <div v-if="selectedLinkId !== null">
+          <div
+            v-for="(filteredLink, index) in filteredLinks"
+            :key="index"
+          >
+            <VField>
+              <VLabel>Nom du lien</VLabel>
+              <VControl>
+                <VInput
+                  v-model="filteredLink.name_link"
+                  type="text"
+                  placeholder="john.doe"
+                  readonly
+                />
+              </VControl>
+            </VField>
+            <VField>
+              <VLabel>Format du lien</VLabel>
+              <VControl>
+                <VInput
+                  v-model="filteredLink.format_link"
+                  type="text"
+                  placeholder="john.doe"
+                  readonly
+                />
+              </VControl>
+            </VField>
+            <VField>
+              <VLabel>Nombre Max de Click</VLabel>
+              <VControl>
+                <VInput
+                  v-model="filteredLink.click_number"
+                  type="text"
+                  placeholder="john.doe"
+                  readonly
+                />
+              </VControl>
+            </VField>
+            <VField>
+              <VLabel>Description</VLabel>
+              <VControl>
+                <VTextarea
+                  v-model="filteredLink.desc"
+                  rows="4"
+                  placeholder="A longer message..."
+                  readonly
+                />
+              </VControl>
+            </VField>
+            <VField>
+              <VLabel>Montant</VLabel>
+              <VControl>
+                <VInput
+                  v-model="filteredLink.amount"
+                  type="text"
+                  placeholder="john.doe"
+                  readonly
+                />
+              </VControl>
+            </VField>
+            <VField>
+              <VLabel>Montant collecter</VLabel>
+              <VControl>
+                <VInput
+                  v-model="filteredLink.amount"
+                  type="text"
+                  placeholder="john.doe"
+                  readonly
+                />
+              </VControl>
+            </VField>
+            <VField>
+              <VLabel>Nombre de Click effectuer</VLabel>
+              <VControl>
+                <VInput
+                  v-model="filteredLink.click"
+                  type="text"
+                  placeholder="john.doe"
+                  readonly
+                />
+              </VControl>
+            </VField>
+          </div>
+        </div>
+        <div v-else>
+          <p>Aucun lien sélectionné.</p>
+        </div>
+      </template>
+    </VModal>
+    <VModal 
+      :open="deleteConfirmationOpen" 
+      actions="center" 
+      title="Confirmer la suppression"
+      @close="deleteConfirmationOpen = false"
+    >
+      <template #content>
+        <p>Êtes-vous sûr de vouloir supprimer ce lien ?</p>
+        <div class="buttons">
+          <VButton
+            color="danger"
+            @click="deleteLinkConfirmed"
+          >
+            Oui
+          </VButton>
+          <VButton
+            color="primary"
+            @click="deleteConfirmationOpen = false"
+          >
+            Non
+          </VButton>
+        </div>
+      </template>
+    </VModal>
   </div>
 </template>
 

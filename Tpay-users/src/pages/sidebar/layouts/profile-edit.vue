@@ -29,7 +29,7 @@
                   aria-hidden="true"
                   class="lnil lnil-user-alt"
                 />
-                <span>General</span>
+                <span>Géneral</span>
                 <span class="end rtl-reflect">
                   <i
                     aria-hidden="true"
@@ -45,7 +45,7 @@
                   aria-hidden="true"
                   class="lnil lnil-crown-alt"
                 />
-                <span>Experience</span>
+                <span>Equipe</span>
                 <span class="end rtl-reflect">
                   <i
                     aria-hidden="true"
@@ -53,22 +53,7 @@
                   />
                 </span>
               </RouterLink>
-              <RouterLink
-                to="/sidebar/layouts/profile-edit/skills"
-                class="account-menu-item"
-              >
-                <i
-                  aria-hidden="true"
-                  class="lnil lnil-quill"
-                />
-                <span>Skills</span>
-                <span class="end rtl-reflect">
-                  <i
-                    aria-hidden="true"
-                    class="fas fa-arrow-right"
-                  />
-                </span>
-              </RouterLink>
+            
               <RouterLink
                 to="/sidebar/layouts/profile-edit/settings"
                 class="account-menu-item"
@@ -77,7 +62,7 @@
                   aria-hidden="true"
                   class="lnil lnil-cog"
                 />
-                <span>Settings</span>
+                <span>Paramètres</span>
                 <span class="end rtl-reflect">
                   <i
                     aria-hidden="true"

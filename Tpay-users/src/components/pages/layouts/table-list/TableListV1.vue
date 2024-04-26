@@ -2,7 +2,7 @@
 import { userList } from '/@src/data/layouts/datatable-v1'
 
 import type { VAvatarProps } from '/@src/components/base/avatar/VAvatar.vue'
-
+const centeredActionsOpen = ref(false)
 export interface UserData extends VAvatarProps {
   id: number
   username: string
@@ -49,34 +49,22 @@ const filteredData = computed(() => {
           >
         </VControl>
       </VField>
-
-      <VButtons>
-        <VButton
-          color="primary"
-          icon="fas fa-plus"
-          elevated
-        >
-          Add User
-        </VButton>
-      </VButtons>
     </div>
     <div class="datatable-wrapper">
       <div class="table-container">
         <table class="table datatable-table is-fullwidth">
           <thead>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Industry</th>
-            <th>Contacts</th>
-            <th>Actions</th>
+            <th>Comptes</th>
+            <th>Description</th>
+            <th>Montant</th>
+            <th>Statut</th>
+            <th>Détails</th>
           </thead>
           <tbody>
             <tr
               v-for="user in filteredData"
               :key="user.id"
             >
-              <td>{{ user.id }}</td>
               <td>
                 <div class="flex-media">
                   <VAvatar
@@ -101,7 +89,19 @@ const filteredData = computed(() => {
                 </div>
               </td>
               <td>
-                <FlexTableDropdown />
+                <VButton
+                  bold
+                  @click="centeredActionsOpen = true"
+                >
+                  <span class="icon">
+                    <i
+                      aria-hidden="true"
+                      class="iconify"
+                      data-icon="feather:eye"
+                    />
+                  </span>
+                  <span>View</span>
+                </VButton>
               </td>
             </tr>
           </tbody>
@@ -131,14 +131,89 @@ const filteredData = computed(() => {
 
     <!--Table Pagination-->
     <VFlexPagination
-      v-if="filteredData.length > 5"
+      v-if="filteredData.length > 3"
       v-model:current-page="page"
-      :item-per-page="10"
-      :total-items="873"
-      :max-links-displayed="7"
+      :item-per-page="5"
+      :total-items="10"
+      :max-links-displayed="3"
       no-router
       class="mt-4"
     />
+    <VModal 
+      :open="centeredActionsOpen" 
+      actions="center" 
+      title="Détails de la Dispute"
+      @close="centeredActionsOpen = false"
+    >
+      <template #content>
+        <VField>
+          <VLabel>Nom</VLabel>
+          <VControl>
+            <VInput
+              v-model="input"
+              type="text"
+              placeholder="john.doe"
+              readonly
+            />
+          </VControl>
+        </VField>
+        <VField>
+          <VLabel>Client</VLabel>
+          <VControl>
+            <VInput
+              v-model="input"
+              type="text"
+              placeholder="john.doe"
+              readonly
+            />
+          </VControl>
+        </VField>
+        <VField>
+          <VLabel>Type de Dispute</VLabel>
+          <VControl>
+            <VInput
+              v-model="input"
+              type="text"
+              placeholder="john.doe"
+              readonly
+            />
+          </VControl>
+        </VField>
+        <VField>
+          <VLabel>Description</VLabel>
+          <VControl>
+            <VTextarea
+              v-model="textarea"
+              rows="4"
+              placeholder="A longer message..."
+              readonly
+            />
+          </VControl>
+        </VField>
+        <VField>
+          <VLabel>Montant</VLabel>
+          <VControl>
+            <VInput
+              v-model="input"
+              type="text"
+              placeholder="john.doe"
+              readonly
+            />
+          </VControl>
+        </VField>
+        <VField>
+          <VLabel>Status</VLabel>
+          <VControl>
+            <VInput
+              v-model="input"
+              type="text"
+              placeholder="john.doe"
+              readonly
+            />
+          </VControl>
+        </VField>
+      </template>
+    </VModal>
   </div>
 </template>
 

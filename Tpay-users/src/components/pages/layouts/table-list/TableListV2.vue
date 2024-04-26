@@ -1,9 +1,25 @@
 <script setup lang="ts">
-import * as listData from '/@src/data/layouts/flex-list-v2'
+//import * as listData from '/@src/data/layouts/flex-list-v2'
+import sleep from '/@src/utils/sleep'
+import { useRouter } from 'vue-router'
+import { useNotyf } from '/@src/composable/useNotyf'
+import ApiService from '/@src/service/api'
+const smallFormOpen = ref(false)
+const router = useRouter()
+const notyf = useNotyf()
+const isLoading = ref(false)  
 
-import type { VAvatarProps } from '/@src/components/base/avatar/VAvatar.vue'
+import { ref, onMounted, computed } from 'vue'
 
-export interface ProjectData {
+interface BeneficiaryData {
+  id: number;
+  b_name: string;
+  b_number: string; 
+  b_email: string;
+  b_compte: string;
+}
+
+interface ProjectData {
   id: number
   name: string
   customer: string
@@ -11,19 +27,82 @@ export interface ProjectData {
   picture: string
   industry: string
   status: string
-  team: VAvatarProps[]
 }
+
+const deleteConfirmationOpen = ref(false);
+let beneficiaryToDeleteId: string | null = null;
+const beneficiary = ref<BeneficiaryData[]>([])
+const projects = ref<ProjectData[]>([])
+
+const fetchBeneficiary = async () => {
+  try {
+    const response = await ApiService.getBeneficiary()
+    console.log('befe', response)
+    beneficiary.value = response.data.data as BeneficiaryData[]
+  } catch (error) {
+    console.error('Erreur lors de la récupération des Bénéficiaire :', error)
+  }
+}
+
+onMounted(async () => {
+  await fetchBeneficiary()
+    projects.value = beneficiary.value.map((beneficiary) => ({
+    id: beneficiary.id,
+    name: beneficiary.b_name,
+    customer: beneficiary.b_email,
+    duration: '',
+    picture: '/images/avatars/picture.jpg',
+    industry: beneficiary.b_number,
+    status: beneficiary.b_compte
+  }))
+})
+
+const formData = {
+  b_name: '',
+  b_number: '',
+  b_email: '',
+  b_compte: '',
+};
+
+const onSubmit = async () => {
+  if (!isLoading.value) {
+    try {
+      
+      const BeneficiaryData = {
+        b_name: formData.b_name,
+        b_number: formData.b_number,
+        b_email: formData.b_email,
+        b_compte: formData.b_compte,
+      };
+
+      const response = await ApiService.storeBeneficiary(BeneficiaryData);
+      console.log(response.data);
+      isLoading.value = true;
+      await sleep(1000);
+      notyf.dismissAll();
+      if (response.data.status) {
+        notyf.success(`Bénéficiaire créé avec succès`);
+        router.push('/sidebar/layouts/list-datatable-2');
+        smallFormOpen.value = false; 
+        await fetchBeneficiary();
+      } else {
+        notyf.error('Erreur lors de la création du Bénéficiaire. Veuillez réessayer.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+};
 
 const page = ref(42)
 const filters = ref('')
 
-const projects = listData.projects as ProjectData[]
 const filteredData = computed(() => {
   if (!filters.value) {
-    return projects
+    return projects.value
   } else {
     const filterRe = new RegExp(filters.value, 'i')
-    return projects.filter((item) => {
+    return projects.value.filter((item) => {
       return (
         item.name.match(filterRe) ||
         item.customer.match(filterRe) ||
@@ -34,6 +113,29 @@ const filteredData = computed(() => {
     })
   }
 })
+
+const deleteBeneficiaryConfirmed = async () => {
+  try {
+    if (beneficiaryToDeleteId !== null) {
+      await ApiService.deleteBeneficiary(beneficiaryToDeleteId);
+      
+      deleteConfirmationOpen.value = false;
+      smallFormOpen.value = false; 
+      await fetchBeneficiary();
+    }
+  } catch (error) {
+    console.error('Erreur lors de la suppression du lien :', error);
+    deleteConfirmationOpen.value = false;
+  }
+}
+
+
+const deleteLink = async (beneficiaryId: string) => {
+  deleteConfirmationOpen.value = true;
+  beneficiaryToDeleteId = beneficiaryId;
+  await fetchBeneficiary();
+}
+
 </script>
 
 <template>
@@ -54,8 +156,9 @@ const filteredData = computed(() => {
           color="primary"
           icon="fas fa-plus"
           elevated
+          @click="smallFormOpen = true"
         >
-          New Project
+          Creer un bénéficaire
         </VButton>
       </VButtons>
     </div>
@@ -64,11 +167,10 @@ const filteredData = computed(() => {
         <table class="table datatable-table is-fullwidth">
           <thead>
             <th>Id</th>
-            <th>Project</th>
-            <th>Customer</th>
-            <th>Industry</th>
-            <th>Status</th>
-            <th>Team</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th>Compte</th>
             <th>Actions</th>
           </thead>
           <tbody>
@@ -92,17 +194,21 @@ const filteredData = computed(() => {
               <td>{{ project.customer }}</td>
               <td>{{ project.industry }}</td>
               <td><VTag :label="project.status" /></td>
+            
               <td>
-                <div>
-                  <VAvatarStack
-                    :avatars="project.team"
-                    size="small"
-                    :limit="3"
-                  />
-                </div>
-              </td>
-              <td>
-                <FlexTableDropdown />
+                <button
+                  class="button is-light is-circle hint--bubble hint--warning hint--top"
+                  data-hint="Delete"
+                  @click="deleteLink(`${project.id}`)"
+                >
+                  <span class="icon is-small">
+                    <i
+                      aria-hidden="true"
+                      class="iconify"
+                      data-icon="feather:delete"
+                    />
+                  </span>
+                </button>
               </td>
             </tr>
           </tbody>
@@ -141,6 +247,97 @@ const filteredData = computed(() => {
       class="mt-4"
     />
   </div>
+  <VModal
+    is="form"
+    :open="smallFormOpen"
+    title="Créer un Bénéficiaire Courant"
+    size="small"
+    actions="right"
+    @close="smallFormOpen = false"
+    @submit.prevent="onSubmit"
+  >
+    <template #content>
+      <div class="modal-form">
+        <VField>
+          <VLabel>Nom du Bénéficiaire</VLabel>
+          <VControl icon="feather:user">
+            <VInput
+              v-model="formData.b_name"
+              type="text"
+              placeholder="Nom"
+              autocomplete="given_name"
+            />
+          </VControl>
+        </VField>
+        <VField>
+          <VLabel>Numéro du Bénéficiaire</VLabel>
+          <VControl icon="feather:phone">
+            <VInput
+              v-model="formData.b_number"
+              type="text"
+              placeholder="Numéro"
+              autocomplete="given_name"
+            />
+          </VControl>
+        </VField>
+        <VField>
+          <VLabel>Email du Bénéficiaire</VLabel>
+          <VControl icon="feather:mail">
+            <VInput
+              v-model="formData.b_email"
+              type="text"
+              placeholder="Email"
+              autocomplete="given_name"
+            />
+          </VControl>
+        </VField>
+        <VField>
+          <VLabel>Type de Compte</VLabel>
+          <VControl icon="feather:command">
+            <VInput
+              v-model="formData.b_compte"
+              type="text"
+              placeholder="MTN, Moov ou autres"
+              autocomplete="given_name"
+            />
+          </VControl>
+        </VField>
+      </div>
+    </template>
+    <template #action>
+      <VButton
+        type="submit"
+        color="primary"
+        raised
+      >
+        Creer
+      </VButton>
+    </template>
+  </VModal>
+  <VModal 
+    :open="deleteConfirmationOpen" 
+    actions="center" 
+    title="Confirmer la suppression"
+    @close="deleteConfirmationOpen = false"
+  >
+    <template #content>
+      <p>Êtes-vous sûr de vouloir supprimer ce Bénéficiaire ?</p>
+      <div class="buttons">
+        <VButton
+          color="danger"
+          @click="deleteBeneficiaryConfirmed"
+        >
+          Oui
+        </VButton>
+        <VButton
+          color="primary"
+          @click="deleteConfirmationOpen = false"
+        >
+          Non
+        </VButton>
+      </div>
+    </template>
+  </VModal>
 </template>
 
 <style lang="scss" scoped>

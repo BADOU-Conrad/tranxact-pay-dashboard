@@ -2,10 +2,10 @@
 import { useViewWrapper } from '/@src/stores/viewWrapper'
 
 const viewWrapper = useViewWrapper()
-viewWrapper.setPageTitle('Profile Notifications')
+viewWrapper.setPageTitle('Vous êtes en mode Test')
 
 useHead({
-  title: 'Profile Notifications - Sidebar - Vuero',
+  title: 'Dashbord Test - Sidebar - Vuero',
 })
 </script>
 

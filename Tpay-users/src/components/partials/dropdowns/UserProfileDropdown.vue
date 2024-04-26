@@ -43,7 +43,7 @@ function logout() {
       </div>
 
       <a
-        href="#"
+        href="/sidebar/layouts/profile-view"
         role="menuitem"
         class="dropdown-item is-media"
       >
@@ -55,31 +55,14 @@ function logout() {
         </div>
         <div class="meta">
           <span>Profile</span>
-          <span>View your profile</span>
+          <span>Voir mon profile</span>
         </div>
       </a>
 
       <hr class="dropdown-divider">
 
       <a
-        href="#"
-        role="menuitem"
-        class="dropdown-item is-media"
-      >
-        <div class="icon">
-          <i
-            aria-hidden="true"
-            class="lnil lnil-briefcase"
-          />
-        </div>
-        <div class="meta">
-          <span>Projects</span>
-          <span>All my projects</span>
-        </div>
-      </a>
-
-      <a
-        href="#"
+        href="/sidebar/layouts/list-flex-1"
         role="menuitem"
         class="dropdown-item is-media"
       >
@@ -90,15 +73,15 @@ function logout() {
           />
         </div>
         <div class="meta">
-          <span>Team</span>
-          <span>Manage your team</span>
+          <span>Equipe</span>
+          <span>Gerer les membres</span>
         </div>
       </a>
 
       <hr class="dropdown-divider">
 
       <a
-        href="#"
+        href="/sidebar/layouts/profile-edit"
         role="menuitem"
         class="dropdown-item is-media"
       >
@@ -109,8 +92,8 @@ function logout() {
           />
         </div>
         <div class="meta">
-          <span>Settings</span>
-          <span>Account settings</span>
+          <span>Paramètres</span>
+          <span>Paramètres de compte</span>
         </div>
       </a>
 

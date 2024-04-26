@@ -103,63 +103,7 @@
           </RouterLink>
         </VCollapseLinks>
 
-        <VCollapseLinks>
-          <template #header>
-            Banking
-            <i
-              aria-hidden="true"
-              class="iconify rtl-hidden"
-              data-icon="feather:chevron-right"
-            />
-            <i
-              aria-hidden="true"
-              class="iconify ltr-hidden"
-              data-icon="feather:chevron-left"
-            />
-          </template>
-
-          <RouterLink
-            to="/sidebar/dashboards/banking-1"
-            class="is-submenu"
-          >
-            <i
-              aria-hidden="true"
-              class="lnil lnil-bank"
-            />
-            <span>Banking V1</span>
-          </RouterLink>
-          <RouterLink
-            to="/sidebar/dashboards/banking-1"
-            class="is-submenu"
-          >
-            <i
-              aria-hidden="true"
-              class="lnil lnil-bank"
-            />
-            <span>Banking V1</span>
-          </RouterLink>
-          <RouterLink
-            to="/sidebar/dashboards/banking-2"
-            class="is-submenu"
-          >
-            <i
-              aria-hidden="true"
-              class="lnil lnil-bank"
-            />
-            <span>Banking V2</span>
-          </RouterLink>
-          <RouterLink
-            to="/sidebar/dashboards/banking-3"
-            class="is-submenu"
-          >
-            <i
-              aria-hidden="true"
-              class="lnil lnil-bank"
-            />
-            <span>Banking V3</span>
-          </RouterLink>
-        </VCollapseLinks>
-
+   
         <VCollapseLinks>
           <template #header>
             Business

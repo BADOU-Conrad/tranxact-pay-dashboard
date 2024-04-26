@@ -24,7 +24,7 @@ const filteredData = computed(() => {
 </script>
 
 <template>
-  <div class="list-view-toolbar">
+  <div class="list-flex-toolbar flex-list-v1">
     <VField>
       <VControl icon="feather:search">
         <input
@@ -35,31 +35,17 @@ const filteredData = computed(() => {
       </VControl>
     </VField>
 
-    <div class="tabs-inner">
-      <div class="tabs">
-        <ul>
-          <li :class="[activeTab === 'active' && 'is-active']">
-            <a
-              tabindex="0"
-              role="button"
-              @keydown.space.prevent="activeTab = 'active'"
-              @click="activeTab = 'active'"
-            ><span>Active</span></a>
-          </li>
-          <li :class="[activeTab === 'inactive' && 'is-active']">
-            <a
-              tabindex="0"
-              role="button"
-              @keydown.space.prevent="activeTab = 'inactive'"
-              @click="activeTab = 'inactive'"
-            ><span>Inactive</span></a>
-          </li>
-          <li class="tab-naver" />
-        </ul>
-      </div>
-    </div>
+    <VButtons>
+      <VButton
+        to="/sidebar/layouts/form-layouts-2"
+        color="primary"
+        icon="fas fa-plus"
+        elevated
+      >
+        Nouveau Retrait
+      </VButton>
+    </VButtons>
   </div>
-
   <div class="page-content-inner">
     <!--List-->
     <div class="list-view list-view-v2">

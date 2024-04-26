@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { VAvatarProps, VAvatarColor } from '/@src/components/base/avatar/VAvatar.vue'
 import { projects } from '/@src/data/layouts/card-grid-v3'
-
+import { ref } from 'vue'
+const centeredActionsOpen = ref(false)
 const filters = ref('')
 
 const filteredData = computed(() => {
@@ -53,22 +54,20 @@ function getAvatarData(user: any): VAvatarProps {
               v-model="valueSingle"
               :options="optionsSingle"
               :max-height="145"
-              placeholder="Select an option"
+              placeholder="Filtre par compte"
             />
           </VControl>
         </VField>
-        <VButton
-          color="primary"
-          raised
-        >
-          <span class="icon">
-            <i
-              aria-hidden="true"
-              class="fas fa-plus"
+        <VField class="h-hidden-mobile">
+          <VControl>
+            <Multiselect
+              v-model="valueSingle"
+              :options="optionsSingle"
+              :max-height="145"
+              placeholder="Filtre par pays"
             />
-          </span>
-          <span>New Project</span>
-        </VButton>
+          </VControl>
+        </VField>
       </div>
     </div>
 
@@ -155,31 +154,100 @@ function getAvatarData(user: any): VAvatarProps {
                 v-bind="getAvatarData(user)"
               />
             </div>
-            <div class="buttons">
-              <button class="button v-button is-dark-outlined">
-                <span class="icon">
-                  <i
-                    aria-hidden="true"
-                    class="iconify"
-                    data-icon="feather:eye"
-                  />
-                </span>
-                <span>View</span>
-              </button>
-              <button class="button v-button is-dark-outlined">
-                <span class="icon">
-                  <i
-                    aria-hidden="true"
-                    class="iconify"
-                    data-icon="feather:edit-2"
-                  />
-                </span>
-                <span>Edit</span>
-              </button>
-            </div>
+            <VButton
+              bold
+              @click="centeredActionsOpen = true"
+            >
+              <span class="icon">
+                <i
+                  aria-hidden="true"
+                  class="iconify"
+                  data-icon="feather:eye"
+                />
+              </span>
+              <span>View</span>
+            </VButton>
           </div>
         </div>
       </TransitionGroup>
+
+      
+
+      <VModal 
+        :open="centeredActionsOpen" 
+        actions="center" 
+        title="Détails de la Dispute"
+        @close="centeredActionsOpen = false"
+      >
+        <template #content>
+          <VField>
+            <VLabel>Nom</VLabel>
+            <VControl>
+              <VInput
+                v-model="input"
+                type="text"
+                placeholder="john.doe"
+                readonly
+              />
+            </VControl>
+          </VField>
+          <VField>
+            <VLabel>Client</VLabel>
+            <VControl>
+              <VInput
+                v-model="input"
+                type="text"
+                placeholder="john.doe"
+                readonly
+              />
+            </VControl>
+          </VField>
+          <VField>
+            <VLabel>Type de Dispute</VLabel>
+            <VControl>
+              <VInput
+                v-model="input"
+                type="text"
+                placeholder="john.doe"
+                readonly
+              />
+            </VControl>
+          </VField>
+          <VField>
+            <VLabel>Description</VLabel>
+            <VControl>
+              <VTextarea
+                v-model="textarea"
+                rows="4"
+                placeholder="A longer message..."
+                readonly
+              />
+            </VControl>
+          </VField>
+          <VField>
+            <VLabel>Montant</VLabel>
+            <VControl>
+              <VInput
+                v-model="input"
+                type="text"
+                placeholder="john.doe"
+                readonly
+              />
+            </VControl>
+          </VField>
+          <VField>
+            <VLabel>Status</VLabel>
+            <VControl>
+              <VInput
+                v-model="input"
+                type="text"
+                placeholder="john.doe"
+                readonly
+              />
+            </VControl>
+          </VField>
+        </template>
+      </VModal>
     </div>
   </div>
 </template>
