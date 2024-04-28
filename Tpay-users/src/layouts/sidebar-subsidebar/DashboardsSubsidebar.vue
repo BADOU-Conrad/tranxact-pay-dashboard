@@ -32,16 +32,11 @@ const activate = localStorage.getItem('activate')
     >
       <ul>
         <li>
-          <div v-if="!activate">
-            <RouterLink to="/sidebar/layouts/profile-notifications">
-              Tableau de bord
-            </RouterLink>
-          </div>
-          <div v-if="activate">
-            <RouterLink to="/sidebar/dashboards/banking-2">
-              Tableau de bord
-            </RouterLink>
-          </div>
+          <RouterLink
+            :to="activate ? '/sidebar/dashboards/banking-2' : '/sidebar/layouts/profile-notifications'"
+          >
+            Tableau de bord
+          </RouterLink>
         </li>
       </ul>
     </div>

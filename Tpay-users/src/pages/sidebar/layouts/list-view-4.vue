@@ -5,10 +5,10 @@ type TabId = 'all' | 'saved'
 const activeTab = ref<TabId>('all')
 
 const viewWrapper = useViewWrapper()
-viewWrapper.setPageTitle('Historique de Collecte ')
+viewWrapper.setPageTitle('Historique des Liens de Collecte ')
 
 useHead({
-  title: 'Historique de Collecte - Tranxact',
+  title: 'Collecte - Tranxact',
 })
 </script>
 

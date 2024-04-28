@@ -46,54 +46,34 @@ const emit = defineEmits(['close'])
               data-icon="feather:chevron-left"
             />
           </template>
-          <div v-if="!activate">
-            <RouterLink
-              to="/sidebar/layouts/profile-notifications"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt-1"
-              />
-              <span>Api keys</span>
-            </RouterLink>
-          </div>
-          <div v-if="activate">
-            <RouterLink
-              to="/sidebar/layouts/list-view-3"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt-1"
-              />
-              <span>Api keys</span>
-            </RouterLink>
-          </div>
-          <div v-if="!activate">
-            <RouterLink
-              to="/sidebar/layouts/profile-notifications"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt-1"
-              />
-              <span>WebHook</span>
-            </RouterLink>
-          </div>
-          <div v-if="activate">
-            <RouterLink
-              to="/sidebar/layouts/list-flex-2"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt-1"
-              />
-              <span>WebHook</span>
-            </RouterLink>
-          </div>
+         
+          <RouterLink
+             
+            :to="activate ? '/sidebar/layouts/list-view-3' : '/sidebar/layouts/profile-notifications'"
+
+            class="is-submenu"
+          >
+            <i
+              aria-hidden="true"
+              class="lnil lnil-list-alt-1"
+            />
+            <span>Api keys</span>
+          </RouterLink>
+    
+       
+         
+          <RouterLink
+             
+            :to="activate ? '/sidebar/layouts/list-flex-2' : '/sidebar/layouts/profile-notifications'"
+         
+            class="is-submenu"
+          >
+            <i
+              aria-hidden="true"
+              class="lnil lnil-list-alt-1"
+            />
+            <span>WebHook</span>
+          </RouterLink>
         </VCollapseLinks>
         <VCollapseLinks
           v-model:open="openSubsidebarLinks"
@@ -112,54 +92,35 @@ const emit = defineEmits(['close'])
               data-icon="feather:chevron-left"
             />
           </template>
-          <div v-if="!activate">
-            <RouterLink
-              to="/sidebar/layouts/profile-notifications"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt-1"
-              />
-              <span>MarketPlace </span>
-            </RouterLink>
-          </div>
-          <div v-if="activate">
-            <RouterLink
-              to="/sidebar/layouts/list-flex-1"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt-1"
-              />
-              <span>MarketPlace </span>
-            </RouterLink>
-          </div>
-          <div v-if="!activate">
-            <RouterLink
-              to="/sidebar/layouts/profile-notifications"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt-1"
-              />
-              <span>Cashout Page builder</span>
-            </RouterLink>
-          </div>
-          <div v-if="activate">
-            <RouterLink
-              to="/sidebar/layouts/list-flex-2"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt-1"
-              />
-              <span>Cashout Page builder</span>
-            </RouterLink>
-          </div>
+          
+       
+          <RouterLink
+             
+            :to="activate ? '/sidebar/layouts/list-flex-1' : '/sidebar/layouts/profile-notifications'"
+         
+            class="is-submenu"
+          >
+            <i
+              aria-hidden="true"
+              class="lnil lnil-list-alt-1"
+            />
+            <span>MarketPlace </span>
+          </RouterLink>
+         
+          
+ 
+          <RouterLink
+             
+            :to="activate ? '/sidebar/layouts/list-flex-2' : '/sidebar/layouts/profile-notifications'"
+
+            class="is-submenu"
+          >
+            <i
+              aria-hidden="true"
+              class="lnil lnil-list-alt-1"
+            />
+            <span>Cashout Page builder</span>
+          </RouterLink>
         </VCollapseLinks>
         <li>
           <RouterLink to="/elements/helpers">

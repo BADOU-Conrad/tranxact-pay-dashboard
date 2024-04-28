@@ -1,6 +1,6 @@
 <script setup lang="ts">
 //import { popovers } from '/@src/data/users/userPopovers'
-const smallFormOpen = ref(false)
+//const smallFormOpen = ref(false)
 const smallFormOpen2 = ref(false)
 //const selectedColor = ref('')
 //const calendarTarget = ref('')
@@ -13,7 +13,7 @@ const smallFormOpen2 = ref(false)
 import { useRouter } from 'vue-router'
 import ApiService from '/@src/service/api'
 import { useNotyf } from '/@src/composable/useNotyf'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 const router = useRouter()
 const notyf = useNotyf()
@@ -24,37 +24,17 @@ const onAddImage = (error: any, fileInfo: any) => {
     console.error(error);
     return;
   }
-
   const file = fileInfo.file as File;
+  console.log(file);
   if (file) {
-    formData.identity_pic = file;
+    formData.identity_pic = file.name;
+    console.log(file);
   }
 }
 
 const onRemoveImage = () => {
   formData.identity_pic = null;
 }
-const { y } = useWindowScroll()
-
-const onAddPDF = (error: any, fileInfo: any) => {
-  if (error) {
-    console.error(error);
-    return;
-  }
-
-  const file = fileInfo.file as File;
-  if (file) {
-    formData.doc_path_all = file;
-  }
-}
-
-const onRemovePDF = () => {
-  formData.doc_path_all = null;
-}
-
-const isStuck = computed(() => {
-  return y.value > 30
-})
 
 const formData = {
   phone_number: '',
@@ -66,10 +46,10 @@ const formData = {
   num_rccm: ''
 };
 const handlePDFChange = (event: any) => {
-  pdfFile.value = event.target.files[0];
+  console.log(event);
+  const file = event.target.files[0]; 
+  formData.doc_path_all = file.name; 
 }
-const pdfFile = ref(null);
-
 const completeProfile = async () => {
   try {
   
@@ -92,7 +72,7 @@ const onSubmit = async () => {
 }
 
 
-const selectedOption = ref(null); 
+//const selectedOption = ref(null); 
 const options1 = ref([ 
   { value: 'Etablissement', label: 'Etablissement et entreprise Individuel ' },
   { value: 'ONG', label: 'ONG' },
@@ -112,11 +92,11 @@ const options2 = ref([
 
 const selectedOption2 = ref(null); 
 
-const options = ref([
-  { value: 'ADMIN', label: 'Administrateur' },
-  { value: 'DEV', label: 'Développeur' },
-  { value: 'MANAGER', label: 'Financier' },
-]);
+//const options = ref([
+  //{ value: 'ADMIN', label: 'Administrateur' },
+ // { value: 'DEV', label: 'Développeur' },
+ // { value: 'MANAGER', label: 'Financier' },
+//]);
 </script>
 
 <template>
@@ -124,7 +104,7 @@ const options = ref([
     <div class="title-wrap">
       <h2>Validation de compte</h2>
     </div>
-    <VBlock
+    <!--<VBlock
       title="Informations Personelles"
       subtitle="Les informations personnelles du gérant de votre entreprise"
     >
@@ -149,7 +129,7 @@ const options = ref([
         </VButton>
       </template>
     </VBlock>
-    <!--VBlock
+    VBlock
       title="Team Tasks"
       subtitle="View all tasks"
     >
@@ -206,7 +186,7 @@ const options = ref([
     >
       Envoyer la demande de vérification
     </VButton>
-    <VModal
+    <!--  <VModal
       is="form"
       :open="smallFormOpen"
       title="Informaations Personnelles"
@@ -291,7 +271,7 @@ const options = ref([
         </VButton>
       </template>
     </VModal>
-    <!--VModal
+   VModal
       is="form"
       :open="smallFormOpen1"
       title="Information sur votre entreprise"
@@ -453,23 +433,25 @@ const options = ref([
               <div class="column is-6">
                 <VField grouped>
                   <VControl>
-                    <div class="file">
+                    <div class="field">
                       <label>Ajouter le fichier fussionner</label>
                       <div class="file has-name">
-                        <VFilePond
-                          class="profile-filepond"
-                          name="profile_filepond"
-                          :chunk-retry-delays="[500, 1000, 3000]"
-                          label-idle="<i class='lnil lnil-cloud-upload'></i>"
-                          :accepted-file-types="['application/pdf']"
-                          style-panel-layout="compact circle"
-                          style-load-indicator-position="center bottom"
-                          style-progress-indicator-position="right bottom"
-                          style-button-remove-item-position="left bottom"
-                          style-button-process-item-position="right bottom"
-                          @addfile="onAddPDF"                   
-                          @removefile="onRemovePDF"
-                        />
+                        <label class="file-label">
+                          <input
+                            
+                            class="file-input"
+                            type="file"
+                            name="resume"
+                            @change="handlePDFChange"
+                          >
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fas fa-cloud-upload-alt" />
+                            </span>
+
+                          </span>
+                          <span class="file-name light-text"> Ajouter le fichier </span>
+                        </label>
                       </div>
                     </div>
                   </VControl>
@@ -1042,8 +1024,8 @@ const options = ref([
 
     h2 {
       font-family: var(--font-alt);
-      font-weight: 600;
-      font-size: 3.4rem;
+      font-weight: 300;
+      font-size: 2.4rem;
       color: var(--dark-text);
     }
 
@@ -1132,7 +1114,7 @@ const options = ref([
 
     .title-wrap {
       h2 {
-        max-width: 280px;
+        max-width: 180px;
         margin: 0 auto;
       }
     }

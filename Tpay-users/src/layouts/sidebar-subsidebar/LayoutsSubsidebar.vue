@@ -32,16 +32,12 @@ const activate = localStorage.getItem('activate')
     >
       <ul>
         <li>
-          <div v-if="!activate">
-            <RouterLink to="/sidebar/layouts/profile-notifications">
-              Comptes
-            </RouterLink>
-          </div>
-          <div v-if="activate">
-            <RouterLink to="/sidebar/layouts/grid-cards-3">
-              Comptes
-            </RouterLink>
-          </div>
+          <RouterLink
+             
+            :to="activate ? '/sidebar/layouts/grid-cards-3' : '/sidebar/layouts/profile-notifications'"
+          >
+            Comptes
+          </RouterLink>
         </li>
         <VCollapseLinks
           v-model:open="openSubsidebarLinks"
@@ -60,57 +56,33 @@ const activate = localStorage.getItem('activate')
               data-icon="feather:chevron-left"
             />
           </template>
-          <div v-if="!activate">
-            <RouterLink
-              to="/sidebar/layouts/profile-notifications"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt"
-              />
-              <span>Collecter</span>
-            </RouterLink>
-          </div>
-          <div v-if="activate">
-            <RouterLink
-              to="/sidebar/layouts/list-view-4"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt"
-              />
-              <span>Collecter</span>
-            </RouterLink>
-          </div>
-          <div v-if="!activate">
-            <RouterLink
-              to="/sidebar/layouts/profile-notifications"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt"
-              />
-              <span>Historique de Collecte</span>
-            </RouterLink>
-          </div>
-          <div v-if="activate">
-            <RouterLink
-              to="/sidebar/layouts/list-datatable-3"
-              class="is-submenu"
-            >
-              <i
-                aria-hidden="true"
-                class="lnil lnil-list-alt"
-              />
-              <span>Historique de Collecte</span>
-            </RouterLink>
-          </div>
-         
           <RouterLink
-            to="/sidebar/layouts/list-view-2"
+             
+            :to="activate ? '/sidebar/layouts/list-view-4' : '/sidebar/layouts/profile-notifications'"
+            class="is-submenu"
+          >
+            <i
+              aria-hidden="true"
+              class="lnil lnil-list-alt"
+            />
+            <span>Collecter</span>
+          </RouterLink>
+          <RouterLink
+             
+            :to="activate ? '/sidebar/layouts/list-datatable-3' : '/sidebar/layouts/profile-notifications'"
+    
+            class="is-submenu"
+          >
+            <i
+              aria-hidden="true"
+              class="lnil lnil-list-alt"
+            />
+            <span>Historique de Collecte</span>
+          </RouterLink>
+          <RouterLink
+             
+            :to="activate ? '/sidebar/layouts/list-view-2' : '/sidebar/layouts/profile-notifications'"
+         
             class="is-submenu"
           >
             <i
@@ -120,7 +92,8 @@ const activate = localStorage.getItem('activate')
             <span>Retirer (PayOut)</span>
           </RouterLink>
           <RouterLink
-            to="/sidebar/layouts/list-datatable-1"
+             
+            :to="activate ? '/sidebar/layouts/list-datatable-1' : '/sidebar/layouts/profile-notifications'"
             class="is-submenu"
           >
             <i
@@ -132,7 +105,10 @@ const activate = localStorage.getItem('activate')
         </VCollapseLinks>
 
         <li>
-          <RouterLink to="/sidebar/layouts/list-datatable-2">
+          <RouterLink
+            
+            :to="activate ? '/sidebar/layouts/list-datatable-2' : '/sidebar/layouts/profile-notifications'"
+          >
             Bénéficiaire courant
           </RouterLink>
         </li>

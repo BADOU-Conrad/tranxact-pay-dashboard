@@ -2,7 +2,6 @@
 
 import { useRouter } from 'vue-router'
 import ApiService from '/@src/service/api'
-import sleep from '/@src/utils/sleep'
 import { useNotyf } from '/@src/composable/useNotyf'
 import { ref, onMounted, computed } from 'vue'
 
@@ -94,7 +93,7 @@ const createGuess = async () => {
     if (response.data.status) {
       notyf.success('Membre créé avec succès');
       smallFormOpen.value = false;
-      await fetchGuess();
+      router.push('/sidebar/layouts/list-flex-1');
     } else {
       notyf.error('Erreur lors de la création du membre. Veuillez réessayer.');
     }
@@ -109,10 +108,10 @@ const onSubmit = async () => {
   }
 }
 
-const deleteBeneficiaryConfirmed = async () => {
+const deleteGuessConfirmed = async () => {
   try {
     if (guessToDeleteId !== null) {
-      await ApiService.deleteBeneficiary(guessToDeleteId);
+      await ApiService.deleteGuess(guessToDeleteId);
       
       deleteConfirmationOpen.value = false;
       smallFormOpen.value = false; 
@@ -124,9 +123,9 @@ const deleteBeneficiaryConfirmed = async () => {
   }
 }
 
-const deleteLink = async (beneficiaryId: string) => {
+const deleteLink = async (GuessId: string) => {
   deleteConfirmationOpen.value = true;
-  guessToDeleteId = beneficiaryId;
+  guessToDeleteId = GuessId;
   await fetchGuess();
 }
 
@@ -224,9 +223,7 @@ const filteredData = computed(() => {
                 >
                   <VAvatar
                     :picture="item.picture"
-                    :badge="item.badge"
-                    :color="item.color"
-                    :initials="item.initials"
+                   
                     size="medium"
                   />
                   <div>
@@ -343,7 +340,7 @@ const filteredData = computed(() => {
                 />
               </div>
               <VCard
-                radius="small"
+               
                 color="primary"
               >    
                 <div class="column is-11 is-offset-1">
@@ -402,11 +399,11 @@ const filteredData = computed(() => {
           @close="deleteConfirmationOpen = false"
         >
           <template #content>
-            <p>Êtes-vous sûr de vouloir supprimer ce Bénéficiaire ?</p>
+            <p>Êtes-vous sûr de vouloir supprimer ce Membre ?</p>
             <div class="buttons">
               <VButton
                 color="danger"
-                @click="deleteBeneficiaryConfirmed"
+                @click="deleteGuessConfirmed"
               >
                 Oui
               </VButton>
