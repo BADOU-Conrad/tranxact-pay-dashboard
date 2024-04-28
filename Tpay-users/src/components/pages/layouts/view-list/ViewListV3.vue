@@ -12,9 +12,7 @@ const filteredData = computed(() => {
   } else {
     return offers.filter((item) => {
       return (
-        item.logo.match(new RegExp(filters.value, 'i')) ||
         item.title.match(new RegExp(filters.value, 'i')) ||
-        item.location.match(new RegExp(filters.value, 'i')) ||
         item.duration.match(new RegExp(filters.value, 'i')) ||
         item.requirements.match(new RegExp(filters.value, 'i'))
       )
@@ -26,45 +24,15 @@ const filteredData = computed(() => {
 <template>
   <div>
     <div class="list-view-toolbar is-reversed">
-      <VControl icon="feather:search">
-        <input
-          v-model="filters"
-          class="input custom-text-filter"
-          placeholder="Search..."
-          data-filter-target=".list-view-item"
+      <VButtons>
+        <VButton
+          color="primary"
+          icon="fas fa-recycle" 
+          elevated
         >
-        <div class="form-icon">
-          <i
-            aria-hidden="true"
-            class="iconify"
-            data-icon="feather:search"
-          />
-        </div>
-      </VControl>
-
-      <div class="tabs-inner">
-        <div class="tabs">
-          <ul>
-            <li :class="[activeTab === 'all' && 'is-active']">
-              <a
-                tabindex="0"
-                role="button"
-                @keydown.space.prevent="activeTab = 'all'"
-                @click="activeTab = 'all'"
-              ><span>All</span></a>
-            </li>
-            <li :class="[activeTab === 'saved' && 'is-active']">
-              <a
-                tabindex="0"
-                role="button"
-                @keydown.space.prevent="activeTab = 'saved'"
-                @click="activeTab = 'saved'"
-              ><span>Saved</span></a>
-            </li>
-            <li class="tab-naver" />
-          </ul>
-        </div>
-      </div>
+          Regénérer les clés apis
+        </VButton>
+      </VButtons>
     </div>
 
     <div class="page-content-inner">
@@ -124,91 +92,25 @@ const filteredData = computed(() => {
                     <span>
                       <i
                         aria-hidden="true"
-                        class="iconify"
-                        data-icon="feather:map-pin"
-                      />
-                      <span>{{ item.location }}</span>
-                      <i
-                        aria-hidden="true"
                         class="fas fa-circle icon-separator"
                       />
-                      <i
-                        aria-hidden="true"
-                        class="iconify"
-                        data-icon="feather:clock"
-                      />
+                    
                       <span>{{ item.duration }}</span>
-                      <i
-                        aria-hidden="true"
-                        class="fas fa-circle icon-separator"
-                      />
-                      <i
-                        aria-hidden="true"
-                        class="iconify"
-                        data-icon="feather:check-circle"
-                      />
-                      <span>{{ item.requirements }}</span>
+         
                     </span>
                   </div>
                   <div class="meta-right">
-                    <div class="buttons">
-                      <VButton
-                        color="primary"
-                        outlined
-                        raised
-                      >
-                        Apply Now
-                      </VButton>
-
-                      <VIconButton
-                        icon="feather:bookmark"
-                        class="hint--bubble hint--primary hint--top"
-                        data-hint="Save"
-                        light
-                        circle
-                      />
-                    </div>
+                    <VIconButton
+                      icon="fas fa-copy" 
+                      class="hint--bubble hint--primary hint--top"
+                      data-hint="copier"
+                      light
+                      circle
+                    />
                   </div>
                 </div>
               </div>
             </TransitionGroup>
-          </div>
-
-          <VFlexPagination
-            v-if="filteredData.length > 5"
-            :item-per-page="10"
-            :total-items="873"
-            :current-page="42"
-            :max-links-displayed="7"
-          />
-        </div>
-
-        <!--Inactive Tab-->
-        <div
-          id="inactive-items-tab"
-          class="tab-content"
-          :class="[activeTab === 'saved' && 'is-active']"
-        >
-          <div class="list-view-inner">
-            <!--Empty placeholder-->
-            <VPlaceholderPage
-              title="No saved jobs."
-              subtitle="Looks like you don't have any saved jobs for the moment. It's
-                  also possible that some of your saved items expired."
-            >
-              <template #image>
-                <img
-                  class="light-image"
-                  src="/@src/assets/illustrations/placeholders/thinking-canvas.svg"
-                  alt=""
-                >
-                <img
-                  class="dark-image"
-                  src="/@src/assets/illustrations/placeholders/thinking-canvas-dark.svg"
-                  alt=""
-                >
-              </template>
-            </VPlaceholderPage>
           </div>
         </div>
       </div>

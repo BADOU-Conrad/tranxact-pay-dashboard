@@ -50,8 +50,8 @@ const onSave = async () => {
     >
       <div class="form-head-inner">
         <div class="left">
-          <h3>Work Experience</h3>
-          <p>Edit your work experience info</p>
+          <h3>Mon Equipe</h3>
+          <p>Manager mon équipe</p>
         </div>
         <div class="right">
           <div class="buttons">
@@ -61,7 +61,7 @@ const onSave = async () => {
               light
               dark-outlined
             >
-              Go Back
+              Retour
             </VButton>
             <VButton
               color="primary"
@@ -71,7 +71,7 @@ const onSave = async () => {
               @keydown.space.prevent="onSave"
               @click="onSave"
             >
-              Save Changes
+              Ajouter un nouveau membre
             </VButton>
           </div>
         </div>
@@ -84,8 +84,8 @@ const onSave = async () => {
           v-if="!isUploading"
           class="fieldset-heading"
         >
-          <h4>Previous Experiences</h4>
-          <p>This will help others assess your experience</p>
+          <h4>Nom et rôle </h4>
+          <p>Liste des membres de votre équipe et leurs rôles</p>
         </div>
         <div
           v-else
@@ -236,127 +236,7 @@ const onSave = async () => {
               </div>
             </div>
 
-            <!--Experience Item-->
-            <div class="setting-item">
-              <img
-                src="/demo/photos/brands/facebook.svg"
-                alt=""
-                @error.once="onceImageErrored(50)"
-              >
-              <div class="meta">
-                <span class="dark-inverted">Facebook</span>
-                <span>
-                  <span>January 2018</span>
-                  <i
-                    aria-hidden="true"
-                    class="fas fa-circle"
-                  />
-                  <span>October 2020</span>
-                </span>
-                <span>Product Manager</span>
-              </div>
-              <div class="end">
-                <EditSettingItemDropdown />
-              </div>
-            </div>
-
-            <!--Experience Item-->
-            <div class="setting-item">
-              <img
-                src="/demo/photos/brands/atlassian.svg"
-                alt=""
-                @error.once="onceImageErrored(50)"
-              >
-              <div class="meta">
-                <span class="dark-inverted">Atlassian</span>
-                <span>
-                  <span>January 2018</span>
-                  <i
-                    aria-hidden="true"
-                    class="fas fa-circle"
-                  />
-                  <span>October 2020</span>
-                </span>
-                <span>Web Developer</span>
-              </div>
-              <div class="end">
-                <EditSettingItemDropdown />
-              </div>
-            </div>
-
-            <!--Experience Item-->
-            <div class="setting-item">
-              <img
-                src="/demo/photos/brands/github.svg"
-                alt=""
-                @error.once="onceImageErrored(50)"
-              >
-              <div class="meta">
-                <span class="dark-inverted">Github</span>
-                <span>
-                  <span>January 2018</span>
-                  <i
-                    aria-hidden="true"
-                    class="fas fa-circle"
-                  />
-                  <span>October 2020</span>
-                </span>
-                <span>Web Developer</span>
-              </div>
-              <div class="end">
-                <EditSettingItemDropdown />
-              </div>
-            </div>
-
-            <!--Experience Item-->
-            <div class="setting-item">
-              <img
-                src="/demo/photos/brands/slack.svg"
-                alt=""
-                @error.once="onceImageErrored(50)"
-              >
-              <div class="meta">
-                <span class="dark-inverted">Slack</span>
-                <span>
-                  <span>January 2018</span>
-                  <i
-                    aria-hidden="true"
-                    class="fas fa-circle"
-                  />
-                  <span>October 2020</span>
-                </span>
-                <span>Web Developer</span>
-              </div>
-              <div class="end">
-                <EditSettingItemDropdown />
-              </div>
-            </div>
-
-            <!--Experience Item-->
-            <div class="setting-item">
-              <img
-                src="/demo/photos/brands/gitlab.svg"
-                alt=""
-                @error.once="onceImageErrored(50)"
-              >
-              <div class="meta">
-                <span class="dark-inverted">Gitlab</span>
-                <span>
-                  <span>January 2018</span>
-                  <i
-                    aria-hidden="true"
-                    class="fas fa-circle"
-                  />
-                  <span>October 2020</span>
-                </span>
-                <span>Web Developer</span>
-              </div>
-              <div class="end">
-                <EditSettingItemDropdown />
-              </div>
-            </div>
-
-            <!--Create Item-->
+            <!--Create Item
             <div class="setting-item is-create">
               <VIconWrap icon="lnil lnil-circle-plus" />
 
@@ -377,7 +257,7 @@ const onSave = async () => {
                   Add
                 </VButton>
               </div>
-            </div>
+            </div>-->
           </template>
         </div>
       </div>

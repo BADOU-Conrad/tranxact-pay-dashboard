@@ -421,7 +421,7 @@ function onCallClick(row: any) {
                       @click="() => onCallClick(row)"
                     >
                       <i class="iconify is-inline mr-2" data-icon="feather:phone-off"></i>
-                      Cancel call
+                      Retour call
                     </VButton>
                     <VButton
                       color="primary"

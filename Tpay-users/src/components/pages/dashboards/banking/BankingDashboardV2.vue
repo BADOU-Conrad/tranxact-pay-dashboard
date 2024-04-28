@@ -8,6 +8,8 @@ import { useExpensesAreaChart } from '/@src/data/dashboards/banking-v2/expensesA
 import {
   valueSingle,
   optionsSingle,
+  valueSingle1,
+  optionsSingle1,
 } from '/@src/data/dashboards/banking-v2/dashboardData'
 
 let slider: TinySliderInstance
@@ -56,9 +58,10 @@ const goto = (index: number) => {
           <!--Box-->
           <div class="inner-box has-bounds">
             <div class="box-title">
-              <h3>Ma carte</h3>
+              <h3>Mes comptes</h3>
             </div>
-
+            
+     
             <div class="cards-wrapper">
               <div class="controls">
                 <button class="button is-large">
@@ -219,13 +222,13 @@ const goto = (index: number) => {
           <!--Box-->
           <div class="inner-box">
             <div class="box-title">
-              <h3>Solde</h3>
+              <h3>Solde Totale</h3>
               <VField class="is-minimal-select">
                 <VControl>
                   <Multiselect
                     v-model="valueSingle"
                     :options="optionsSingle"
-                    placeholder="Select an option"
+                    placeholder="Pays"
                     :max-height="145"
                   />
                 </VControl>
@@ -241,10 +244,10 @@ const goto = (index: number) => {
               <div class="card-balance-stats">
                 <div class="card-balance-stat">
                   <div class="stat-title">
-                    <span>Entrée</span>
+                    <span>Collecter</span>
                   </div>
                   <div class="stat-block">
-                    <div class="stat-icon is-up">
+                    <div class="stat-icon is-down">
                       <i
                         aria-hidden="true"
                         class="iconify rtl-reflect"
@@ -258,10 +261,10 @@ const goto = (index: number) => {
                 </div>
                 <div class="card-balance-stat">
                   <div class="stat-title">
-                    <span>Dépensee</span>
+                    <span>Retirer</span>
                   </div>
                   <div class="stat-block">
-                    <div class="stat-icon is-down">
+                    <div class="stat-icon is-up">
                       <i
                         aria-hidden="true"
                         class="iconify rtl-reflect"
@@ -286,7 +289,21 @@ const goto = (index: number) => {
           <!--Box-->
           <div class="inner-box">
             <div class="box-title">
-              <h3>Relever par mois</h3>
+              <h3>Sommaire Mensuel</h3>
+              <VField class="is-minimal-select">
+                <VControl>
+                  <Multiselect
+                    v-model="valueSingle1"
+                    :options="optionsSingle1"
+                    placeholder="Période"
+                    :max-height="145"
+                  />
+                </VControl>
+              </VField>
+              <a
+                class="action-link"
+                tabindex="0"
+              >Voir tout</a>
             </div>
 
             <div class="columns">
@@ -295,11 +312,11 @@ const goto = (index: number) => {
                 <div class="monthly-summary-wrap">
                   <div class="monthly-summary">
                     <div class="monthly-summary-item">
-                      <span>Entrée</span>
+                      <span>Collecter</span>
                       <span class="is-income">+500.0000</span>
                     </div>
                     <div class="monthly-summary-item">
-                      <span>Dépenses</span>
+                      <span>Retirer</span>
                       <span class="is-expense">-263.190</span>
                     </div>
                   </div>
@@ -308,10 +325,6 @@ const goto = (index: number) => {
               <!--Chart-->
               <div class="column is-8">
                 <div class="chart-wrapper">
-                  <a
-                    class="action-link"
-                    tabindex="0"
-                  >Relever Graphique</a>
                   <ApexChart
                     id="timeline-chart"
                     :height="expensesOptions.chart.height"
@@ -329,7 +342,7 @@ const goto = (index: number) => {
           <!--Box-->
           <div class="inner-box">
             <div class="box-title">
-              <h3>Transactions</h3>
+              <h3>Mes Transactions</h3>
               <a
                 class="action-link"
                 tabindex="0"
@@ -339,8 +352,8 @@ const goto = (index: number) => {
             <div class="transactions">
               <!--Transaction-->
               <VBlock
-                title="Food Delivery"
-                subtitle="Oct 23, 2020 - 8:46pm"
+                title="Emerson Staton"
+                subtitle="MTN Bénin,28 Jan 2024"
                 center
                 lighter
               >
@@ -351,7 +364,7 @@ const goto = (index: number) => {
                   >
                     <i
                       aria-hidden="true"
-                      class="lnil lnil-service"
+                      class="lnir lnir-top-right-arrow-box"
                     />
                   </VIconBox>
                 </template>
@@ -361,8 +374,8 @@ const goto = (index: number) => {
               </VBlock>
               <!--Transaction-->
               <VBlock
-                title="Market Earnings"
-                subtitle="Oct 18, 2020 - 9:11am"
+                title="Emery Batosh"
+                subtitle="Togocel,15 Jan 2024"
                 center
                 lighter
               >
@@ -373,7 +386,7 @@ const goto = (index: number) => {
                   >
                     <i
                       aria-hidden="true"
-                      class="lnil lnil-analytics-alt-1"
+                      class="lnir lnir-down-left-arrow-box"
                     />
                   </VIconBox>
                 </template>
@@ -383,8 +396,8 @@ const goto = (index: number) => {
               </VBlock>
               <!--Transaction-->
               <VBlock
-                title="Online Order"
-                subtitle="Oct 16, 2020 - 2:13pm"
+                title="Martin Levin"
+                subtitle="Moov Bénin,31 Dec 2023"
                 center
                 lighter
               >
@@ -395,7 +408,7 @@ const goto = (index: number) => {
                   >
                     <i
                       aria-hidden="true"
-                      class="lnil lnil-cart-alt"
+                      class="lnir lnir-top-right-arrow-box"
                     />
                   </VIconBox>
                 </template>
@@ -403,18 +416,6 @@ const goto = (index: number) => {
                   <span class="dark-inverted">- $92.00</span>
                 </template>
               </VBlock>
-            </div>
-            <div class="button-wrap">
-              <VButton
-                color="primary"
-                fullwidth
-                elevated
-              >
-                New
-              </VButton>
-              <VButton fullwidth>
-                Settings
-              </VButton>
             </div>
           </div>
         </div>

@@ -24,5 +24,6 @@
     "*.json": "jsonc"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "vue.codeActions.enabled": false
+  "vue.codeActions.enabled": false,
+  "i18n-ally.sourceLanguage": "en"
 }

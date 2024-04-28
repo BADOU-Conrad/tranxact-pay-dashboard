@@ -58,7 +58,7 @@ import { onceImageErrored } from '/@src/utils/via-placeholder'
           <div class="profile-card">
             <div class="profile-card-section">
               <div class="section-title">
-                <h4>About Me</h4>
+                <h4>A propos de moi</h4>
                 <RouterLink to="/sidebar/layouts/profile-edit">
                   <i
                     aria-hidden="true"
@@ -79,7 +79,7 @@ import { onceImageErrored } from '/@src/utils/via-placeholder'
             <div class="profile-card-section">
               <div class="section-title">
                 <h4>Experience</h4>
-                <RouterLink to="/sidebar/layouts/profile-edit-experience">
+                <RouterLink to="/sidebar/layouts/profile-edit/experience">
                   <i
                     aria-hidden="true"
                     class="lnil lnil-pencil"
@@ -165,17 +165,12 @@ import { onceImageErrored } from '/@src/utils/via-placeholder'
                     </div>
                   </div>
                 </div>
-                <div class="more-button has-text-centered">
-                  <VButton light>
-                    View More
-                  </VButton>
-                </div>
               </div>
             </div>
             <div class="profile-card-section">
               <div class="section-title">
-                <h4>Languages</h4>
-                <RouterLink to="/sidebar/layouts/profile-edit-skills">
+                <h4>Langues</h4>
+                <RouterLink to="/sidebar/layouts/profile-edit/skills">
                   <i
                     aria-hidden="true"
                     class="lnil lnil-pencil"
@@ -268,8 +263,8 @@ import { onceImageErrored } from '/@src/utils/via-placeholder'
             <!--Skills-->
             <div class="profile-card-section">
               <div class="section-title">
-                <h4>Skills</h4>
-                <RouterLink to="/sidebar/layouts/profile-edit-skills">
+                <h4>Compétences</h4>
+                <RouterLink to="/sidebar/layouts/profile-edit/skills">
                   <i
                     aria-hidden="true"
                     class="lnil lnil-pencil"
@@ -414,12 +409,6 @@ import { onceImageErrored } from '/@src/utils/via-placeholder'
                     </div>
                   </div>
                 </div>
-
-                <div class="more-button has-text-centered">
-                  <VButton light>
-                    View More
-                  </VButton>
-                </div>
               </div>
             </div>
           </div>
@@ -433,10 +422,6 @@ import { onceImageErrored } from '/@src/utils/via-placeholder'
                   aria-hidden="true"
                   class="lnil lnil-pencil"
                 /></a>
-                <a
-                  class="action-link"
-                  tabindex="0"
-                >View All</a>
               </div>
               <div class="section-content">
                 <div class="recommendations-wrapper">
@@ -516,17 +501,13 @@ import { onceImageErrored } from '/@src/utils/via-placeholder'
           <div class="profile-card">
             <div class="profile-card-section no-padding">
               <div class="section-title">
-                <h4>Tools</h4>
-                <RouterLink to="/sidebar/layouts/profile-edit-skills">
+                <h4>Outils</h4>
+                <RouterLink to="/sidebar/layouts/profile-edit/skills">
                   <i
                     aria-hidden="true"
                     class="lnil lnil-pencil"
                   />
                 </RouterLink>
-                <a
-                  class="action-link"
-                  tabindex="0"
-                >View All</a>
               </div>
               <div class="section-content">
                 <div class="tools-wrapper">
@@ -601,11 +582,12 @@ import { onceImageErrored } from '/@src/utils/via-placeholder'
           <div class="profile-card">
             <div class="profile-card-section no-padding">
               <div class="section-title">
-                <h4>Recent Views</h4>
+                <h4>Equipes</h4>
                 <a
+                  href="/sidebar/layouts/list-flex-1"
                   class="action-link"
                   tabindex="0"
-                >View All</a>
+                >Voir tout</a>
               </div>
               <div class="section-content">
                 <div class="people-wrapper">

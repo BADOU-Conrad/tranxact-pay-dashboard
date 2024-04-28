@@ -2,10 +2,10 @@
 import { useViewWrapper } from '/@src/stores/viewWrapper'
 
 const viewWrapper = useViewWrapper()
-viewWrapper.setPageTitle('Form Layouts 4')
+viewWrapper.setPageTitle('Complèter et Vérifier son profile')
 
 useHead({
-  title: 'Form Layouts 4 - Sidebar - Vuero',
+  title: 'Complèter et Vérifier son profile - Sidebar - Vuero',
 })
 </script>
 

@@ -1,5 +1,4 @@
 const { hsl } = require('@cssninja/bulma-css-vars')
-
 module.exports = {
   sassEntryFile: 'src/scss/main.scss',
   jsOutputFile: 'src/scss/bulma-generated/bulma-colors.ts',
@@ -7,13 +6,13 @@ module.exports = {
   cssFallbackOutputFile: 'src/scss/bulma-generated/generated-fallback.css',
   colorDefs: {
     white: '#fff',
-    primary:  '#0055ff',
-    dark: '#283252',
-    link: '#1a32af',
-    info: '#94c5ff',
-    success: '#0092ff',
-    warning: '#faae42',
-    danger: '#e62965',
+    primary: hsl(210, 60, 42), // '#29AB8D',
+    dark: hsl(226, 34, 24), // '#283252',
+    link: hsl(229, 53, 53), // '#485FC7',
+    info: hsl(200, 97, 45), // '#039BE5',
+    success: hsl(164, 95, 43), // '#06D6A0',
+    warning: hsl(35, 95, 62), // '#FAAE42',
+    danger: hsl(341, 79, 53), // '#E62965',
   },
   transition: null,
 }

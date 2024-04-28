@@ -5,10 +5,10 @@ type TabId = 'active' | 'closed'
 const activeTab = ref<TabId>('active')
 
 const viewWrapper = useViewWrapper()
-viewWrapper.setPageTitle('List Flex 2')
+viewWrapper.setPageTitle('Webhook')
 
 useHead({
-  title: 'List Flex 2 - Sidebar - Vuero',
+  title: 'Webhook - Tranxact',
 })
 </script>
 

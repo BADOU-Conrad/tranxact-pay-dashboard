@@ -514,7 +514,7 @@ function onCallClick(row: any) {
                               class="iconify is-inline mr-2"
                               data-icon="feather:phone-off"
                             />
-                            Cancel call
+                            Retour call
                           </VButton>
                           <VButton
                             color="primary"

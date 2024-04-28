@@ -1,8 +1,11 @@
 export const valueSingle = 0
 
-export const optionsSingle = [
-  'Last 10 days',
-  'Last month',
-  'Last 3 months',
-  'Last 6 months',
-]
+export const optionsSingle = ['Bénin', 'Togo', 'Côte Ivoire', 'Ghana']
+
+export const valueSingle1 = 0
+
+export const optionsSingle1 = ['Dix dernier jour', 'Dernirère Semaine', 'Dernier Mois']
+
+export const valueSingle2 = 0
+
+export const optionsSingle2 = ['Administrateur', 'Développeur', 'Financier']

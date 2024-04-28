@@ -8,7 +8,7 @@ const viewWrapper = useViewWrapper()
 viewWrapper.setPageTitle('List Flex 3')
 
 useHead({
-  title: 'List Flex 3 - Sidebar - Vuero',
+  title: 'List Flex 3 - Tranxact',
 })
 </script>
 

@@ -53,22 +53,7 @@
                   />
                 </span>
               </RouterLink>
-              <RouterLink
-                to="/navbar/layouts/profile-edit-skills"
-                class="account-menu-item"
-              >
-                <i
-                  aria-hidden="true"
-                  class="lnil lnil-quill"
-                />
-                <span>Skills</span>
-                <span class="end">
-                  <i
-                    aria-hidden="true"
-                    class="fas fa-arrow-right"
-                  />
-                </span>
-              </RouterLink>
+              
               <RouterLink
                 to="/navbar/layouts/profile-edit-settings"
                 class="account-menu-item"

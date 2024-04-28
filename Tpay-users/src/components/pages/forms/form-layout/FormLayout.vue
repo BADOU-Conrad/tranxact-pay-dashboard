@@ -1,17 +1,60 @@
 <script setup lang="ts">
-const companySize = ref('')
-const businessType = ref('')
+//const companySize = ref('')
+//const businessType = ref('')
 const productToDemo = ref('')
 const date = ref(new Date())
+import sleep from '/@src/utils/sleep'
+import { useRouter } from 'vue-router'
+import { useNotyf } from '/@src/composable/useNotyf'
+import ApiService from '/@src/service/api'
 
+
+const router = useRouter()
+const notyf = useNotyf()
 const { y } = useWindowScroll()
-
+const isLoading = ref(false)  
 const isStuck = computed(() => {
   return y.value > 30
 })
-const onSubmit = () => {
-  console.log('Form submitted!')
-}
+
+
+const formData = {
+    name_link:'',
+    click_number: 0,
+    amount: 0,
+    desc: '',
+  };
+
+const onSubmit = async () => {
+  if (!isLoading.value) {
+    try {
+      
+      const linkData = {
+        name_link: formData.name_link,
+        click_number: formData.click_number,
+        amount: formData.amount,
+        desc: formData.desc
+      };
+
+      const response = await ApiService.storeLink(linkData);
+      console.log(response.data);
+      isLoading.value = true;
+      await sleep(2000);
+      
+      notyf.dismissAll();
+      if (response.data.status) {
+        notyf.success(`Lien créé avec succès`);
+        router.push('/sidebar/layouts/list-view-4');
+      } else {
+        notyf.error('Erreur lors de la création du lien. Veuillez réessayer.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  console.log('Form submitted!', formData);
+};
+
 </script>
 
 <template>
@@ -28,7 +71,7 @@ const onSubmit = () => {
       >
         <div class="form-header-inner">
           <div class="left">
-            <h3>Request a Demo</h3>
+            <h3>Creer un lien de payement</h3>
           </div>
           <div class="right">
             <div class="buttons">
@@ -38,14 +81,14 @@ const onSubmit = () => {
                 light
                 dark-outlined
               >
-                Cancel
+                Retour
               </VButton>
               <VButton
                 type="submit"
                 color="primary"
                 raised
               >
-                Schedule
+                Creer
               </VButton>
             </div>
           </div>
@@ -55,29 +98,31 @@ const onSubmit = () => {
         <!--Fieldset-->
         <div class="form-fieldset">
           <div class="fieldset-heading">
-            <h4>Personal Info</h4>
-            <p>This helps us to know you</p>
+            <h4>Information du lien de paiement</h4>
+            <p>Entrer les Informations relatives au lien de paiement</p>
           </div>
 
           <div class="columns is-multiline">
             <div class="column is-6">
               <VField>
-                <VLabel>First Name</VLabel>
-                <VControl icon="feather:user">
+                <VLabel>Nom du lien</VLabel>
+                <VControl icon="lnir lnir-link">
                   <VInput
+                    v-model="formData.name_link"
                     type="text"
                     placeholder=""
-                    autocomplete="given-name"
+                    autocomplete="given_name"
                   />
                 </VControl>
               </VField>
             </div>
             <div class="column is-6">
               <VField>
-                <VLabel>Last Name</VLabel>
-                <VControl icon="feather:user">
+                <VLabel>Limite d'utilisation du lien</VLabel>
+                <VControl icon="lnil lnil-top-arrow-box">
                   <VInput
-                    type="text"
+                    v-model="formData.click_number"
+                    type="number"
                     placeholder=""
                     autocomplete="family-name"
                   />
@@ -86,13 +131,16 @@ const onSubmit = () => {
             </div>
             <div class="column is-12">
               <VField>
-                <VLabel>Email Address</VLabel>
-                <VControl icon="feather:mail">
-                  <VInput
-                    type="email"
-                    placeholder=""
-                    autocomplete="email"
-                    inputmode="email"
+                <VLabel>Description</VLabel>
+                <VControl>
+                  <VTextarea
+                    v-model="formData.desc"
+                    class="textarea"
+                    rows="4"
+                    placeholder="Decriver nous ce pourquoi le lien sera utiliser ..."
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="true"
                   />
                 </VControl>
               </VField>
@@ -102,14 +150,27 @@ const onSubmit = () => {
         <!--Fieldset-->
         <div class="form-fieldset">
           <div class="fieldset-heading">
-            <h4>Company Info</h4>
-            <p>Tell us about your company</p>
+            <h4>Information de la page de paiement</h4>
+            <p>Entrer les informations relatives à la page de paiement, ou choisissez une page existante </p>
           </div>
 
           <div class="columns is-multiline">
+            <div class="column is-12">
+              <VField v-slot="{ id }">
+                <VLabel>Choisir une page existante</VLabel>
+                <VControl>
+                  <Multiselect
+                    v-model="productToDemo"
+                    :attrs="{ id }"
+                    placeholder="Choisir la page"
+                    :options="['Tickets Events', 'Boutique en ligne', 'prestation']"
+                  />
+                </VControl>
+              </VField>
+            </div>
             <div class="column is-6">
               <VField>
-                <VLabel>Company Name</VLabel>
+                <VLabel>Nom de l'entreprise</VLabel>
                 <VControl icon="feather:briefcase">
                   <VInput
                     type="text"
@@ -121,7 +182,7 @@ const onSubmit = () => {
             </div>
             <div class="column is-6">
               <VField>
-                <VLabel>Company Phone</VLabel>
+                <VLabel>Contact de l'entreprise</VLabel>
                 <VControl icon="feather:phone">
                   <VInput
                     type="tel"
@@ -132,47 +193,32 @@ const onSubmit = () => {
                 </VControl>
               </VField>
             </div>
-            <div class="column is-6">
-              <VField v-slot="{ id }">
-                <VLabel>Company Size</VLabel>
+            <div class="column is-12">
+              <VField grouped>
                 <VControl>
-                  <Multiselect
-                    v-model="companySize"
-                    :attrs="{ id }"
-                    placeholder="Select a size"
-                    :options="[
-                      '1-5 Employees',
-                      '5-25 Employees',
-                      '25-50 Employees',
-                      '50-100 Employees',
-                      '100+ Employees',
-                    ]"
-                  />
+                  <div class="file has-name">
+                    <label class="file-label">
+                      <input
+                        class="file-input"
+                        type="file"
+                        name="resume"
+                      >
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fas fa-cloud-upload-alt" />
+                        </span>
+                        <span class="file-label"> Choisir un fichier </span>
+                      </span>
+                      <span class="file-name light-text"> Logo de l'entreprise </span>
+                    </label>
+                  </div>
                 </VControl>
               </VField>
             </div>
-            <div class="column is-6">
-              <VField v-slot="{ id }">
-                <VLabel>Business Type</VLabel>
-                <VControl>
-                  <Multiselect
-                    v-model="businessType"
-                    :attrs="{ id }"
-                    placeholder="Select a type"
-                    :options="[
-                      'Government',
-                      'Medical',
-                      'Finance',
-                      'Services',
-                      'Technology',
-                    ]"
-                  />
-                </VControl>
-              </VField>
-            </div>
+            
             <div class="column is-12">
               <VField>
-                <VLabel>Company Email</VLabel>
+                <VLabel>Email de l'entreprise</VLabel>
                 <VControl icon="feather:mail">
                   <VInput
                     type="email"
@@ -188,20 +234,20 @@ const onSubmit = () => {
         <!--Fieldset-->
         <div class="form-fieldset">
           <div class="fieldset-heading">
-            <h4>Demonstration</h4>
-            <p>how would you like your demo?</p>
+            <h4>Information relatives au paiement</h4>
+            <p>Paiement</p>
           </div>
 
           <div class="columns is-multiline">
             <div class="column is-6">
-              <VField v-slot="{ id }">
-                <VLabel>Product to demo</VLabel>
-                <VControl>
-                  <Multiselect
-                    v-model="productToDemo"
-                    :attrs="{ id }"
-                    placeholder="Select a product"
-                    :options="['Vuero Starter', 'Vuero Pro', 'Vuero Business']"
+              <VField>
+                <VLabel>Montant du paiement</VLabel>
+                <VControl icon="lnil lnil-wallet">
+                  <VInput
+                    v-model="formData.amount"
+                    type="number"
+                    placeholder=""
+                    autocomplete="family-name"
                   />
                 </VControl>
               </VField>
@@ -215,7 +261,7 @@ const onSubmit = () => {
                 >
                   <template #default="{ inputValue, inputEvents }">
                     <VField>
-                      <VLabel>Prefered Date</VLabel>
+                      <VLabel>Date de limute de paiement</VLabel>
                       <VControl icon="feather:calendar">
                         <input
                           class="input v-input"
@@ -232,12 +278,12 @@ const onSubmit = () => {
             </div>
             <div class="column is-12">
               <VField>
-                <VLabel>Special Instructions</VLabel>
+                <VLabel>Description du paiement</VLabel>
                 <VControl>
                   <VTextarea
                     class="textarea"
                     rows="4"
-                    placeholder="Tell us about any details you'd like us to know..."
+                    placeholder="Expliquer l'objet du paiement ..."
                     autocomplete="off"
                     autocapitalize="off"
                     spellcheck="true"

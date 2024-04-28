@@ -2,10 +2,10 @@
 import { useViewWrapper } from '/@src/stores/viewWrapper'
 
 const viewWrapper = useViewWrapper()
-viewWrapper.setPageTitle('Form Layouts 2')
+viewWrapper.setPageTitle('Retrait')
 
 useHead({
-  title: 'Form Layouts 2 - Sidebar - Vuero',
+  title: 'Retrait - Sidebar - Tranxact',
 })
 </script>
 

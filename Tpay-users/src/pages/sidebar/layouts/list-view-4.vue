@@ -5,10 +5,10 @@ type TabId = 'all' | 'saved'
 const activeTab = ref<TabId>('all')
 
 const viewWrapper = useViewWrapper()
-viewWrapper.setPageTitle('List View 4')
+viewWrapper.setPageTitle('Historique des Liens de Collecte ')
 
 useHead({
-  title: 'List View 4 - Sidebar - Vuero',
+  title: 'Collecte - Tranxact',
 })
 </script>
 

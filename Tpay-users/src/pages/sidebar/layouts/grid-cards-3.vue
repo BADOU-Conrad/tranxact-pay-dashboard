@@ -2,10 +2,10 @@
 import { useViewWrapper } from '/@src/stores/viewWrapper'
 
 const viewWrapper = useViewWrapper()
-viewWrapper.setPageTitle('Grid Cards 3')
+viewWrapper.setPageTitle('Comptes')
 
 useHead({
-  title: 'Grid Cards 3 - Sidebar - Vuero',
+  title: 'Comptes - Tranxact',
 })
 </script>
 

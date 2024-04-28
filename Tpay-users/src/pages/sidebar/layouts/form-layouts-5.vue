@@ -5,7 +5,7 @@ const viewWrapper = useViewWrapper()
 viewWrapper.setPageTitle('Form Layouts 5')
 
 useHead({
-  title: 'Form Layouts 5 - Sidebar - Vuero',
+  title: 'Form Layouts 5  - Sidebar - Tranxact ',
 })
 </script>
 

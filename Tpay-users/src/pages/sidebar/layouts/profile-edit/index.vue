@@ -2,10 +2,10 @@
 import { useViewWrapper } from '/@src/stores/viewWrapper'
 
 const viewWrapper = useViewWrapper()
-viewWrapper.setPageTitle('Profile Edit 1')
+viewWrapper.setPageTitle('Paramètres')
 
 useHead({
-  title: 'Profile Edit 1 - Sidebar - Vuero',
+  title: 'Paramètres - Sidebar - Tranxact',
 })
 </script>
 

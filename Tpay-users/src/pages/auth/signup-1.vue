@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { useNotyf } from '/@src/composable/useNotyf'
 import ApiService from '/@src/service/api'
 import sleep from '/@src/utils/sleep'
+import { useUserSession } from '/@src/stores/userSession'
 import { useDarkmode } from '/@src/stores/darkmode'
 import { onceImageErrored } from '/@src/utils/via-placeholder'
 // let slider: TinySliderInstance
@@ -12,6 +13,7 @@ const darkmode = useDarkmode()
 // const selectedAvatar = ref(2)
 const router = useRouter()
 const notyf = useNotyf()
+const userSession = useUserSession()
 const step = ref(0)
 const isLoading = ref(false)
 const fileInput = ref<File>()
@@ -33,7 +35,6 @@ interface AccountType {
 interface Country {
   id: string;
   name: string;
-  // ... autres propriétés
 }
 const fetchCountries = async () => {
   try {
@@ -63,12 +64,11 @@ const fetchAccountTypes = async () => {
   }
 };
 
-// Méthode appelée lorsque le composant est monté
 onMounted(() => {
   fetchCountries();
   fetchAccountTypes();
 });
-const formData = ref({
+const formData = {
   firstName: '',
   lastName: '',
   username: '',
@@ -76,36 +76,48 @@ const formData = ref({
   country: '',
   accountType: '',
   password: '',
+  password_confirmation: '',
   profilePicture: '',
-  // ... (ajoutez d'autres champs du formulaire ici)
-});
+};
 
 const handleSignup = async () => {
   if (!isLoading.value) {
     try {
 
       const userData = {
-        firstName: formData.value.firstName,
-        lastName: formData.value.lastName,
-        username: formData.value.username,
-        email: formData.value.email,
-        password: formData.value.password,
-        country: formData.value.country,
-        accountType: formData.value.accountType,
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        password_confirmation: formData.password_confirmation,
+        country_id: formData.country,
+        account_type_id: formData.accountType,
         profilePicture: fileInput.value,
     };
       const response = await ApiService.register(userData);
 
       console.log(response.data);
 
+
       isLoading.value = true;
       await sleep(2000);
 
-      // Réinitialisez le chargement et redirigez l'utilisateur
-      isLoading.value = false;
+      const token = response.data.data.auth_token;
+      const firstName = response.data.data.first_name;
+      const lastName = response.data.data.last_name;
+      const fullName = `${firstName} ${lastName}`;
+
+
+      userSession.setToken(token);
       notyf.dismissAll();
-      notyf.success('Welcome, Erik Kovalsky');
-      router.push('/sidebar/dashboards');
+  
+      if (response.data.status) {
+        notyf.success(`Welcome back, ${fullName}`)
+        router.push('/sidebar/dashboards/banking-2');
+      } else {
+        notyf.error('Erreur lors de l\'enregistrement. Veuillez réessayer.');
+      }
     } catch (error) {
       // Gérez les erreurs d'enregistrement ici
       console.error('Erreur d\'enregistrement :', error);
@@ -135,12 +147,12 @@ function onFileinputChange(event: Event) {
           class="logo"
         >
           <img
-              class="hero-image"
-              src="/@src/assets/illustrations/login/favicon.png"
-              alt=" "
-              width="38px"
-              height="38px"
-           >
+            class="hero-image"
+            src="/@src/assets/illustrations/login/favicon.png"
+            alt=" "
+            width="38px"
+            height="38px"
+          >
         </RouterLink>
       </div>
     </div>
@@ -223,13 +235,13 @@ function onFileinputChange(event: Event) {
                   id="main-signup-title"
                   class="title is-3 signup-title"
                 >
-                  Become a Vuero
+                  Devenir Tranxact
                 </h1>
                 <h2
                   id="main-signup-subtitle"
                   class="subtitle signup-subtitle"
                 >
-                  And simply join an unmatched design experience.
+                  Choisissez de vivre une expérience exeptionnel.
                 </h2>
                 <div class="signup-card">
                   <form
@@ -252,7 +264,7 @@ function onFileinputChange(event: Event) {
                               raw
                               class="auth-label"
                             >
-                              First Name
+                              Prénom
                             </VLabel>
                           </VControl>
                         </VField>
@@ -270,7 +282,7 @@ function onFileinputChange(event: Event) {
                               raw
                               class="auth-label"
                             >
-                              Last Name
+                              Nom
                             </VLabel>
                           </VControl>
                         </VField>
@@ -294,22 +306,15 @@ function onFileinputChange(event: Event) {
                         </VField>
                       </div>
                       <div class="column is-12">
-                        <VField>
+                        <VField class="is-minimal-select">
                           <VControl>
-                            <VSelect
+                            <Multiselect
                               v-model="formData.country"
-                              :items="countries"
-                              item-text="label"
-                              item-value="value"
-                              label="Pays de résidence"
+                              :options="countries"
+                              track-by="value"
+                              label="label"
+                              placeholder="Pays de résidence" 
                             />
-
-                            <VLabel
-                              raw
-                              class="auth-label"
-                            >
-                              Pays de résidence
-                            </VLabel>
                           </VControl>
                         </VField>
                       </div>
@@ -317,8 +322,8 @@ function onFileinputChange(event: Event) {
 
                     <div class="control is-agree">
                       <span>
-                        By continuing you agree to our <a href="#">Terms</a> and
-                        <a href="#">Privacy</a>
+                        Pour continuer accepter nos <a href="#">Terms</a> et
+                        <a href="#">Conditions</a>
                       </span>
                     </div>
 
@@ -331,12 +336,12 @@ function onFileinputChange(event: Event) {
                         rounded
                         @click="step++"
                       >
-                        Continue
+                        Continuer
                       </VButton>
                       <span>
-                        Or
-                        <RouterLink to="/auth/login"> Sign In </RouterLink>
-                        to your account.
+                        Ou
+                        <RouterLink to="/auth/login"> Connectez </RouterLink>
+                        vous à votre compte.
                       </span>
                     </div>
                   </form>
@@ -357,10 +362,10 @@ function onFileinputChange(event: Event) {
               >
                 <div class="signup-profile-wrapper">
                   <h1 class="title is-5 signup-title has-text-centered">
-                    Add a profile picture
+                    Ajouter uen photo de profile
                   </h1>
                   <h2 class="subtitle signup-subtitle has-text-centered">
-                    This is your visual identity.
+                    Cel est votre identité visuel.
                   </h2>
                   <div class="picture-selector">
                     <div class="image-container">
@@ -387,7 +392,7 @@ function onFileinputChange(event: Event) {
 
                 <div class="divider-container">
                   <div class="divider">
-                    <span>Or select an avatar</span>
+                    <span>Ou choisissez un avatar</span>
                   </div>
                 </div>
 
@@ -419,7 +424,7 @@ function onFileinputChange(event: Event) {
                     lower
                     @click="step++"
                   >
-                    Continue
+                    Continuer
                   </VButton>
                 </div>
               </form>
@@ -432,10 +437,10 @@ function onFileinputChange(event: Event) {
             >
               <div class="column is-4 is-offset-4 username-form">
                 <h1 class="title is-5 signup-title has-text-centered">
-                  Pick a username
+                  Ajouter votre username
                 </h1>
                 <h2 class="subtitle signup-subtitle has-text-centered">
-                  Your username is how others will find you on tranxact Pay
+                  Votre username is how others will find you on tranxact Pay
                 </h2>
                 <form
                   method="post"
@@ -473,7 +478,7 @@ function onFileinputChange(event: Event) {
                             raw
                             class="auth-label"
                           >
-                            Password
+                            Mot de Passe
                           </VLabel>
                         </VControl>
                       </VField>
@@ -482,7 +487,7 @@ function onFileinputChange(event: Event) {
                       <VField>
                         <VControl>
                           <VInput
-                            v-model="formData.password"
+                            v-model="formData.password_confirmation"
                             type="password"
                             autocomplete="new-password"
                           />
@@ -490,7 +495,7 @@ function onFileinputChange(event: Event) {
                             raw
                             class="auth-label"
                           >
-                            Confirm Password
+                            Confirmé votre Mot de Passe
                           </VLabel>
                         </VControl>
                       </VField>
@@ -498,26 +503,22 @@ function onFileinputChange(event: Event) {
                     <div class="column is-12">
                       <VField>
                         <VControl>
-                          <VSelect
+                          <Multiselect
                             v-model="formData.accountType"
-                            :items="accountTypes"
-                            item-text="label"
-                            item-value="value"
-                            label="type de compte"
+                            :options="accountTypes"
+                            track-by="value"
+                            label="label"
+                            placeholder="type de compte" 
                           />
-                          <VLabel
-                            raw
-                            class="auth-label"
-                          >
-                            Type de compte
-                          </VLabel>
                         </VControl>
                       </VField>
                     </div>
                     <div class="column is-12">
                       <VField>
                         <VControl class="has-switch">
-                          <VLabel>Send me marketing and transaction emails</VLabel>
+                          <VLabel color="success">
+                            Send me marketing and transaction emails
+                          </VLabel>
                           <VSwitchBlock
                             color="success"
                             checked
@@ -613,7 +614,7 @@ function onFileinputChange(event: Event) {
                         class="fas fa-cloud-upload-alt"
                       />
                     </span>
-                    <span> Choose a file… </span>
+                    <span> Choisissez votre image.... </span>
                   </span>
                 </label>
               </div>
@@ -634,7 +635,7 @@ function onFileinputChange(event: Event) {
               outlined
               :disabled="!fileInput"
             >
-              Confirm
+              Confirmer
             </VButton>
           </VControl>
         </VField>

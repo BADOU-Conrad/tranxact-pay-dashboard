@@ -179,6 +179,7 @@ export const userList = [
       },
     ],
   },
+  /*
   {
     id: 5,
     username: 'Greta K.',
@@ -360,5 +361,5 @@ export const userList = [
         color: 'h-purple',
       },
     ],
-  },
+  },*/
 ]

@@ -26,7 +26,7 @@ const onSubmit = () => {
       >
         <div class="form-header-inner">
           <div class="left">
-            <h3>Request Payout</h3>
+            <h3>Faire un Retrait</h3>
           </div>
           <div class="right">
             <div class="buttons">
@@ -43,7 +43,7 @@ const onSubmit = () => {
                 color="primary"
                 raised
               >
-                Request Payout
+                Lancer Retrait
               </VButton>
             </div>
           </div>
@@ -53,10 +53,10 @@ const onSubmit = () => {
         <div class="form-section">
           <div class="left">
             <h3 class="has-text-centered">
-              Choose an amount
+              Choisir le montant
             </h3>
             <div class="operator">
-              <span>Or</span>
+              <span>Ou</span>
             </div>
             <VField>
               <VControl>
@@ -107,7 +107,7 @@ const onSubmit = () => {
           </div>
           <div class="right">
             <h3 class="has-text-centered">
-              Enter your own
+              Entrer le montant
             </h3>
             <VField>
               <VControl icon="feather:dollar-sign">
@@ -123,7 +123,7 @@ const onSubmit = () => {
         </div>
         <div class="form-section is-grey">
           <div class="left">
-            <h3>Personal Info</h3>
+            <h3>Info Personel</h3>
             <VField>
               <VControl icon="feather:user">
                 <VInput
@@ -164,7 +164,7 @@ const onSubmit = () => {
             </VField>
           </div>
           <div class="right">
-            <h3>Payout Details</h3>
+            <h3>Details de Retrait</h3>
 
             <VField v-slot="{ id }">
               <VControl>
