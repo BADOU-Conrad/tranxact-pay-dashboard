@@ -29,18 +29,22 @@ const activate = localStorage.getItem('activate')
     >
       <ul>
         <li>
-          <RouterLink to="/components/">
+          <RouterLink 
+            :to="Number(activate) === 1 ? '/components/' : '/sidebar/layouts/profile-notifications'"
+          >
             Abonnements
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="/components/content">
+          <RouterLink 
+            :to="Number(activate) === 1 ? '/components/content' : '/sidebar/layouts/profile-notifications'"
+          >
             Expiration
           </RouterLink>
         </li>
 
         <li>
-          <RouterLink to="/components/table">
+          <RouterLink :to="Number(activate) === 1 ? '/components/table' : '/sidebar/layouts/profile-notifications'">
             Renouvelement
           </RouterLink>
         </li>

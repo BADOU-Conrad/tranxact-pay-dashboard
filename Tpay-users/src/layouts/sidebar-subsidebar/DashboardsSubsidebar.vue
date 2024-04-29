@@ -33,7 +33,7 @@ const activate = localStorage.getItem('activate')
       <ul>
         <li>
           <RouterLink
-            :to="activate ? '/sidebar/dashboards/banking-2' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/dashboards/banking-2' : '/sidebar/layouts/profile-notifications'"
           >
             Tableau de bord
           </RouterLink>

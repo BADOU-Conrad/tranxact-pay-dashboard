@@ -49,7 +49,7 @@ const emit = defineEmits(['close'])
          
           <RouterLink
              
-            :to="activate ? '/sidebar/layouts/list-view-3' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/layouts/list-view-3' : '/sidebar/layouts/profile-notifications'"
 
             class="is-submenu"
           >
@@ -64,7 +64,7 @@ const emit = defineEmits(['close'])
          
           <RouterLink
              
-            :to="activate ? '/sidebar/layouts/list-flex-2' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/layouts/list-flex-2' : '/sidebar/layouts/profile-notifications'"
          
             class="is-submenu"
           >
@@ -96,7 +96,7 @@ const emit = defineEmits(['close'])
        
           <RouterLink
              
-            :to="activate ? '/sidebar/layouts/list-flex-1' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/layouts/list-flex-1' : '/sidebar/layouts/profile-notifications'"
          
             class="is-submenu"
           >
@@ -111,7 +111,7 @@ const emit = defineEmits(['close'])
  
           <RouterLink
              
-            :to="activate ? '/sidebar/layouts/list-flex-2' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/layouts/list-flex-2' : '/sidebar/layouts/profile-notifications'"
 
             class="is-submenu"
           >
