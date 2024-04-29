@@ -44,7 +44,7 @@ export default defineConfig({
   logLevel: 'info',
   // development server configuration
   server: {
-    // Vite 4 defaults to 5173, but you can override it with the port option.
+    host: '195.35.3.83',
     port: 3000,
   },
   /**
