@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://api.tranxact.co/api', // Remplacez par l'URL réelle de votre API Laravel
+  baseURL: 'https://api.tranxactpay.me/api', // 'http://192.168.1.6:8000/api'
   withCredentials: false,
   headers: {
     Accept: 'application/json',

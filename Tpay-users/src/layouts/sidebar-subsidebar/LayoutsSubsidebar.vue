@@ -34,7 +34,7 @@ const activate = localStorage.getItem('activate')
         <li>
           <RouterLink
              
-            :to="activate ? '/sidebar/layouts/grid-cards-3' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/layouts/grid-cards-3' : '/sidebar/layouts/profile-notifications'"
           >
             Comptes
           </RouterLink>
@@ -58,7 +58,7 @@ const activate = localStorage.getItem('activate')
           </template>
           <RouterLink
              
-            :to="activate ? '/sidebar/layouts/list-view-4' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/layouts/list-view-4' : '/sidebar/layouts/profile-notifications'"
             class="is-submenu"
           >
             <i
@@ -69,7 +69,7 @@ const activate = localStorage.getItem('activate')
           </RouterLink>
           <RouterLink
              
-            :to="activate ? '/sidebar/layouts/list-datatable-3' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/layouts/list-datatable-3' : '/sidebar/layouts/profile-notifications'"
     
             class="is-submenu"
           >
@@ -81,7 +81,7 @@ const activate = localStorage.getItem('activate')
           </RouterLink>
           <RouterLink
              
-            :to="activate ? '/sidebar/layouts/list-view-2' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/layouts/list-view-2' : '/sidebar/layouts/profile-notifications'"
          
             class="is-submenu"
           >
@@ -93,7 +93,7 @@ const activate = localStorage.getItem('activate')
           </RouterLink>
           <RouterLink
              
-            :to="activate ? '/sidebar/layouts/list-datatable-1' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/layouts/list-datatable-1' : '/sidebar/layouts/profile-notifications'"
             class="is-submenu"
           >
             <i
@@ -107,7 +107,7 @@ const activate = localStorage.getItem('activate')
         <li>
           <RouterLink
             
-            :to="activate ? '/sidebar/layouts/list-datatable-2' : '/sidebar/layouts/profile-notifications'"
+            :to="Number(activate) === 1 ? '/sidebar/layouts/list-datatable-2' : '/sidebar/layouts/profile-notifications'"
           >
             Bénéficiaire courant
           </RouterLink>
