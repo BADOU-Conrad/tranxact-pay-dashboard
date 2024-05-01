@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useDarkmode } from '/@src/stores/darkmode';
 import { useUserSession } from '/@src/stores/userSession';
 import { useNotyf } from '/@src/composable/useNotyf';
 import { useRouter, useRoute } from 'vue-router';
@@ -7,7 +6,6 @@ import ApiService from '/@src/service/api';
 
 type StepId = 'login' | 'forgot-password';
 const step = ref<StepId>('login');
-const darkmode = useDarkmode();
 const isLoading = ref(false);
 const router = useRouter();
 const route = useRoute();
@@ -40,10 +38,12 @@ const handleLogin = async () => {
       const phone = response.data.data.phone;
       const fullName = `${firstName} ${lastName}`;
       const activate = response.data.data.activated_final;
+      const datecreate = response.data.data.created_at;
 
       console.log('api', apiKeys)
       userSession.setToken(token);
       localStorage.setItem('token', token);
+      localStorage.setItem('datecreate', datecreate);
       localStorage.setItem('apiKey', apiKey);
       localStorage.setItem('first_name', firstName);
       localStorage.setItem('last_name', lastName);
@@ -81,8 +81,8 @@ const handleLogin = async () => {
 
     <div class="columns is-gapless is-vcentered">
       <div class="column is-relative is-8 h-hidden-mobile h-hidden-tablet-p">
-        <div class="hero is-fullheight is-image">
-          <div class="hero-body">
+        <div class="hero is-fullheight is-image ">
+          <div class="hero-body ">
             <div class="container">
               <div class="columns">
                 <div class="column">
@@ -103,29 +103,16 @@ const handleLogin = async () => {
             to="/"
             class="top-logo"
           >
-            <img
-              class="hero-image"
-              src="/@src/assets/illustrations/login/Pirmary.png"
-              alt=" "
-              width="38px"
-              height="38px"
-            >
+            <div class="d-flex justify-content-center align-items-center">
+              <img
+                class="hero-image mt-6"
+                src="/@src/assets/illustrations/login/Pirmary.png"
+                alt=""
+                width="38px"
+                height="38px"
+              >
+            </div>
           </RouterLink>
-
-          <label
-            class="dark-mode"
-            tabindex="0"
-            role="button"
-            @keydown.space.prevent="(e) => (e.target as HTMLLabelElement).click()"
-          >
-            <input
-              data-cy="dark-mode-toggle"
-              type="checkbox"
-              :checked="!darkmode.isDark"
-              @change="darkmode.onChange"
-            >
-            <span />
-          </label>
         </div>
         <div class="is-form">
           <div class="is-form-inner">

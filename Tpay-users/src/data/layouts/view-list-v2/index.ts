@@ -56,7 +56,7 @@ export const retails = [
       otherThing: true,
       otherCoolThing: true,
     },
-  },
+  } /*
   {
     id: '4',
     picture: '/demo/photos/4.jpg',
@@ -193,5 +193,5 @@ export const retails = [
       other: true,
       otherThing: true,
     },
-  },
+  },*/,
 ]

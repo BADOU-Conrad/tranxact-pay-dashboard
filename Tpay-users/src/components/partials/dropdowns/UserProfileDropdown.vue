@@ -42,24 +42,7 @@ function logout() {
         </div>
       </div>
 
-      <a
-        href="/sidebar/layouts/profile-view"
-        role="menuitem"
-        class="dropdown-item is-media"
-      >
-        <div class="icon">
-          <i
-            aria-hidden="true"
-            class="lnil lnil-user-alt"
-          />
-        </div>
-        <div class="meta">
-          <span>Profile</span>
-          <span>Voir mon profile</span>
-        </div>
-      </a>
-
-      <hr class="dropdown-divider">
+      
 
       <a
         href="/sidebar/layouts/list-flex-1"

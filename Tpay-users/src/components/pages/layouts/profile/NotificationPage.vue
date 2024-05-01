@@ -1,3 +1,24 @@
+<script>
+export default {
+  data() {
+    return {
+      currentDate: this.formatDate(new Date()),
+      datecreate: this.formatDate(new Date(localStorage.getItem('datecreate')))
+    };
+  },
+  methods: {
+    formatDate(date) {
+      const options = { day: '2-digit', month: 'long', year: 'numeric' };
+      return new Date(date).toLocaleDateString('fr-FR', options); 
+    },
+    redirectToLive() {
+      window.location.href = '/sidebar/layouts/form-layouts-4';
+    }
+  }
+ 
+};
+
+</script>
 
 <template>
   <div class="timeline-wrapper">
@@ -7,7 +28,7 @@
         <!--Timeline item-->
         <div class="timeline-item is-unread">
           <div class="date">
-            <span>Sep 23, 2020</span>
+            <span>{{ datecreate }}</span>
           </div>
           <div class="dot is-info" />
           <div class="content-wrap">
@@ -18,18 +39,18 @@
               <div class="box-text">
                 <div class="meta-text">
                   <p>
-                    <span>Tara S.</span> added you to the
-                    <a>Barber Website Redesign Project</a>.
+                    <span>Tara S.</span> Vous avez créer votre compte ce jour.
+                    <a>La création de compte vous donne accès au Tableau de bord mais vous ne pouvez rien faire encore </a>.
                   </p>
                   <span>11:42 am</span>
                 </div>
               </div>
-              <div class="box-end">
+            <!--   <div class="box-end">
                 <VAvatar
                   size="small"
                   picture="/images/avatars/svg/vuero-1.svg"
                 />
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
@@ -37,7 +58,7 @@
         <!--Timeline item-->
         <div class="timeline-item is-unread">
           <div class="date">
-            <span>Sep 23, 2020</span>
+            <span>{{ currentDate }}</span>
           </div>
           <div class="dot is-danger" />
           <div class="content-wrap">
@@ -48,82 +69,8 @@
               <div class="box-text">
                 <div class="meta-text">
                   <p>
-                    <span>Irina V.</span> left a comment on a <a>Task</a>, in
-                    <a>Corporate Tools Rebranding</a>.
-                  </p>
-                  <span>9:18 am</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--Timeline item-->
-        <div class="timeline-item">
-          <div class="date">
-            <span>Sep 22, 2020</span>
-          </div>
-          <div class="dot is-success" />
-          <div class="content-wrap">
-            <div class="content-box">
-              <div class="status" />
-              <VAvatar picture="/demo/avatars/5.jpg" />
-
-              <div class="box-text">
-                <div class="meta-text">
-                  <p>
-                    <span>Mary L.</span> added 3 new members to the
-                    <a>Blake &amp; Mortimer Project</a>.
-                  </p>
-                  <span>9:18 am</span>
-                </div>
-              </div>
-              <div class="box-end">
-                <VAvatar
-                  size="small"
-                  color="warning"
-                  initials="BT"
-                />
-                <VAvatar
-                  size="small"
-                  picture="/demo/avatars/18.jpg"
-                />
-                <VAvatar
-                  size="small"
-                  color="info"
-                  initials="JD"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--Timeline item-->
-        <div class="timeline-item">
-          <div class="date">
-            <span>Sep 23, 2020</span>
-          </div>
-          <div class="dot is-purple" />
-          <div class="content-wrap">
-            <div class="content-box">
-              <div class="status" />
-              <VAvatar picture="/demo/avatars/12.jpg" />
-
-              <div class="box-text">
-                <div class="meta-text">
-                  <p>
-                    <span>Joshua S.</span> changed the status of a <a>Task</a> from
-                    <VTag
-                      label="Pending"
-                      color="purple"
-                      rounded
-                    />
-                    to
-                    <VTag
-                      label="Completed"
-                      color="blue"
-                      rounded
-                    />
+                    <span>Irina V.</span> En ce jour, votre compte est toujours en mode <a>Test</a>, Vous devez passer en live?
+                    <a>Pour passer en live Cliquer qsur le bouton ci-dessous</a>.
                   </p>
                   <span>9:18 am</span>
                 </div>
@@ -134,8 +81,11 @@
       </div>
 
       <div class="load-more-wrap has-text-centered">
-        <VButton dark-outlined>
-          Load More
+        <VButton
+          dark-outlined
+          @click="redirectToLive"
+        >
+          Passer en live
         </VButton>
       </div>
     </div>

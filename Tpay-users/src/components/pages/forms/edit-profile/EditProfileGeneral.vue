@@ -332,7 +332,7 @@ const onSave = async () => {
               </VControl>
             </VField>
           </div>
-          <!--Field-->
+          <!--Field
           <div class="column is-12">
             <VField>
               <VControl>
@@ -346,7 +346,7 @@ const onSave = async () => {
                 />
               </VControl>
             </VField>
-          </div>
+          </div>-->
         </div>
       </div>
 
@@ -358,68 +358,65 @@ const onSave = async () => {
         </div>
         <div class="columns is-multiline">
           <div class="column is-6">
-            <VField v-slot="{ id }">
-              <VControl>
-                <Multiselect
-                  v-model="experience"
-                  :attrs="{ id }"
-                  placeholder="Experience"
-                  :options="['0-2 years', '2-5 years', '5-10 years', '10+ years']"
+            <VField>
+              <VControl icon="feather:mail">
+                <VInput
+                  v-model="userData.email"
+                  type="text"
+                  placeholder="Email"
+                  autocomplete="given-name"
                 />
               </VControl>
             </VField>
           </div>
         
           <div class="column is-6">
-            <VField v-slot="{ id }">
-              <VControl>
-                <Multiselect
-                  v-model="firstJob"
-                  :attrs="{ id }"
-                  placeholder="Is this your first job?"
-                  :options="['Yes', 'No']"
+            <VField>
+              <VControl icon="feather:mail">
+                <VInput
+                  v-model="userData.email"
+                  type="text"
+                  placeholder="Email"
+                  autocomplete="given-name"
                 />
               </VControl>
             </VField>
           </div>
           
           <div class="column is-6">
-            <VField v-slot="{ id }">
-              <VControl>
-                <Multiselect
-                  v-model="flexibility"
-                  :attrs="{ id }"
-                  placeholder="Are you flexible?"
-                  :options="['Yes', 'No']"
+            <VField>
+              <VControl icon="feather:mail">
+                <VInput
+                  v-model="userData.email"
+                  type="text"
+                  placeholder="Email"
+                  autocomplete="given-name"
                 />
               </VControl>
             </VField>
           </div>
          
           <div class="column is-6">
-            <VField v-slot="{ id }">
-              <VControl>
-                <Multiselect
-                  v-model="remote"
-                  :attrs="{ id }"
-                  placeholder="Do you work remotely?"
-                  :options="['Yes', 'No']"
+            <VField>
+              <VControl icon="feather:mail">
+                <VInput
+                  v-model="userData.email"
+                  type="text"
+                  placeholder="Email"
+                  autocomplete="given-name"
                 />
               </VControl>
             </VField>
           </div>
        
           <div class="column is-12">
-            <VField v-slot="{ id }">
-              <VControl>
-                <Multiselect
-                  v-model="skills"
-                  :attrs="{ id }"
-                  mode="tags"
-                  :searchable="true"
-                  :create-tag="true"
-                  :options="skillsOptions"
-                  placeholder="Add tags"
+            <VField>
+              <VControl icon="feather:mail">
+                <VInput
+                  v-model="userData.email"
+                  type="text"
+                  placeholder="Email"
+                  autocomplete="given-name"
                 />
               </VControl>
             </VField>
