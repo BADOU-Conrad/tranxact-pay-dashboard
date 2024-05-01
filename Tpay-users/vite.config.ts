@@ -142,6 +142,7 @@ export default defineConfig({
     assetsInlineLimit: 4096 * 2,
     rollupOptions: {
       external: ['/images/icons/hexagons/blue.svg'],
+      external: ['/images/icons/hexagons/blue-heavy.svg'],
     },
     // commonjsOptions: { include: [] },
   },
