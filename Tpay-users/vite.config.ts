@@ -140,6 +140,9 @@ export default defineConfig({
     // Double the default size threshold for inlined assets
     // https://vitejs.dev/config/build-options.html#build-assetsinlinelimit
     assetsInlineLimit: 4096 * 2,
+    rollupOptions: {
+      external: ['/images/icons/hexagons/blue.svg'],
+    },
     // commonjsOptions: { include: [] },
   },
   plugins: [
