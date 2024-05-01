@@ -364,7 +364,8 @@ const goto = (index: number) => {
                   >
                     <i
                       aria-hidden="true"
-                      class="lnir lnir-top-right-arrow-box"
+                      class="iconify rtl-reflect"
+                      data-icon="feather:arrow-right"
                     />
                   </VIconBox>
                 </template>
@@ -386,7 +387,8 @@ const goto = (index: number) => {
                   >
                     <i
                       aria-hidden="true"
-                      class="lnir lnir-down-left-arrow-box"
+                      class="iconify rtl-reflect"
+                      data-icon="feather:arrow-left"
                     />
                   </VIconBox>
                 </template>
@@ -408,7 +410,8 @@ const goto = (index: number) => {
                   >
                     <i
                       aria-hidden="true"
-                      class="lnir lnir-top-right-arrow-box"
+                      class="iconify rtl-reflect"
+                      data-icon="feather:arrow-right"
                     />
                   </VIconBox>
                 </template>

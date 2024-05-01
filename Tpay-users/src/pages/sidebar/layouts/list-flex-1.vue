@@ -7,6 +7,7 @@ viewWrapper.setPageTitle('Equipe')
 useHead({
   title: 'Equipe - Tranxact',
 })
+
 </script>
 
 <template>

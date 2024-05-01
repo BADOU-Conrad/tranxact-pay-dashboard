@@ -5,11 +5,11 @@ import { useNotyf } from '/@src/composable/useNotyf'
 import ApiService from '/@src/service/api'
 import sleep from '/@src/utils/sleep'
 import { useUserSession } from '/@src/stores/userSession'
-import { useDarkmode } from '/@src/stores/darkmode'
+//import { useDarkmode } from '/@src/stores/darkmode'
 import { onceImageErrored } from '/@src/utils/via-placeholder'
 // let slider: TinySliderInstance
 // const sliderElement = ref<HTMLElement>()
-const darkmode = useDarkmode()
+//const darkmode = useDarkmode()
 // const selectedAvatar = ref(2)
 const router = useRouter()
 const notyf = useNotyf()
@@ -551,22 +551,7 @@ function onFileinputChange(event: Event) {
 
     <div class="signup-footer">
       <div class="container">
-        <div class="footer-inner">
-          <label
-            class="dark-mode"
-            tabindex="0"
-            role="button"
-            @keydown.space.prevent="(e) => (e.target as HTMLLabelElement).click()"
-          >
-            <input
-              data-cy="dark-mode-toggle"
-              type="checkbox"
-              :checked="!darkmode.isDark"
-              @change="darkmode.onChange"
-            >
-            <span />
-          </label>
-        </div>
+        <div class="footer-inner" />
       </div>
     </div>
 
