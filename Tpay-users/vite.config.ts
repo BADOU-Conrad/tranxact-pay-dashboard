@@ -141,8 +141,12 @@ export default defineConfig({
     // https://vitejs.dev/config/build-options.html#build-assetsinlinelimit
     assetsInlineLimit: 4096 * 2,
     rollupOptions: {
-      external: ['/images/icons/hexagons/blue.svg'],
-      external: ['/images/icons/hexagons/blue-heavy.svg'],
+      onwarn(warning, warn) {
+        if (warning.code === 'UNRESOLVED_IMPORT') {
+          return
+        }
+        warn(warning)
+      },
     },
     // commonjsOptions: { include: [] },
   },
