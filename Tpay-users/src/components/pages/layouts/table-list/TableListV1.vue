@@ -1,30 +1,63 @@
 <script setup lang="ts">
-import { userList } from '/@src/data/layouts/datatable-v1'
+//import { userList } from '/@src/data/layouts/datatable-v1'
+import { ref, onMounted, computed } from 'vue'
+//import type { VAvatarProps } from '/@src/components/base/avatar/VAvatar.vue'
+//const centeredActionsOpen = ref(false)
+interface UserData {
+  id: number;
+  username: string;
+  position: string;
+  picture: string;
+  location: string;
+  industry: string;
+  status: string;
+}
+import ApiService from '/@src/service/api'
+//import { userList } from '/@src/data/layouts/datatable-v1';
+//const page = ref(42)
+const filters = ref('')
+const disputedata = ref<DisputeData[]>([])
+const user = ref<UserData[]>([])
 
-import type { VAvatarProps } from '/@src/components/base/avatar/VAvatar.vue'
-const centeredActionsOpen = ref(false)
-export interface UserData extends VAvatarProps {
+
+interface DisputeData {
   id: number
-  username: string
-  position: string
-  picture: string
-  badge: string
-  location: string
-  industry: string
+  amount: string
+  link: string
+  date: string
   status: string
-  contacts: VAvatarProps[]
+}
+const fetchDispute = async () => {
+  try {
+    const response = await ApiService.getDispute()
+    disputedata.value = response.data.data as DisputeData[]
+    console.log(response)
+    
+  } catch (error) {
+    console.error('Erreur lors de la récupération des disputes', error)
+  }
 }
 
-const page = ref(42)
-const filters = ref('')
+onMounted(async () => {
+  await fetchDispute()
+    user.value = disputedata.value.map((dispute) => ({
+      id: dispute.id,
+      username: dispute.link,
+      position: dispute.link,
+      location: dispute.date,
+      picture: '/images/avatars/dispute.jpg',
+      industry: dispute.amount,
+      status: dispute.status
+  }))
+})
 
-const users = userList as UserData[]
+
 const filteredData = computed(() => {
   if (!filters.value) {
-    return users
+    return user.value
   } else {
     const filterRe = new RegExp(filters.value, 'i')
-    return users.filter((item) => {
+    return user.value.filter((item) => {
       return (
         item.username.match(filterRe) ||
         item.position.match(filterRe) ||
@@ -35,6 +68,8 @@ const filteredData = computed(() => {
     })
   }
 })
+
+
 </script>
 
 <template>
@@ -54,41 +89,32 @@ const filteredData = computed(() => {
       <div class="table-container">
         <table class="table datatable-table is-fullwidth">
           <thead>
-            <th>Comptes</th>
+            <th>Lien</th>
             <th>Description</th>
             <th>Montant</th>
             <th>Statut</th>
-            <th>Détails</th>
           </thead>
           <tbody>
             <tr
-              v-for="user in filteredData"
-              :key="user.id"
+              v-for="item in filteredData"
+              :key="item.id"
             >
               <td>
                 <div class="flex-media">
                   <VAvatar
-                    :picture="user.picture"
+                    :picture="item.picture"
                     alt="Avatar"
                   />
                   <div class="meta">
-                    <h3>{{ user.username }}</h3>
-                    <span>{{ user.position }}</span>
+                    <h3>{{ item.username }}</h3>
                   </div>
                 </div>
               </td>
-              <td>{{ user.location }}</td>
-              <td>{{ user.industry }}</td>
-              <td>
-                <div>
-                  <VAvatarStack
-                    :avatars="user.contacts"
-                    size="small"
-                    :limit="3"
-                  />
-                </div>
-              </td>
-              <td>
+              <td>{{ item.location }}</td>
+              <td>{{ item.industry }}</td>
+              <td>{{ item.status }}</td>
+     
+              <!--  <td>
                 <VButton
                   bold
                   @click="centeredActionsOpen = true"
@@ -102,7 +128,7 @@ const filteredData = computed(() => {
                   </span>
                   <span>View</span>
                 </VButton>
-              </td>
+              </td> -->
             </tr>
           </tbody>
         </table>
@@ -129,7 +155,7 @@ const filteredData = computed(() => {
       </VPlaceholderPage>
     </div>
 
-    <!--Table Pagination-->
+    <!--Table Pagination
     <VFlexPagination
       v-if="filteredData.length > 3"
       v-model:current-page="page"
@@ -213,7 +239,7 @@ const filteredData = computed(() => {
           </VControl>
         </VField>
       </template>
-    </VModal>
+    </VModal>-->
   </div>
 </template>
 

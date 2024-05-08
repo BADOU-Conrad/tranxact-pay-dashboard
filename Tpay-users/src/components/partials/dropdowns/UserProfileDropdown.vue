@@ -3,7 +3,8 @@ import { useUserSession } from '/@src/stores/userSession'
 
 const userSession = useUserSession()
 const router = useRouter()
-
+const fullName = localStorage.getItem('fullName')
+const email = localStorage.getItem('email')
 function logout() {
   userSession.logoutUser()
   router.push('/')
@@ -37,8 +38,8 @@ function logout() {
         />
 
         <div class="meta">
-          <span>Erik Kovalsky</span>
-          <span>Product Manager</span>
+          <span>{{ fullName }}</span>
+          <span>{{ email }}</span>
         </div>
       </div>
 

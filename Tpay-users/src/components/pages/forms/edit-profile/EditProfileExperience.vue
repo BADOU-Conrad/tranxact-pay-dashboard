@@ -65,11 +65,10 @@ const onSave = async () => {
             </VButton>
             <VButton
               color="primary"
+              to="/sidebar/layouts/list-flex-1"
               raised
               :loading="isLoading"
               tabindex="0"
-              @keydown.space.prevent="onSave"
-              @click="onSave"
             >
               Ajouter un nouveau membre
             </VButton>
@@ -215,7 +214,7 @@ const onSave = async () => {
             <!--Experience Item-->
             <div class="setting-item">
               <img
-                src="/demo/photos/brands/airbnb.svg"
+                src="/images/avatars/picture.jpg"
                 alt=""
                 @error.once="onceImageErrored(50)"
               >

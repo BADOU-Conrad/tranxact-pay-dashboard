@@ -3,7 +3,9 @@ export default {
   data() {
     return {
       currentDate: this.formatDate(new Date()),
-      datecreate: this.formatDate(new Date(localStorage.getItem('datecreate')))
+      datecreate: this.formatDate(new Date(localStorage.getItem('datecreate'))),
+      fullName: localStorage.getItem('fullName')
+
     };
   },
   methods: {
@@ -39,7 +41,7 @@ export default {
               <div class="box-text">
                 <div class="meta-text">
                   <p>
-                    <span>Tara S.</span> Vous avez créer votre compte ce jour.
+                    <span>{{ fullName }}</span> Vous avez créer votre compte ce jour.
                     <a>La création de compte vous donne accès au Tableau de bord mais vous ne pouvez rien faire encore </a>.
                   </p>
                   <span>11:42 am</span>
@@ -69,7 +71,7 @@ export default {
               <div class="box-text">
                 <div class="meta-text">
                   <p>
-                    <span>Irina V.</span> En ce jour, votre compte est toujours en mode <a>Test</a>, Vous devez passer en live?
+                    <span>{{ fullName }}</span> En ce jour, votre compte est toujours en mode <a>Test</a>, Vous devez passer en live?
                     <a>Pour passer en live Cliquer qsur le bouton ci-dessous</a>.
                   </p>
                   <span>9:18 am</span>

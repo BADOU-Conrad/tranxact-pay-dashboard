@@ -83,8 +83,7 @@ const onSubmit = async () => {
       if (response.data.status) {
         notyf.success(`Bénéficiaire créé avec succès`);
         router.push('/sidebar/layouts/list-datatable-2');
-        smallFormOpen.value = false; 
-        await fetchBeneficiary();
+        smallFormOpen.value = false;
       } else {
         notyf.error('Erreur lors de la création du Bénéficiaire. Veuillez réessayer.');
       }
@@ -121,7 +120,7 @@ const deleteBeneficiaryConfirmed = async () => {
       
       deleteConfirmationOpen.value = false;
       smallFormOpen.value = false; 
-      await fetchBeneficiary();
+      router.push('/sidebar/layouts/list-datatable-2');
     }
   } catch (error) {
     console.error('Erreur lors de la suppression du lien :', error);
@@ -133,7 +132,7 @@ const deleteBeneficiaryConfirmed = async () => {
 const deleteLink = async (beneficiaryId: string) => {
   deleteConfirmationOpen.value = true;
   beneficiaryToDeleteId = beneficiaryId;
-  await fetchBeneficiary();
+  router.push('/sidebar/layouts/list-datatable-2');
 }
 
 </script>
@@ -197,7 +196,7 @@ const deleteLink = async (beneficiaryId: string) => {
             
               <td>
                 <button
-                  class="button is-light is-circle hint--bubble hint--warning hint--top"
+                  class="button is-danger is-circle hint--bubble hint--danger hint--top"
                   data-hint="Delete"
                   @click="deleteLink(`${project.id}`)"
                 >

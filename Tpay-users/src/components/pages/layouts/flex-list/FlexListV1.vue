@@ -4,16 +4,26 @@ import { useRouter } from 'vue-router'
 import ApiService from '/@src/service/api'
 import { useNotyf } from '/@src/composable/useNotyf'
 import { ref, onMounted, computed } from 'vue'
-
+import { format } from 'date-fns';
 const smallFormOpen = ref(false)
 const router = useRouter()
 const notyf = useNotyf()
 const isLoading = ref(false)
+
 const customOptions = [
   { value: 'ADMIN', label: 'Administrateur' },
   { value: 'DEV', label: 'Développeur' },
   { value: 'MANAGER', label: 'Financier' },
 ];
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, '0');
+  const monthIndex = date.getMonth(); 
+  const year = date.getFullYear(); 
+  const month = frenchMonths[monthIndex]; 
+  return `${day} ${month} ${year}`; 
+};
 
 interface UserData {
   id: number;
@@ -50,7 +60,7 @@ const columns = {
   status: 'Statut',
   actions: {
     label: 'Actions',
-    align: 'end',
+    align: 'center',  
   },
 } as const
 
@@ -68,6 +78,10 @@ const fetchGuess = async () => {
     console.error('Erreur lors de la récupération des membres:', error)
   }
 }
+const frenchMonths = [
+  'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+  'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+];
 
 onMounted(async () => {
   await fetchGuess()
@@ -77,7 +91,7 @@ onMounted(async () => {
       position: guess.role,
       location: guess.email,
       picture: '/images/avatars/picture.jpg',
-      industry: guess.created_at,
+      industry: formatDate(guess.created_at),
       status: guess.status
   }))
 })
@@ -270,19 +284,21 @@ const filteredData = computed(() => {
                 </VFlexTableCell>
                 
                 <VFlexTableCell>
-                  <button
-                    class="button is-light is-circle hint--bubble hint--warning hint--top"
-                    data-hint="Delete"
-                    @click="deleteLink(`${item.id}`)"
-                  >
-                    <span class="icon is-small">
-                      <i
-                        aria-hidden="true"
-                        class="iconify"
-                        data-icon="feather:delete"
-                      />
-                    </span>
-                  </button>
+                  <div class="content-end">
+                    <button
+                      class="button is-danger is-circle hint--bubble hint--danger hint--top"
+                      data-hint="Delete"
+                      @click="deleteLink(`${item.id}`)"
+                    >
+                      <span class="icon is-small">
+                        <i
+                          aria-hidden="true"
+                          class="iconify"
+                          data-icon="feather:delete"
+                        />
+                      </span>
+                    </button>
+                  </div>
                 </VFlexTableCell>
               </div>
             </TransitionGroup>

@@ -3,6 +3,7 @@ import { useUserSession } from '/@src/stores/userSession';
 import { useNotyf } from '/@src/composable/useNotyf';
 import { useRouter, useRoute } from 'vue-router';
 import ApiService from '/@src/service/api';
+import sleep from '/@src/utils/sleep'
 
 type StepId = 'login' | 'forgot-password';
 const step = ref<StepId>('login');
@@ -21,15 +22,16 @@ const handleLogin = async () => {
   const isLoading = ref(false);
 
   if (!isLoading.value) {
-    isLoading.value = true;
-
     try {
 
       const response = await ApiService.login(credentials);
       console.log(response)
+      isLoading.value = true;
+      await sleep(1000);
       const token = response.data.data.auth_token;
       const apiKey = response.data.data.api_key.pub_key;
       const apiKeys = response.data.data.api_key.priv_key;
+      const user_id = response.data.data.api_key.user_id;
       const firstName = response.data.data.first_name;
       const lastName = response.data.data.last_name;
       const email = response.data.data.email;
@@ -47,21 +49,23 @@ const handleLogin = async () => {
       localStorage.setItem('apiKey', apiKey);
       localStorage.setItem('first_name', firstName);
       localStorage.setItem('last_name', lastName);
+      localStorage.setItem('fullName', fullName);
       localStorage.setItem('apiKeys', apiKeys);
       localStorage.setItem('email', email);
       localStorage.setItem('country', country);
       localStorage.setItem('activate', activate);
       localStorage.setItem('phone', phone);
+      localStorage.setItem('user_id', user_id);
       localStorage.setItem('account_type', account_type);
       notyf.dismissAll();
-
-      notyf.success(`Welcome back, ${fullName}`)
       if (redirect) {
         router.push(redirect);
       } else {
         if (activate) {
-        router.push('/sidebar/dashboards/banking-2');
+          notyf.success(`Welcome back, ${fullName}`)
+          router.push('/sidebar/dashboards/banking-2');
         } else {
+          notyf.success(`Welcome back, ${fullName}`)
           router.push('/sidebar/layouts/form-layouts-4');
         } 
       }
