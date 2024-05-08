@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://api.tranxactpay.me/api', // 'http://192.168.0.147:8000/api'
+  baseURL: 'https://api.tranxactpay.me/api', // 'http://192.168.0.147:8000/api',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -81,6 +81,12 @@ const logRequestHeaders = (config: AxiosRequestConfig) => {
   return config
 }
 
+interface PasswordChange {
+  old_password: string
+  password: string
+  password_confirmation: string
+}
+
 apiClient.interceptors.request.use(logRequestHeaders)
 
 export default {
@@ -116,6 +122,11 @@ export default {
     return apiClient.get('/guess/all')
   },
 
+  getApi_Key(user_id: string) {
+    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    return apiClient.get(`/api_key/${user_id}`)
+  },
+
   getDispute() {
     updateHeadersWithAuth(tokenValue, apiKeyValue)
     return apiClient.get('/dispute/all')
@@ -144,6 +155,11 @@ export default {
   storeLink(linkData: LinkData) {
     updateHeadersWithAuth(tokenValue, apiKeyValue)
     return apiClient.post('/link/store', linkData)
+  },
+
+  passwordChange(PasswordChange: PasswordChange) {
+    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    return apiClient.post('/user/change_password', PasswordChange)
   },
 
   updateUserDetails(UserDataUpdate: UserDataUpdate) {

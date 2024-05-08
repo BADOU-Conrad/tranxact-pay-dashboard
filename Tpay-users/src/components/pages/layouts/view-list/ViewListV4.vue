@@ -299,6 +299,30 @@ const deleteLink = async (linkId: string) => {
         </div>
       </template>
     </VModal>
+    <VModal 
+      :open="deleteConfirmationOpen" 
+      actions="center" 
+      title="Confirmer la suppression"
+      @close="deleteConfirmationOpen = false"
+    >
+      <template #content>
+        <p>Êtes-vous sûr de vouloir supprimer ce lien ?</p>
+        <div class="buttons">
+          <VButton
+            color="danger"
+            @click="deleteLinkConfirmed"
+          >
+            Oui
+          </VButton>
+          <VButton
+            color="primary"
+            @click="deleteConfirmationOpen = false"
+          >
+            Non
+          </VButton>
+        </div>
+      </template>
+    </VModal>
   </div>
 </template>
 

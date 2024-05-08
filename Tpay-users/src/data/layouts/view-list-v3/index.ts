@@ -14,12 +14,4 @@ export const offers = [
     title: apiKeyValue || 'Valeur non disponible',
     duration: 'API PUBLIQUE KEY',
   },
-  /* {
-    id: '3',
-    logo: '/demo/photos/brands/slack.svg',
-    title: 'UI/UX Designer to Consolidate the UX Team 💪💪',
-    location: 'Los Angeles',
-    duration: 'Full Time',
-    requirements: '3 Years Exp.',
-  },*/
 ]

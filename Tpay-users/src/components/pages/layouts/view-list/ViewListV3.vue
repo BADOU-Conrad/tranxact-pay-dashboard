@@ -1,10 +1,39 @@
 <script setup lang="ts">
 import { offers } from '/@src/data/layouts/view-list-v3'
 import { onceImageErrored } from '/@src/utils/via-placeholder'
+import ApiService from '/@src/service/api'
 
 type TabId = 'all' | 'saved'
 const activeTab = ref<TabId>('all')
 const filters = ref('')
+
+const user_id = localStorage.getItem('user_id')
+
+const fetchApi_Key = async () => {
+  try {
+    const response = await ApiService.getApi_Key(user_id)
+    localStorage.setItem('apiKeys', response.data.data.priv_key)
+    localStorage.setItem('apiKey', response.data.data.pub_key)
+    console.log('api', response)
+  } catch (error) {
+    console.error('Erreur lors de la regénération des clés API :', error)
+  }
+}
+
+const copyTitle = (title: string) => {
+  navigator.clipboard.writeText(title)
+    .then(() => {
+      console.log('Api Key Value copié avec succès:', title);
+    })
+    .catch((error) => {
+      console.error('Erreur lors de la copie du Api Key Value:', error);
+    });
+}
+
+const regenerateApiKeys = async () => {
+  await fetchApi_Key()
+}
+
 
 const filteredData = computed(() => {
   if (!filters.value) {
@@ -14,7 +43,7 @@ const filteredData = computed(() => {
       return (
         item.title.match(new RegExp(filters.value, 'i')) ||
         item.duration.match(new RegExp(filters.value, 'i')) ||
-        item.requirements.match(new RegExp(filters.value, 'i'))
+        item.id.match(new RegExp(filters.value, 'i'))
       )
     })
   }
@@ -29,6 +58,7 @@ const filteredData = computed(() => {
           color="primary"
           icon="fas fa-recycle" 
           elevated
+          @click="regenerateApiKeys"
         >
           Regénérer les clés apis
         </VButton>
@@ -106,6 +136,7 @@ const filteredData = computed(() => {
                       data-hint="copier"
                       light
                       circle
+                      @click="copyTitle(item.title)"
                     />
                   </div>
                 </div>

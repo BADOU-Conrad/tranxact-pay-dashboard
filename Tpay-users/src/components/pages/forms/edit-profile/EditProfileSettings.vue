@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useNotyf } from '/@src/composable/useNotyf'
 import sleep from '/@src/utils/sleep'
+import ApiService from '/@src/service/api'
 
 const notyf = useNotyf()
 const { y } = useWindowScroll()
@@ -15,11 +16,30 @@ const partners = ref(false)
 const isScrolling = computed(() => {
   return y.value > 30
 })
+
+const formData = {
+  old_password: '',
+  password: '',
+  password_confirmation: '',
+ 
+};
+
 const onSave = async () => {
-  isLoading.value = true
-  await sleep()
-  notyf.success('Your changes have been successfully saved!')
-  isLoading.value = false
+  if (!isLoading.value) {
+    try {   
+      const response = await ApiService.passwordChange(formData);
+      isLoading.value = true;
+      await sleep(1000);
+      notyf.dismissAll();
+      if (response.data.status) {
+        notyf.success(`Mot de passe changer avec succès`);
+      } else {
+        notyf.error('Erreur lors du changement de mot de passe. Veuillez réessayer.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
 }
 </script>
 
@@ -77,6 +97,7 @@ const onSave = async () => {
             <VField>
               <VControl icon="feather:unlock">
                 <VInput
+                  v-model="formData.old_password"
                   type="password"
                   placeholder="Old Password"
                   autocomplete="current-password"
@@ -89,6 +110,7 @@ const onSave = async () => {
             <VField>
               <VControl icon="feather:lock">
                 <VInput
+                  v-model="formData.password"
                   type="password"
                   placeholder="New Password"
                   autocomplete="new-password"
@@ -101,6 +123,7 @@ const onSave = async () => {
             <VField>
               <VControl icon="feather:lock">
                 <VInput
+                  v-model="formData.password_confirmation"
                   type="password"
                   placeholder="Repeat New Password"
                   autocomplete="new-password"
