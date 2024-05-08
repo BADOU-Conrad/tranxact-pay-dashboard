@@ -40,7 +40,7 @@
     "dev:vite": "vite --open",
     "serve": "vue-cli-service serve",
     "build": "run-s build:*",
-    "dev:json-server": "json-server --read-only --routes ./json-server/routes.json --port 8080 --watch ./json-server/db.json",
+    "dev:json-server": "json-server --read-only --routes ./json-server/routes.json --port 8081 --watch ./json-server/db.json",
     "build:update-bulma-colors": "bulma-css-vars",
     "build:vite": "cross-env NODE_ENV=production vite build",
     "ssr:build": "run-s build:update-bulma-colors ssr:build:*",
