@@ -44,7 +44,7 @@ export default defineConfig({
   logLevel: 'info',
   // development server configuration
   server: {
-    //  host: '93.127.203.213',
+    host: '93.127.203.213',
     port: 3001,
   },
   /**
