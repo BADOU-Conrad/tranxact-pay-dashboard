@@ -44,8 +44,8 @@ export default defineConfig({
   logLevel: 'info',
   // development server configuration
   server: {
-    host: '93.127.203.213',
-    port: 3001,
+    //  host: '93.127.203.213',
+    //port: 3001,
   },
   /**
    * Define allow to replace string in the code at build time.
