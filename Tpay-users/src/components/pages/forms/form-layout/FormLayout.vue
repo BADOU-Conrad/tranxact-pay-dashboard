@@ -77,7 +77,7 @@ const onSubmit = async () => {
             <div class="buttons">
               <VButton
                 icon="lnir lnir-arrow-left rem-100"
-                to="/sidebar/layouts/profile-view"
+                to="/sidebar/layouts/list-view-4"
                 light
                 dark-outlined
               >

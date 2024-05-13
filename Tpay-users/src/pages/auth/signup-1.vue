@@ -362,10 +362,10 @@ function onFileinputChange(event: Event) {
               >
                 <div class="signup-profile-wrapper">
                   <h1 class="title is-5 signup-title has-text-centered">
-                    Ajouter uen photo de profile
+                    Ajouter une photo de profile
                   </h1>
                   <h2 class="subtitle signup-subtitle has-text-centered">
-                    Cel est votre identité visuel.
+                    Ceci est votre identité visuel.
                   </h2>
                   <div class="picture-selector">
                     <div class="image-container">
@@ -437,10 +437,10 @@ function onFileinputChange(event: Event) {
             >
               <div class="column is-4 is-offset-4 username-form">
                 <h1 class="title is-5 signup-title has-text-centered">
-                  Ajouter votre username
+                  Ajouter votre Username
                 </h1>
                 <h2 class="subtitle signup-subtitle has-text-centered">
-                  Votre username is how others will find you on tranxact Pay
+                  Votre Username est la façon dont les autres vous trouveront sur tranxact Pay
                 </h2>
                 <form
                   method="post"
@@ -513,19 +513,6 @@ function onFileinputChange(event: Event) {
                         </VControl>
                       </VField>
                     </div>
-                    <div class="column is-12">
-                      <VField>
-                        <VControl class="has-switch">
-                          <VLabel color="success">
-                            Send me marketing and transaction emails
-                          </VLabel>
-                          <VSwitchBlock
-                            color="success"
-                            checked
-                          />
-                        </VControl>
-                      </VField>
-                    </div>
                   </div>
 
                   <div class="button-wrap is-centered has-text-centered">
@@ -538,7 +525,7 @@ function onFileinputChange(event: Event) {
                       lower
                       :loading="isLoading"
                     >
-                      Done
+                      S'inscrire
                     </VButton>
                   </div>
                 </form>

@@ -193,7 +193,7 @@ const filteredData = computed(() => {
         <!--List Empty Search Placeholder -->
         <VPlaceholderPage
           v-if="!filteredData.length"
-          title="We couldn't find any matching results."
+          title="Nous n'avons pas trouver de résultats, vos données n'existent peut être pas encore"
           subtitle="Too bad. Looks like we couldn't find any matching results for the
           search terms you've entered. Please try different search terms or
           criteria."
