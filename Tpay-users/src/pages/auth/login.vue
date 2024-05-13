@@ -145,18 +145,18 @@ const handleLogin = async () => {
               <VMessage color="primary">
                 <div>
                   <strong class="pr-1">email:</strong>
-                  <span>john.doe@cssninja.io</span>
+                  <span>exemple@gmail.com</span>
                 </div>
                 <div>
-                  <strong class="pr-1">password:</strong>
-                  <span>ada.lovelace</span>
+                  <strong class="pr-1">Mot de passe:</strong>
+                  <span>mot de passe</span>
                 </div>
               </VMessage>
 
               <VField>
                 <VControl icon="lnil lnil-envelope autv-icon">
                   <VLabel class="auth-label">
-                    Email Address
+                    Addresse mail 
                   </VLabel>
                   <VInput
                     v-model="credentials.email"
@@ -240,8 +240,8 @@ const handleLogin = async () => {
                 </VButton>
                 <span>
                   Ou
-                  <RouterLink to="/auth/signup-1">Créer</RouterLink>
-                  un compte.
+                  <RouterLink to="/auth/signup-1">Créer un compte.</RouterLink>
+                 
                 </span>
               </div>
             </form>

@@ -20,11 +20,18 @@ const filteredData = computed(() => {
 
 const valueSingle = ref(0)
 const optionsSingle = [
-  'All Projects',
-  'Web Apps',
-  'Mobile Apps',
-  'Dashboards',
-  'Landing Pages',
+  'Bénin',
+  'Togo',
+  'Ghana',
+  'Côte Ivoire',
+  
+]
+
+const valueSingle1 = ref(0)
+const optionsSingle1 = [
+  'Actif',
+  'Non actif',
+
 ]
 
 function getAvatarData(user: any): VAvatarProps {
@@ -51,8 +58,8 @@ function getAvatarData(user: any): VAvatarProps {
         <VField class="h-hidden-mobile">
           <VControl>
             <Multiselect
-              v-model="valueSingle"
-              :options="optionsSingle"
+              v-model="valueSingle1"
+              :options="optionsSingle1"
               :max-height="145"
               placeholder="Filtre par compte"
             />
@@ -75,7 +82,7 @@ function getAvatarData(user: any): VAvatarProps {
       <!--List Empty Search Placeholder -->
       <VPlaceholderPage
         :class="[filteredData.length !== 0 && 'is-hidden']"
-        title="We couldn't find any matching results."
+        title="Nous n'avons pas trouver de résultats, vos données n'existent peut être pas encore"
         subtitle="Too bad. Looks like we couldn't find any matching results for the
           search terms you've entered. Please try different search terms or
           criteria."
@@ -165,7 +172,7 @@ function getAvatarData(user: any): VAvatarProps {
                   data-icon="feather:eye"
                 />
               </span>
-              <span>View</span>
+              <span>Voir</span>
             </VButton>
           </div>
         </div>
@@ -176,7 +183,7 @@ function getAvatarData(user: any): VAvatarProps {
       <VModal 
         :open="centeredActionsOpen" 
         actions="center" 
-        title="Détails de la Dispute"
+        title="Détails du compte"
         @close="centeredActionsOpen = false"
       >
         <template #content>

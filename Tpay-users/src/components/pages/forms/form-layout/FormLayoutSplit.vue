@@ -32,11 +32,11 @@ const onSubmit = () => {
             <div class="buttons">
               <VButton
                 icon="lnir lnir-arrow-left rem-100"
-                to="/                                                                                                                                         sidebar/layouts/list-view-2"
+                to="/sidebar/layouts/list-view-2"
                 light
                 dark-outlined
               >
-                Cancel
+                Retour
               </VButton>
               <VButton
                 type="submit"
