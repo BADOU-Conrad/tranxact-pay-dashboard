@@ -32,8 +32,7 @@ const localFlagSrc = computed(() => {
     case 'ar':
       return '/images/icons/flags/saudi-arabia.svg'
     case 'en':
-    default:
-      return '/images/icons/flags/united-states-of-america.svg'
+   
   }
 })
 

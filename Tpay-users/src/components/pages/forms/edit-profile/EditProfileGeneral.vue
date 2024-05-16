@@ -246,8 +246,8 @@ const onSave = async () => {
       <!--Fieldset-->
       <div class="fieldset">
         <div class="fieldset-heading">
-          <h4>Personal Info</h4>
-          <p>Others diserve to know you more</p>
+          <h4>Informations personnels</h4>
+          <p>Retrouver vos informations personnels</p>
         </div>
 
         <div class="columns is-multiline">
@@ -258,7 +258,7 @@ const onSave = async () => {
                 <VInput
                   v-model="userData.first_name"
                   type="text"
-                  placeholder="First Name"
+                  placeholder="Prénom"
                   autocomplete="given-name"
                 />
               </VControl>
@@ -271,7 +271,7 @@ const onSave = async () => {
                 <VInput
                   v-model="userData.last_name"
                   type="text"
-                  placeholder="Last Name"
+                  placeholder="Nom"
                   autocomplete="family-name"
                 />
               </VControl>
@@ -298,7 +298,7 @@ const onSave = async () => {
                 <VInput
                   v-model="userData.phone"
                   type="text"
-                  placeholder="phone number"
+                  placeholder="Téléphone"
                   autocomplete="family-name"
                 />
               </VControl>
@@ -354,7 +354,7 @@ const onSave = async () => {
       <div class="fieldset">
         <div class="fieldset-heading">
           <h4>Information sur votre entreprise</h4>
-          <p>This can help you to win some opportunities</p>
+          <p>Les Informations que vous avez fournis sur votre entreprise </p>
         </div>
         <div class="columns is-multiline">
           <div class="column is-6">

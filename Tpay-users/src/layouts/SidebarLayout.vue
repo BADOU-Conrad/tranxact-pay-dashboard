@@ -422,7 +422,7 @@ watch(
               </h1>
             </div>
 
-            <Toolbar class="desktop-toolbar">
+            <!--Toolbar class="desktop-toolbar">
               <ToolbarNotification />
 
               <a
@@ -440,7 +440,7 @@ watch(
                   title="test"
                 />
               </a>
-            </Toolbar>
+            </!--Toolbar--> 
           </div>
 
           <slot />

@@ -1,3 +1,15 @@
+<script>
+
+export default {
+  data() {
+    return {
+      fullName: localStorage.getItem('fullName'), 
+      email: localStorage.getItem('email') 
+    }
+  }
+}
+</script>
+
 <template>
   <div class="page-content-inner">
     <!--Edit Profile-->
@@ -7,8 +19,8 @@
         <div class="column is-4">
           <div class="account-box is-navigation">
             <VBlock
-              title="Erik Kovalsky"
-              subtitle="Product Manager"
+              :title="fullName"
+              :subtitle="email"
               center
             >
               <template #icon>
