@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://api.tranxactpay.me/api', // 'http://192.168.0.147:8000/api',
+  baseURL: 'https://api.tranxactpay.me/api', //  'http://192.168.1.15:8000/api',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -10,12 +10,11 @@ const apiClient = axios.create({
   },
 })
 
-const tokenValue = localStorage.getItem('token')
-const apiKeyValue = localStorage.getItem('apiKey')
-
-const updateHeadersWithAuth = (token: string, apiKey: string) => {
-  apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
-  apiClient.defaults.headers.common['X-API-Key'] = apiKey
+const updateHeadersWithAuth = () => {
+  const tokenValue = localStorage.getItem('token')
+  const apiKeyValue = localStorage.getItem('apiKey')
+  apiClient.defaults.headers.common['Authorization'] = `Bearer ${tokenValue}`
+  apiClient.defaults.headers.common['X-API-Key'] = apiKeyValue
 }
 interface Credentials {
   email: string
@@ -108,42 +107,42 @@ export default {
   },
 
   userVerify(userProfile: UserProfile) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.post('/user/profil/complete', userProfile)
   },
 
   storeGuess(guessData: GuessData) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.post('/guess/store', guessData)
   },
 
   getGuessall() {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.get('/guess/all')
   },
 
   getApi_Key(user_id: string) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.get(`/api_key/${user_id}`)
   },
 
   getDispute() {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.get('/dispute/all')
   },
 
   deleteGuess(id_invitation: string) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.delete(`/guess/delete/${id_invitation}`)
   },
 
   getUserdetails() {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.get('/user/current/details')
   },
 
   getCountries() {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
 
     return apiClient.get('/country/all')
   },
@@ -153,52 +152,52 @@ export default {
   },
 
   storeLink(linkData: LinkData) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.post('/link/store', linkData)
   },
 
   passwordChange(PasswordChange: PasswordChange) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.post('/user/change_password', PasswordChange)
   },
 
   updateUserDetails(UserDataUpdate: UserDataUpdate) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.post('/user/update/current_user', UserDataUpdate)
   },
 
   getCollect() {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.get('/collect/stories')
   },
 
   getLink() {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.get('/link/all')
   },
 
   getLinkDetails(linkId: string) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.get(`/link/${linkId}`)
   },
 
   deleteLink(linkId: string) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.delete(`/link/delete/${linkId}`)
   },
 
   storeBeneficiary(BeneficiaryData: BeneficiaryData) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.post('/user/beneficiary/store', BeneficiaryData)
   },
 
   getBeneficiary() {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.get('/user/beneficiary/all')
   },
 
   deleteBeneficiary(beneficiaryId: string) {
-    updateHeadersWithAuth(tokenValue, apiKeyValue)
+    updateHeadersWithAuth()
     return apiClient.delete(`/user/beneficiary/delete/${beneficiaryId}`)
   },
 }
