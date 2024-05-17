@@ -27,7 +27,6 @@ const handleLogin = async () => {
       const response = await ApiService.login(credentials);
       console.log(response)
       isLoading.value = true;
-      await sleep(1000);
       const token = response.data.data.auth_token;
       const apiKey = response.data.data.api_key.pub_key;
       const apiKeys = response.data.data.api_key.priv_key;
