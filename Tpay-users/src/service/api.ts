@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://api.tranxactpay.me/api', //  'http://192.168.1.15:8000/api',
+  baseURL: 'http://192.168.0.147:8000/api', // 'https://api.tranxactpay.me/api',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -11,11 +11,19 @@ const apiClient = axios.create({
 })
 
 const updateHeadersWithAuth = () => {
-  const tokenValue = localStorage.getItem('token')
-  const apiKeyValue = localStorage.getItem('apiKey')
-  apiClient.defaults.headers.common['Authorization'] = `Bearer ${tokenValue}`
-  apiClient.defaults.headers.common['X-API-Key'] = apiKeyValue
+  const token = localStorage.getItem('token')
+  const apiKey = localStorage.getItem('apiKey')
+
+  if (token && apiKey) {
+    console.log('Token:', token)
+    console.log('API Key:', apiKey)
+    apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    apiClient.defaults.headers.common['X-API-Key'] = apiKey
+  } else {
+    console.warn('Token ou API key manquant')
+  }
 }
+
 interface Credentials {
   email: string
   password: string
