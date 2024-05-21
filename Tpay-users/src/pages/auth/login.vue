@@ -100,7 +100,7 @@ const handleLogin = async () => {
           </div>
         </div>
       </div>
-      <div class="column is-4 is-relative">
+      <div class="column is-4 is-center">
         <div class="top-tools">
           <RouterLink
             to="/"
@@ -124,7 +124,6 @@ const handleLogin = async () => {
               :class="[step !== 'login' && 'is-hidden']"
             >
               <h2>Connecter vous</h2>
-              <p>Bienvenue à nouveau sur votre compte.</p>
             </div>
             <div
               class="form-text"
@@ -141,17 +140,6 @@ const handleLogin = async () => {
               class="login-wrapper"
               @submit.prevent="handleLogin"
             >
-              <VMessage color="primary">
-                <div>
-                  <strong class="pr-1">email:</strong>
-                  <span>exemple@gmail.com</span>
-                </div>
-                <div>
-                  <strong class="pr-1">Mot de passe:</strong>
-                  <span>mot de passe</span>
-                </div>
-              </VMessage>
-
               <VField>
                 <VControl icon="lnil lnil-envelope autv-icon">
                   <VLabel class="auth-label">
@@ -341,7 +329,7 @@ const handleLogin = async () => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 400px;
+    max-width: 100px;
     margin: 0 auto;
     padding: 0 1.25rem;
     margin-bottom: 5rem;

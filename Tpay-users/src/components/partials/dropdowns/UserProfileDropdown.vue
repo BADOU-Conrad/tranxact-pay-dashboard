@@ -7,7 +7,7 @@ const fullName = localStorage.getItem('fullName')
 const email = localStorage.getItem('email')
 function logout() {
   userSession.logoutUser()
-  router.push('/')
+  router.push('/auth/login')
 }
 </script>
 
